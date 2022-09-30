@@ -8,4 +8,4 @@
 - 第二遍使用java根据labuladong公众号的目录来刷，补齐代码随想录中没有的题
 
 🖊 2020.09.25
-
+[二分查找](https://github.com/yangxcc/trouble_solver/blob/main/%E6%95%B0%E7%BB%84/sort/summary.md)
