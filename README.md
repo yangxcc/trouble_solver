@@ -13,4 +13,8 @@
 
 🖊 2020.09.30
 
-[移除元素](https://github.com/yangxcc/trouble_solver/blob/main/%E6%95%B0%E7%BB%84/remove_element/summary.md)
+[双指针](https://github.com/yangxcc/trouble_solver/blob/main/%E6%95%B0%E7%BB%84/multi_pointer/summary.md)
+
+🖊 2020.09.30
+
+[滑动窗口](https://github.com/yangxcc/trouble_solver/blob/main/%E6%95%B0%E7%BB%84/slide_window/summary.md)
