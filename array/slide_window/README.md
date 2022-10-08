@@ -9,6 +9,9 @@
 
 比如leetcode 76 hard [最小覆盖字串](https://leetcode.cn/problems/minimum-window-substring/)是我目前为止遇到的最难的滑动窗口的算法题了，下面滑动窗口的模板就是根据这道题总结出来的【labuladong】
 
+其他例题：leetcode 567 middle [字符串排列](https://leetcode.cn/problems/permutation-in-string/)，字符串的排列和字母异位词是一样的👀，leetcode 438 middle [找到字符串中所有字母异位词](https://leetcode.cn/problems/find-all-anagrams-in-a-string/)
+
+
 **滑动窗口模板代码 🌈**
 
 ```
