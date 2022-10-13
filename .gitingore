@@ -1,0 +1,15 @@
+# ignore test files
+test.go
+
+# ignore debug files
+__debug_bin.exe
+
+# ignore go dependencies
+go.mod
+go.sum
+
+# ingore other files
+.idea/
+.vscode/
+.classpath/
+.project
