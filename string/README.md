@@ -9,10 +9,17 @@ type stringStruct struct {
 
 **涉及到的题目类型**
 - 反转字符串，可能是反转某个字符，也可能是反转部分字符，还有可能是以单词为单位反转，在实现过程中使用的是双指针
+  - leetcode 344 simple [反转字符串](https://leetcode.cn/problems/reverse-string/)
+  - leetcode 542 simple [反转字符串II](https://leetcode.cn/problems/reverse-string-ii/)
+  - leetcode 151 middle [反转字符串里的单词](https://leetcode.cn/problems/reverse-words-in-a-string/)
 - 替换字符串中的空格（或其他字符），这道题如果没有任何要求是simple，但是如果要求尽量节省空间，那么我们就需要先预估空间，在进行操作
+  - leetcode 剑指offer-05 simple [替换空格](https://leetcode.cn/problems/ti-huan-kong-ge-lcof/) 
 - 旋转字符串，同理，如果没有要求原地旋转，只需要将两个字符串拼接，然后进行切片操作即可；但是如果要求不使用额外空间，那么我们就需要按照局部反转+全局反转的原则来调整
+  - leetcode 剑指offer-58 II [左旋转字符串](https://leetcode.cn/problems/zuo-xuan-zhuan-zi-fu-chuan-lcof/)
 - KMP算法...还是没咋看懂😔
   - kmp算法除了能够用在字符串中找子字符串，也能够用在重复子字符串这张题目中（也是没明白😂）
+  - leetcode 28 middle [实现strStr()](https://leetcode.cn/problems/find-the-index-of-the-first-occurrence-in-a-string/)，即在字符串中寻找子字符串
+  - leetcode 459 simple [重复的子字符串](https://leetcode.cn/problems/repeated-substring-pattern/)
 
 
 ### KMP算法
