@@ -26,7 +26,7 @@ func preOrderWithLoop(root *tree.TreeNode) {
 	if root == nil {
 		return
 	}
-	stack := tree.Stack{}
+	stack := tree.Stack[tree.TreeNode]{}
 	stack.Push(root)
 
 	for !stack.Empty() {
@@ -60,7 +60,7 @@ func inOrderWithLoop(root *tree.TreeNode) {
 	if root == nil {
 		return
 	}
-	stack, cur := tree.Stack{}, root
+	stack, cur := tree.Stack[tree.TreeNode]{}, root
 
 	for cur != nil || !stack.Empty() {
 		if cur != nil {
@@ -68,7 +68,7 @@ func inOrderWithLoop(root *tree.TreeNode) {
 			cur = cur.Left
 		} else {
 			node := stack.Pop()
-			cur = &node
+			cur = node
 			fmt.Println(cur.Val)
 			cur = cur.Right
 		}
@@ -94,7 +94,7 @@ func PostOrderWithLoop(root *tree.TreeNode) {
 	}
 
 	var ans []int
-	stack := tree.Stack{}
+	stack := tree.Stack[tree.TreeNode]{}
 	stack.Push(root)
 	for !stack.Empty() {
 		node := stack.Pop()

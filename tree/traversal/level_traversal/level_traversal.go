@@ -11,7 +11,7 @@ func sequenceTraversal(root *tree.TreeNode) [][]int {
 	}
 
 	var ans [][]int
-	q := tree.Queue{}
+	q := tree.Queue[tree.TreeNode]{}
 	q.Push(root)
 
 	tmp := []int{}
