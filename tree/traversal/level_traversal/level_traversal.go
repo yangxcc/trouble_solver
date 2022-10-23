@@ -5,7 +5,7 @@ import (
 )
 
 // 层序遍历
-func sequenceTraversal(root *tree.TreeNode) [][]int {
+func levelTraversal(root *tree.TreeNode) [][]int {
 	if root == nil {
 		return [][]int{}
 	}
@@ -33,5 +33,28 @@ func sequenceTraversal(root *tree.TreeNode) [][]int {
 		// 清空tmp
 		tmp = []int{}
 	}
+	return ans
+}
+
+func levelTraversalRecursive(root *tree.TreeNode) [][]int {
+	ans := [][]int{}
+	depth := 0
+
+	var order func(root *tree.TreeNode, depth int)
+	order = func(root *tree.TreeNode, depth int) {
+		if root == nil {
+			return
+		}
+		if len(ans) == depth {
+			ans = append(ans, []int{})
+		}
+		ans[depth] = append(ans[depth], root.Val)
+
+		order(root.Left, depth+1)
+		order(root.Right, depth+1)
+	}
+
+	order(root, depth)
+
 	return ans
 }
