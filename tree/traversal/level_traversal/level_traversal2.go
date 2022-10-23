@@ -9,7 +9,7 @@ func levelOrderBottom(root *tree.TreeNode) [][]int {
 	// 在刷题时，go中没有现成的队列/栈，但是先push/pop操作并不麻烦
 	// 比如队列的push   q = append(q, item)
 	// pop  node := q[0]  q = q[1:]
-	levelOrderTop := sequenceTraversal(root)
+	levelOrderTop := levelTraversal(root)
 	return reverse2DimSlice(levelOrderTop)
 }
 
