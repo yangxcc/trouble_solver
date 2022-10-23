@@ -1,4 +1,4 @@
-package traversal
+package level_traversal
 
 import (
 	"trouble_solver/tree"
