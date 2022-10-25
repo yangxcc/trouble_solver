@@ -100,3 +100,23 @@ class Solution {
 ```
 return isSameTree(root, subTree)
 ```
+
+### 二叉树节点个数
+完全二叉树指的是除了最后一层可能不满，所有的层都是满的
+
+因此，求节点个数可以在统计出左右子树节点个数的基础上加上对完全二叉树性质的利用
+
+我们知道，满二叉树的节点个数是$2^n-1$，所以对于完全二叉树上的任意一部分都能够看作满二叉树来计算
+
+### 平衡二叉树
+
+```
+		if leftHeight >= 0 && rightHeight >= 0 && (leftHeight-rightHeight <= 1 || leftHeight-rightHeight >= -1) {
+			return max(leftHeight, rightHeight) + 1
+		} else {
+			return -1
+		}
+```
+`if`的判断逻辑不能向上面这样写，因为如果`leftHeight==0, rightHeight==2`，他们两个的差也是小于1的，但是很明显不合题意
+
+> 此外， 运算符的优先级是：括号 > 逻辑与(&&) > 逻辑或(||)
