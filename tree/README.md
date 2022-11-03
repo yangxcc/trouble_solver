@@ -120,3 +120,48 @@ return isSameTree(root, subTree)
 `if`的判断逻辑不能向上面这样写，因为如果`leftHeight==0, rightHeight==2`，他们两个的差也是小于1的，但是很明显不合题意
 
 > 此外， 运算符的优先级是：括号 > 逻辑与(&&) > 逻辑或(||)
+
+
+### 题目列表
+
+- leetcode 144 simple [二叉树的前序遍历](https://leetcode.cn/problems/binary-tree-preorder-traversal/) 
+- leetcode 145 simple [二叉树的后序遍历](https://leetcode.cn/problems/binary-tree-postorder-traversal/)
+- leetcode 94 simple [二叉树的中序遍历](https://leetcode.cn/problems/binary-tree-inorder-traversal/)
+- 层序遍历
+  - leetcode 102 middle [二叉树的层序遍历](https://leetcode.cn/problems/binary-tree-level-order-traversal/)
+  - leetcode 107 middle [二叉树的层次遍历II](https://leetcode.cn/problems/binary-tree-level-order-traversal-ii/)
+  - leetcode 199 middle [二叉树的右视图](https://leetcode.cn/problems/binary-tree-right-side-view/)
+  - leetcode 637 simple [二叉树的层平均值](https://leetcode.cn/problems/average-of-levels-in-binary-tree/)
+  - leetcode 429 middle [N叉树的层序遍历](https://leetcode.cn/problems/n-ary-tree-level-order-traversal/)
+  - leetcode 515 middle [在每个树行中找最大值](https://leetcode.cn/problems/find-largest-value-in-each-tree-row/)
+  - leetcode 116 middle [填充每个节点的下一个右侧节点指针](https://leetcode.cn/problems/populating-next-right-pointers-in-each-node/)
+  - leetcode 117 middle [填充每个节点的下一个右侧节点指针II](https://leetcode.cn/problems/populating-next-right-pointers-in-each-node-ii/)
+  - leetcode 104 simple [二叉树的最大深度](https://leetcode.cn/problems/maximum-depth-of-binary-tree/)
+  - leetcode 111 simple [二叉树的最小深度](https://leetcode.cn/problems/minimum-depth-of-binary-tree/)
+    > 深度问题使用层序遍历是通解，但是正常情况下使用递归解法做就好了
+
+- leetcode 226 simple [翻转二叉树](https://leetcode.cn/problems/invert-binary-tree/description/)
+- leetcode 101 simple [对称二叉树](https://leetcode.cn/problems/symmetric-tree/)
+- leetcode 222 middle [完全二叉树的节点个数](https://leetcode.cn/problems/count-complete-tree-nodes/)
+- leetcode 110 simple [平衡二叉树](https://leetcode.cn/problems/balanced-binary-tree/)
+    > 这道题错了错了很多次了！！
+
+- leetcode 257 simple [二叉树的所有路径](https://leetcode.cn/problems/binary-tree-paths/)    
+- leetcode 404 simple [左叶子之和](https://leetcode.cn/problems/sum-of-left-leaves/)
+- leetcode 513 middle [左下角的值](https://leetcode.cn/problems/find-bottom-left-tree-value/)
+- leetcode 112 simple [路径总和](https://leetcode.cn/problems/path-sum/)
+- leetcode 106 middle [中序和后序遍历构造二叉树](https://leetcode.cn/problems/construct-binary-tree-from-inorder-and-postorder-traversal/)
+- leetcode 654 simple [最大二叉树](https://leetcode.cn/problems/maximum-binary-tree/)
+- leetcode 617 simple [合并二叉树](https://leetcode.cn/problems/merge-two-binary-trees/)
+- 二叉搜素树BST
+  - leetcode 700 simple [二叉搜索树中的搜索](https://leetcode.cn/problems/search-in-a-binary-search-tree/)
+  - leetcode 98 middle [验证二叉搜索树](https://leetcode.cn/problems/validate-binary-search-tree/)
+  - leetcode 530 simple [二叉搜索树的最小绝对差](https://leetcode.cn/problems/minimum-absolute-difference-in-bst/)
+  - leetcode 501 simple [二叉搜索树中的众数](https://leetcode.cn/problems/find-mode-in-binary-search-tree/)
+  - leetcode 236 middle [二叉树的最近公共祖先](https://leetcode.cn/problems/find-mode-in-binary-search-tree/)
+  - leetcode 235 middle [二叉搜索树的最近公共祖先](https://leetcode.cn/problems/lowest-common-ancestor-of-a-binary-search-tree/)
+  - leetcode 701 middle [二叉搜索树中的插入操作](https://leetcode.cn/problems/insert-into-a-binary-search-tree/)
+  - leetcode 450 middle [删除二叉搜索树中的节点](https://leetcode.cn/problems/delete-node-in-a-bst/)
+  - leetcode 669 middle [修剪二叉搜索树](https://leetcode.cn/problems/trim-a-binary-search-tree/)
+  - leetcode 108 simple [把有序数组转换成二叉搜索树](https://leetcode.cn/problems/trim-a-binary-search-tree/)
+  - leetcode 538 simple [把二叉搜索树转换为累加树](https://leetcode.cn/problems/convert-bst-to-greater-tree/)
