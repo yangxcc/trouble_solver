@@ -24,7 +24,8 @@ func combinationSum3(k int, n int) [][]int {
 		}
 
 		for i := idx; i <= 9; i++ {
-			if curSum > n || len(path) > k {
+			// 这里的剪枝代码也可以写成 i <= 9 - (k-len(path))+1
+			if len(path) > k {
 				continue
 			}
 			curSum += i
