@@ -121,6 +121,17 @@ return isSameTree(root, subTree)
 
 > 此外， 运算符的优先级是：括号 > 逻辑与(&&) > 逻辑或(||)
 
+### 二叉搜索树
+
+**性质**
+
+1. 对于任意一个节点，其左子树的值必定小于该节点的值，右子树的值必定大于该节点的值
+2. 中序遍历二叉搜索树的结果是升序排列的
+
+二叉搜索树的题目通常就是利用这两个性质来解题的
+
+
+
 
 ### 题目列表
 
@@ -138,14 +149,16 @@ return isSameTree(root, subTree)
   - leetcode 117 middle [填充每个节点的下一个右侧节点指针II](https://leetcode.cn/problems/populating-next-right-pointers-in-each-node-ii/)
   - leetcode 104 simple [二叉树的最大深度](https://leetcode.cn/problems/maximum-depth-of-binary-tree/)
   - leetcode 111 simple [二叉树的最小深度](https://leetcode.cn/problems/minimum-depth-of-binary-tree/)
+    
     > 深度问题使用层序遍历是通解，但是正常情况下使用递归解法做就好了
-
+  
 - leetcode 226 simple [翻转二叉树](https://leetcode.cn/problems/invert-binary-tree/description/)
 - leetcode 101 simple [对称二叉树](https://leetcode.cn/problems/symmetric-tree/)
 - leetcode 222 middle [完全二叉树的节点个数](https://leetcode.cn/problems/count-complete-tree-nodes/)
 - leetcode 110 simple [平衡二叉树](https://leetcode.cn/problems/balanced-binary-tree/)
+    
     > 这道题错了错了很多次了！！
-
+    
 - leetcode 257 simple [二叉树的所有路径](https://leetcode.cn/problems/binary-tree-paths/)    
 - leetcode 404 simple [左叶子之和](https://leetcode.cn/problems/sum-of-left-leaves/)
 - leetcode 513 middle [左下角的值](https://leetcode.cn/problems/find-bottom-left-tree-value/)
