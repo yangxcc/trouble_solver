@@ -8,3 +8,5 @@
 - 第二遍使用java根据labuladong公众号的目录来刷，补齐代码随想录中没有的题
 
 🖊 后续补充吧...
+
+通过对比golang和Java在leetcode上的提交记录，可以发现同样的算法golang的内存消耗比Java小很多
