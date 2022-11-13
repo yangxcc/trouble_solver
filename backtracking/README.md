@@ -27,3 +27,6 @@ def backtrack(路径, 选择列表):
 
 - 如果是一个集合来求组合的话，就需要startIndex，例如：77.组合，216.组合总和III。
 - 如果是多个集合取组合，各个集合之间相互不影响，那么就不用startIndex，例如：17.电话号码的字母组合
+
+
+leetcode 332 hard [重新安排行程](https://leetcode.cn/problems/reconstruct-itinerary/description/)，这种类型的题在labuladong的某一个类型中讲解的很透彻！！
