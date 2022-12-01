@@ -36,7 +36,7 @@ func maxEnvelopes(envelopes [][]int) int {
 	return ans
 }
 
-// 但是现在简单的排序+动态规划已经过不了了，85/87，超时
+// 但是现在简单的排序+动态规划已经过不了了，85/87， 超时
 
 func maxEnvelopesWithBinarySort(envelopes [][]int) int {
 	// 先按照宽度升序排列，如果宽度相等，则按照高度降序排列
