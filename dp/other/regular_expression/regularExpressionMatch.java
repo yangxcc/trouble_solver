@@ -1,4 +1,4 @@
-package dp.other.regular_expression;
+package other.regular_expression;
 
 public class regularExpressionMatch{
     
