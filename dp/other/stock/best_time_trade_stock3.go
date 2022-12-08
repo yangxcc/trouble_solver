@@ -2,7 +2,7 @@
  * @Author: yangxcc
  * @version: 1.0
  * @Date: 2022-12-08 17:46:40
- * @LastEditTime: 2022-12-08 19:44:45
+ * @LastEditTime: 2022-12-08 19:46:46
  */
 package stock
 
@@ -33,6 +33,7 @@ func maxProfit3(prices []int) int {
 
 	for i := 0; i < n; i++ {
 		for j := 1; j <= maxTradeNums; j++ {
+			// 一定要注意这里，不能忘掉，在第1天的时候base case
 			if i-1 == -1 {
 				dp[i][j][0] = -prices[0]
 				dp[i][j][1] = 0
