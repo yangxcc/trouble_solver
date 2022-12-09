@@ -2,7 +2,7 @@
  * @Author: yangxcc
  * @version: 1.0
  * @Date: 2022-12-09 10:40:29
- * @LastEditTime: 2022-12-09 10:55:07
+ * @LastEditTime: 2022-12-09 15:04:28
  */
 package robber
 
@@ -27,6 +27,17 @@ func rob1(nums []int) int {
 		dp[i][1] = max(dp[i-1][0], dp[i-1][1])
 	}
 	return max(dp[n-1][0], dp[n-1][1])
+}
+
+func rob1Better(nums []int) int {
+	n := len(nums)
+	// dp[i]表示的是从第i间房子开始，最多能抢到的钱x
+	dp := make([]int, n+2)
+	// base case 从n开始，dp[i]=0
+	for i := n - 1; i >= 0; i-- {
+		dp[i] = max(dp[i+1], nums[i]+dp[i+2])
+	}
+	return dp[0]
 }
 
 func max(a, b int) int {
