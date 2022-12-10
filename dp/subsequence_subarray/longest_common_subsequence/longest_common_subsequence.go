@@ -2,7 +2,7 @@
  * @Author: yangxcc
  * @version: 1.0
  * @Date: 2022-12-02 12:30:05
- * @LastEditTime: 2022-12-09 21:42:42
+ * @LastEditTime: 2022-12-10 16:39:19
  */
 package longestcommonsubsequence
 
@@ -39,6 +39,11 @@ func max(a, b int) int {
 	}
 	return a
 }
+
+/**
+leetcode 1035 不相交的线
+属于是一摸一样的思路，就是求最长公共子序列，只是把字符串换成了数组
+*/
 
 /**
 leetcode 583 两个字符串的删除操作
