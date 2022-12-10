@@ -2,7 +2,7 @@
  * @Author: yangxcc
  * @version: 1.0
  * @Date: 2022-12-10 12:31:07
- * @LastEditTime: 2022-12-10 15:56:00
+ * @LastEditTime: 2022-12-10 16:27:24
  */
 package palindromicsubsequence
 
@@ -11,6 +11,10 @@ package palindromicsubsequence
 给你一个字符串 s ，请你统计并返回这个字符串中 回文子串 的数目。
 回文字符串 是正着读和倒过来读一样的字符串。
 子字符串 是字符串中的由连续字符组成的一个序列。
+
+示例
+输入："aaa" 输出：6 解释：6个回文子串: "a", "a", "a", "aa", "aa", "aaa"
+可以看出里面有两个aa，这就说明这里不仅仅只能更新上半三角区，下班三角区也要有
 */
 func countSubstrings(s string) int {
 	n := len(s)
