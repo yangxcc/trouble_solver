@@ -1,3 +1,9 @@
+/*
+ * @Author: yangxcc
+ * @version: 1.0
+ * @Date: 2022-09-25 13:39:20
+ * @LastEditTime: 2022-12-10 16:58:06
+ */
 package sort
 
 // 给定一个 n 个元素有序的（升序）整型数组 nums 和一个目标值 target，
