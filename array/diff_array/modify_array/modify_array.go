@@ -2,7 +2,7 @@
  * @Author: yangxcc
  * @version: 1.0
  * @Date: 2022-12-12 21:04:52
- * @LastEditTime: 2022-12-12 21:27:52
+ * @LastEditTime: 2022-12-12 22:09:24
  */
 package modifyarray
 
@@ -14,6 +14,22 @@ package modifyarray
 请你返回 k 次操作后的数组。
 */
 func getModifiedArray(length int, updates [][]int) []int {
+	d := InitDiff(length)
+	for _, updateVal := range updates {
+		d.Update(updateVal[0], updateVal[1], updateVal[1])
+	}
+
+	return d.Recover()
+}
+
+// 差分数组结构体
+type Difference struct {
+	Diff    []int
+	Update  func(left, right, val int)
+	Recover func() []int
+}
+
+func InitDiff(length int) Difference {
 	d := Difference{}
 	d.Diff = make([]int, length)
 	// d.Diff[0] = 0
@@ -21,7 +37,7 @@ func getModifiedArray(length int, updates [][]int) []int {
 	// 以val值，更新[left, right]区间内的数据
 	d.Update = func(left, right, val int) {
 		d.Diff[left] += val
-		if right+1 <= length {
+		if right+1 < length {
 			d.Diff[right+1] -= val
 		}
 	}
@@ -35,16 +51,5 @@ func getModifiedArray(length int, updates [][]int) []int {
 		return ans
 	}
 
-	for _, updateVal := range updates {
-		d.Update(updateVal[0], updateVal[1], updateVal[1])
-	}
-
-	return d.Recover()
-}
-
-// 差分数组结构体
-type Difference struct {
-	Diff    []int
-	Update  func(left, right, val int)
-	Recover func() []int
+	return d
 }
