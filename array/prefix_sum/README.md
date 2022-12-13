@@ -14,6 +14,6 @@
 - [实现方式Go](range_sum_2d/num_matrix.go)
 - [实现方式Java](range_sum_2d/NumMatrix.java)
 
-> leetcode 1314 [](矩阵区域和)(https://leetcode.cn/problems/matrix-block-sum/description/)
+> leetcode 1314 [矩阵区域和](https://leetcode.cn/problems/matrix-block-sum/description/)
 - [实现方式Go](./matrix_block_sum/matrix_block_sum.go)
 - [实现方式Java](./matrix_block_sum/MatrixBlockSum.java)
