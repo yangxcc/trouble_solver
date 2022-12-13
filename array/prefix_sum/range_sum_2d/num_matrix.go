@@ -2,7 +2,7 @@
  * @Author: yangxcc
  * @version: 1.0
  * @Date: 2022-12-12 19:58:46
- * @LastEditTime: 2022-12-12 20:16:06
+ * @LastEditTime: 2022-12-13 13:59:37
  */
 package rangesum2d
 
@@ -38,6 +38,6 @@ func Constructor(matrix [][]int) NumMatrix {
 
 // 最后的范围求值，一定要对照着图片中的数组来计算
 func (this *NumMatrix) SumRegion(row1 int, col1 int, row2 int, col2 int) int {
-	return this.prefixSum[row2+1][col2+1] + this.prefixSum[row1-1][col1-1] -
+	return this.prefixSum[row2+1][col2+1] + this.prefixSum[row1][col1] -
 		this.prefixSum[row2+1][col1] - this.prefixSum[row1][col2+1]
 }
