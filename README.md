@@ -35,3 +35,6 @@ func method(strs []string, m int, n int) int {
 ```
 
 从今天（2022/12/12）开始，参考labuladong刷题了，补充Java的做法的同时规范代码格式
+
+**技巧记录**
+1. 通过 min, max 函数优雅避免索引越界的技巧，[代码示例](array/prefix_sum/matrix_block_sum/matrix_block_sum.go)
