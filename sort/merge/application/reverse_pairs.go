@@ -2,7 +2,7 @@
  * @Author: yangxcc
  * @version: 1.0
  * @Date: 2022-12-19 14:47:37
- * @LastEditTime: 2022-12-19 15:34:20
+ * @LastEditTime: 2022-12-19 15:49:40
  */
 package application
 
@@ -33,8 +33,8 @@ func reversePairs(nums []int) int {
 				i++
 			} else if tmp[i] > tmp[j] {
 				nums[p] = tmp[j]
-				// [i,mid+1]即i后面的这些数字肯定也是比j大
-				count += mid + 1 - i
+				// [i,mid]即i后面的这些数字肯定也是比j大，共有mid-i+1个
+				count += mid - i + 1
 				j++
 			} else {
 				nums[p] = tmp[i]

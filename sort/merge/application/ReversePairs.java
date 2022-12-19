@@ -2,7 +2,7 @@
  * @Author: yangxcc
  * @version: 1.0
  * @Date: 2022-12-19 14:47:47
- * @LastEditTime: 2022-12-19 15:37:48
+ * @LastEditTime: 2022-12-19 15:50:08
  */
 package sort.merge.application;
 
@@ -42,8 +42,8 @@ public class ReversePairs{
             } else if (j == right+1) {
                 nums[p] = temp[i++];
             } else if (temp[i] > temp[j]) {
-                // [i, mid+1]这个区间内，i后面的所有元素，直到mid+1都是比nums[i]大的
-                count += mid+1-i;
+                // [i, mid]这个区间内，i后面的所有元素，直到mid都是比nums[i]大的，共有mid-i+1个
+                count += mid-i+1;
                 nums[p] = temp[j++];
             } else {
                 nums[p] = temp[i++];
