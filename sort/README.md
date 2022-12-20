@@ -76,6 +76,58 @@ void sort(int[] nums, int left, int right) {
 - [Java代码](merge/application/CountSmaller.java)
 
 
+### 快速排序
+核心思想是 选择出一个数（pivot）作为基准，比这个数小的放在pivot的左边，比这个数大的放在pivot的右边，递归前面的过程
+
+核心代码
+```go
+func sort(nums []int, left, right int) {
+    if left < right {
+        pivot := partition(nums, left, right)
+        sort(nums, left, pivot-1)
+        sort(nums, pivot+1, right)
+    }
+}
+// 重点在于partition函数中，在该函数中，我们需要返回一个索引，该索引前的数字都比他小，后的数字都比他大
+func partition(nums int[], left, right int) {
+    rand.Seed(time.Now().UnixMicro())
+    // rand.Intn(n)生成的是一个[0,n)的随机数，打乱一下顺序，或者是直接shuffle整个数组
+	idx := left + rand.Intn(right-left+1)
+    swap(nums, left, idx)
+    pivot := nums[left]
+
+    leftIdx, rightIdx := left+1, right
+    for leftIdx <= rightIdx {
+        for leftIdx <= right && nums[leftIdx] < pivot {
+            leftIdx++
+        }
+        for rightIdx >= left && nums[rightIdx] >= pivot {
+            rightIdx--
+        }
+
+        if leftIdx >= rightIdx {
+            break
+        }
+
+        swap(nums, leftIdx, rightIdx)
+    }
+    swap(nums, left, rightIdx)
+}
+```
+
+这里值得注意的是我们需要在每次partition之前打乱一下数组的顺序，这是为了避免极端情况的出现，快排会退化成选择排序。
+比如数组`654321`，我们的`pivot=6`，所有的数组都会移动一下...
+
+**labuladong的看法（很巧妙）：快速排序的过程是一个构造二叉搜索树的过程**
+
+> https://mp.weixin.qq.com/s/8ZTMhvHJK_He48PpSt_AmQ
+
+快排的平均时间复杂度为$O(nlogn)$，最坏时间复杂度为$O(n^2)$，**不稳定排序**，比如`{2, 1, 1, 3} `，我们以2为基准，在partition的过程中会将两个1的位置对换
+
+
+
+
+
 
 二分搜索问题需要按照开闭区间去想
 
@@ -84,6 +136,7 @@ void sort(int[] nums, int left, int right) {
 
     相同的一道题目 leetcode 69 simple 寻找x的平方根，思路和查找插入位置是一样的！
 3. `sortWithRepeatElement` 在存在重复元素的升序数组中查找元素的左右边界，leetcode 34 middle
+
 
 
 > 参考链接：https://zhuanlan.zhihu.com/p/42586566#:~:text=%E4%B8%8B%E9%9D%A2%E4%BB%8B%E7%BB%8D%E5%87%A0%E7%A7%8D%E5%B8%B8%E8%A7%81,%E7%94%A8Java%E5%AE%9E%E7%8E%B0%E3%80%82
