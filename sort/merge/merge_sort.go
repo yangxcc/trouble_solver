@@ -2,7 +2,7 @@
  * @Author: yangxcc
  * @version: 1.0
  * @Date: 2022-12-13 19:46:09
- * @LastEditTime: 2022-12-19 15:13:34
+ * @LastEditTime: 2022-12-19 16:07:13
  */
 package merge
 
@@ -77,16 +77,16 @@ func MergeSortBetter(nums []int) []int {
 		for p := left; p <= right; p++ {
 			if i == mid+1 {
 				// 左边的已经全都合并完了
-				tmp[p] = nums[j]
+				nums[p] = tmp[j]
 				j++
 			} else if j == right+1 {
-				tmp[p] = nums[i]
+				nums[p] = tmp[i]
 				i++
 			} else if tmp[i] > tmp[j] {
-				tmp[p] = nums[j]
+				nums[p] = tmp[j]
 				j++
 			} else {
-				tmp[p] = nums[i]
+				nums[p] = tmp[i]
 				i++
 			}
 		}
