@@ -124,6 +124,47 @@ func partition(nums int[], left, right int) {
 
 快排的平均时间复杂度为$O(nlogn)$，最坏时间复杂度为$O(n^2)$，**不稳定排序**，比如`{2, 1, 1, 3} `，我们以2为基准，在partition的过程中会将两个1的位置对换
 
+### 堆排序
+**堆是一种数据结构，它其实是一棵完全二叉树**，只不过是存储在数组中，只不过在数组中我们没有指针，而是通过索引来操作节点
+```java
+/**
+ * 因为数组索引都是从0开始的，所以left=root*2+1, right=root*2+2，parent=(i-1)/2
+ */
+// 父节点的索引
+int parent(int i) {
+    return(i-1) / 2;
+}
+// 左孩子的索引
+int left(int root) {
+    return root * 2 + 1;
+}
+// 右孩子的索引
+int right(int root) {
+    return root * 2 + 2;
+}
+```
+
+堆的主要操作有两个：下沉（sink）和上浮（swim），通过这两个操作来维护堆的性质
+
+堆的主要应用有两个：堆排序和优先级队列（Java中的PriorityQueue）
+
+最大堆的性质是：每个节点都大于等于它的两个子节点，最大元素出现在堆顶。类似的，最小堆的性质是：每个节点都小于等于它的子节点，最小元素出现在堆顶。
+
+堆排序就是一个将堆顶元素不断取出，然后调整堆结构的过程。
+
+时间复杂度分析
+```java
+for (int num : nums) {
+    heap.put(num);
+}
+
+for (int i = 0; i < nums.length; i++) {
+    nums[i] = heap.pop();
+}
+```
+第一个for循环：堆的构建，时间复杂度为$O(n)$，pop的过程伴随着二叉树的调整，树的高度为$logn$，每次调整就是一次swap，因此，第二个for循环的时间复杂度为$O(nlogn)$
+
+所以堆排序的时间复杂度为$O(nlogn)$，**不稳定排序**
 
 
 
