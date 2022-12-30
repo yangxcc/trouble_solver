@@ -2,7 +2,7 @@
  * @Author: yangxcc
  * @version: 1.0
  * @Date: 2022-12-30 11:51:17
- * @LastEditTime: 2022-12-30 11:53:55
+ * @LastEditTime: 2022-12-30 15:49:11
  */
 package splitlinkedlist
 

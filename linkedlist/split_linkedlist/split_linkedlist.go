@@ -2,11 +2,13 @@
  * @Author: yangxcc
  * @version: 1.0
  * @Date: 2022-12-30 11:33:14
- * @LastEditTime: 2022-12-30 11:58:36
+ * @LastEditTime: 2022-12-30 15:58:32
  */
 package splitlinkedlist
 
-import . "trouble_solver/linkedlist"
+import (
+	. "trouble_solver/linkedlist"
+)
 
 /**
 给你一个链表的头节点 head 和一个特定值 x ，请你对链表进行分隔，使得所有 小于 x 的节点都出现在 大于或等于 x 的节点之前。
@@ -29,6 +31,7 @@ func partition(head *ListNode, x int) *ListNode {
 			p2.Next = cur
 			p2 = p2.Next
 		}
+		// 这里需要注意将每个节点后面的指针去掉，因为如果不去掉，dummy指针去遍历的时候会死循环
 		tmp := cur.Next
 		cur.Next = nil
 		cur = tmp
