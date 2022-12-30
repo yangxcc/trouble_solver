@@ -1,3 +1,9 @@
+/*
+ * @Author: yangxcc
+ * @version: 1.0
+ * @Date: 2022-10-05 19:58:34
+ * @LastEditTime: 2022-12-30 20:15:19
+ */
 package swapnode
 
 import (
@@ -30,10 +36,10 @@ func swapPairsWithDoublePointer(head *linkedlist.ListNode) *linkedlist.ListNode 
 	}
 	// 使用双指针将整条链拆开，奇数位和偶数位
 	odd, even, evenHelper := head, head.Next, head.Next
-	for even != nil {
+	for even != nil && even.Next != nil {
 		odd.Next = even.Next
 		odd = odd.Next
-		even.Next = odd
+		even.Next = odd.Next
 		even = even.Next
 	}
 
