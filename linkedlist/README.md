@@ -2,7 +2,7 @@
 
 1. 虚拟头节点：使用虚拟头节点，能够统一头节点和其他节点的处理方式，不需要单独去处理头节点，比如
 
-   - leetcode 203 simple [移除链表元素]https://leetcode.cn/problems/remove-linked-list-elements/() 
+   - leetcode 203 simple [移除链表元素]https://leetcode.cn/problems/remove-linked-list-elements/
 
 
 2. 链表的基本操作包括：
