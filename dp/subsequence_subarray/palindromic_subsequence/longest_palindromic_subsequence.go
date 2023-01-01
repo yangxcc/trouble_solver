@@ -2,7 +2,7 @@
  * @Author: yangxcc
  * @version: 1.0
  * @Date: 2022-12-10 15:57:36
- * @LastEditTime: 2022-12-10 16:24:48
+ * @LastEditTime: 2023-01-01 16:34:08
  */
 package palindromicsubsequence
 
@@ -49,4 +49,41 @@ func max(a, b int) int {
 		return b
 	}
 	return a
+}
+
+/**
+给你一个字符串 s，找到 s 中最长的回文子串。
+上面是返回最长回文子串的长度，这里是返回最长回文子串
+*/
+func longestPalindromeSubseq2(s string) string {
+	n := len(s)
+	// dp[i][j]表示的是[i,j]范围内的子序列是否为回文序列
+	dp := make([][]bool, n)
+	for i, _ := range dp {
+		dp[i] = make([]bool, n)
+		dp[i][i] = true
+	}
+	maxLen, left, right := 0, 0, 0
+
+	for i := n - 1; i >= 0; i-- {
+		for j := i + 1; j < n; j++ {
+			if s[i] != s[j] {
+				dp[i][j] = false
+			} else {
+				// s[i] == s[j]
+				if j-i == 1 {
+					dp[i][j] = true
+				} else {
+					dp[i][j] = dp[i+1][j-1]
+				}
+			}
+
+			if dp[i][j] && j-i+1 > maxLen {
+				maxLen = j - i + 1
+				left = i
+				right = j
+			}
+		}
+	}
+	return s[left : right+1]
 }
