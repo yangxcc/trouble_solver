@@ -2,7 +2,7 @@
  * @Author: yangxcc
  * @version: 1.0
  * @Date: 2023-01-02 11:15:40
- * @LastEditTime: 2023-01-02 12:07:52
+ * @LastEditTime: 2023-01-02 12:23:00
  */
 package array.slide_window;
 
@@ -11,8 +11,11 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * 不清楚为啥AC不了，测试用例通过61/63
- * Go可以AC
+ * 不清楚为啥AC不了，测试用例通过61/63 Go可以AC
+ * FIX：包装类的比较，Integer中[-128,127]之间数据的比较是使用缓存，能直接使用==，但是在这个范围外的数据，会使用new/valueof关键字来实例化
+ * ==是比较地址的，所以不能使用==，最好是使用compareTo方法
+ * 
+ * 参考链接：https://www.nowcoder.com/discuss/353148149285986304
  */
 public class FindAllAnagrams {
     public List<Integer> findAnagrams(String s, String p) {
@@ -32,7 +35,7 @@ public class FindAllAnagrams {
             // 将元素放入窗口
             if (need.containsKey(c)) {
                 window.put(c, window.getOrDefault(c, 0)+1);
-                if (need.get(c) == window.get(c)) {
+                if (need.get(c).equals(window.get(c))) {
                     valid++;
                 }
             }
@@ -47,7 +50,7 @@ public class FindAllAnagrams {
                 left++;
 
                 if (need.containsKey(d)) {
-                    if (need.get(d) == window.get(d)) {
+                    if (need.get(d).equals(window.get(d))) {
                         valid--;
                     }
                     window.put(d, window.get(d)-1);
