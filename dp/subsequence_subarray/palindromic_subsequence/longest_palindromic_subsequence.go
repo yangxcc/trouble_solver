@@ -2,7 +2,7 @@
  * @Author: yangxcc
  * @version: 1.0
  * @Date: 2022-12-10 15:57:36
- * @LastEditTime: 2023-01-01 16:34:08
+ * @LastEditTime: 2023-01-02 10:56:44
  */
 package palindromicsubsequence
 
