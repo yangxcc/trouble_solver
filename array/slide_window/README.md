@@ -11,6 +11,8 @@
 
 其他例题：leetcode 567 middle [字符串排列](https://leetcode.cn/problems/permutation-in-string/)，字符串的排列和字母异位词是一样的👀，leetcode 438 middle [找到字符串中所有字母异位词](https://leetcode.cn/problems/find-all-anagrams-in-a-string/)
 
+leetcode 3 middle [无重复字符的最长子串](https://leetcode.cn/problems/longest-substring-without-repeating-characters/description/)
+
 
 **滑动窗口模板代码 🌈**
 
