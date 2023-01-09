@@ -2,13 +2,13 @@
  * @Author: yangxcc
  * @version: 1.0
  * @Date: 2022-10-07 10:41:55
- * @LastEditTime: 2022-12-30 16:16:16
+ * @LastEditTime: 2023-01-09 11:24:45
  */
 package linkedlist.intersect_linkedlist;
 
 import linkedlist.ListNode;
 
-public class get_intersect_node {
+public class GetIntersectNode {
     ListNode getIntersectionNode(ListNode headA, ListNode headB) {
         ListNode helperA = headA, helperB = headB;
         while (helperA != helperB) {
