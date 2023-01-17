@@ -2,7 +2,7 @@
  * @Author: yangxcc
  * @version: 1.0
  * @Date: 2023-01-16 13:54:02
- * @LastEditTime: 2023-01-17 10:19:55
+ * @LastEditTime: 2023-01-17 11:00:13
  */
 package lru_and_lfu;
 
@@ -11,7 +11,7 @@ import java.util.LinkedHashMap;
 /**
  * leetcode 146 middle LRU缓存
  * 
- * LRU是一种缓存淘汰策略，全称是Least Recently Used，最近最少使用
+ * LRU是一种缓存淘汰策略，全称是Least Recently Used，最近最不经常使用
  */
 public class LRUCache {
     // 之所以使用LinkedHashMap而不是LinkedList，是为了在O(1)的时间内找到对应的key
