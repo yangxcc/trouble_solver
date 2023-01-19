@@ -1,3 +1,9 @@
+/*
+ * @Author: yangxcc
+ * @version: 1.0
+ * @Date: 2022-10-23 16:58:24
+ * @LastEditTime: 2023-01-19 14:27:11
+ */
 package level_traversal
 
 import "trouble_solver/tree"
