@@ -2,7 +2,7 @@
  * @Author: yangxcc
  * @version: 1.0
  * @Date: 2022-10-19 15:19:25
- * @LastEditTime: 2023-01-19 21:11:03
+ * @LastEditTime: 2023-01-19 21:14:51
  */
 package tree.traversal;
 
@@ -21,7 +21,7 @@ public class Traversal {
         if (root == null) {
             return new ArrayList<>();
         }
-        
+
         // 遍历顺序：根左右
         Deque<TreeNode> stack = new ArrayDeque<>();
         List<Integer> ans = new ArrayList<>();
@@ -43,8 +43,6 @@ public class Traversal {
         return ans;
     }
 
-
-
     /**
      * 中序遍历的核心思想是：对于当前节点，优先遍历其左子树
      * 左根右
@@ -53,7 +51,7 @@ public class Traversal {
         if (root == null) {
             return new ArrayList<>();
         }
-        
+
         List<Integer> ans = new ArrayList<>();
         Deque<TreeNode> stack = new ArrayDeque<>();
         TreeNode cur = root;
@@ -87,6 +85,9 @@ public class Traversal {
         stack.push(root);
         while (!stack.isEmpty()) {
             TreeNode node = stack.poll();
+            ans.add(node.val);
+            
+            if (node.left != null) {
                 stack.push(node.left);
             }
 
@@ -99,3 +100,4 @@ public class Traversal {
 
         return ans;
     }
+}
