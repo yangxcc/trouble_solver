@@ -67,7 +67,7 @@ if j == right+1 {
 }
 
 if tmp[i].val < tmp[j].val {
-    count[pairs[p].idx] += j-mid+1
+    count[pairs[p].idx] += j-mid-1
 }
 ```
 - [Go实现](count_smaller.go)
