@@ -23,6 +23,7 @@ merge = func(nums []int, left, mid, right int) {
     }
 
     // 在这里先判断一下，有多少符合条件的
+    // 这样写的原因是以 右边的部分为基准
     for i := left; i <= mid; i++ {
         for end <= right && tmp[i] > 2*tmp[end] {
             end++
@@ -41,6 +42,9 @@ merge = func(nums []int, left, mid, right int) {
         } else if tmp[i] > tmp[j] {
             nums[p] = tmp[j]
             // 这里有一个疑问，为什么不能够是这样的代码
+            // 是因为这样写会漏掉，比如
+            // 1,4,9  1,3
+            // 当j指向3的时候，i指向的9不会把它算进去，会跳过去
             // if tmp[i] > 2*tmp[j] {
             //     count += mid+1-i
             // }
