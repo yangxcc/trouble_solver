@@ -2,16 +2,19 @@
  * @Author: yangxcc
  * @version: 1.0
  * @Date: 2022-12-13 14:18:25
- * @LastEditTime: 2022-12-20 17:52:10
+ * @LastEditTime: 2023-02-01 17:17:46
  */
 package sort.quick;
+
+import java.util.Random;
 
 import sort.utils;
 
 public class QuickSort {
     public int[] sort(int[] nums) {
         // 随机选出一个数和第一个数交换一下，避免极端情况
-        utils.swap(nums, 0, (int)(Math.random()*(nums.length >> 1)));
+        // utils.swap(nums, 0, (int)(Math.random()*nums.length));
+        shuffle(nums);
         sort(nums, 0, nums.length-1);
         return nums;
     }
@@ -51,5 +54,16 @@ public class QuickSort {
         utils.swap(nums, left, rightIdx);
         
         return rightIdx;
+    }
+
+    // shuffle函数用来将数组随机打乱
+    public void shuffle(int[] nums) {
+        Random rand = new Random();
+        int n = nums.length;
+        for (int i = 0; i < n; i++) {
+            // rand.nextInt(n)生成的是[0, n)的整数
+            int r = rand.nextInt(n-i) + i;
+            utils.swap(nums, i, r);
+        }
     }
 }
