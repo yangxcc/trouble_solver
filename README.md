@@ -38,3 +38,39 @@ func method(strs []string, m int, n int) int {
 
 **技巧记录**
 1. 通过 min, max 函数优雅避免索引越界的技巧，[代码示例](array/prefix_sum/matrix_block_sum/matrix_block_sum.go)
+2. 回溯和dfs的区别
+   ```java
+        // 回溯模板
+        void backtrack(TreeNode root, List<Integer> path) {
+            if (root == null) {
+                return;
+            }
+
+            for (TreeNode child : root.children) {
+                // 做选择
+                path.add(child.val);
+
+                // 回溯
+                backtrack(child, path);
+
+                // 撤销选择
+                path.removeLast();
+            }
+        }
+
+        // dfs模板
+        void dfs(TreeNode root, List<Integer> path) {
+            if (root == null) {
+                return;
+            }
+
+            path.add(root.val);
+
+            for (TreeNode child : root.children) {
+                dfs(child, path);
+            }
+
+            path.removeLast();
+        }
+   ```
+   可以看到，从代码角度，回溯的选择和撤销操作在for循环内，而dfs在for循环外，回溯算法关注的是树枝，而dfs关注的是节点
