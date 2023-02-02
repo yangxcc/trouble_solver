@@ -1,6 +1,8 @@
 package graph.cycle_detect;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Deque;
 import java.util.HashMap;
 import java.util.List;
 
@@ -71,4 +73,41 @@ public class CourseSchedule {
         return ans;
     }
 
+
+    /**
+     * 使用bfs来进行环检测
+     * @param numCourses
+     * @param prerequisites
+     * @return
+     */
+    int[] indgree;
+    public boolean deteceCycle(int numCourses, int[][] prerequisites) {
+        indgree = new int[numCourses];
+        HashMap<Integer,List<Integer>> graph = buildGraph(prerequisites, numCourses);
+        Deque<Integer> queue = new ArrayDeque<>();
+        // 统计入度的这个for循环可以在buildGraph方法中被包含
+        for (int[] edge : prerequisites) {
+            indgree[edge[0]]++; 
+        }
+
+        // 找到入度为0的节点
+        for (int i = 0; i < numCourses; i++) {
+            if (indgree[i] == 0) {
+                queue.add(i);
+            }
+        }
+
+        int count = 0;
+        while (!queue.isEmpty()) {
+            int cur = queue.pollLast();
+            for (int neighbor : graph.get(cur)) {
+                indgree[neighbor]--;
+                if (indgree[neighbor] == 0) {
+                    queue.addLast(neighbor);
+                }
+            }
+            count++;
+        }
+        return count == numCourses;
+    }
 }
