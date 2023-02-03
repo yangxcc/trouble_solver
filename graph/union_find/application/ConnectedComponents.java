@@ -71,7 +71,7 @@ class UF {
     }
 
     public int findRoot(int x) {
-        while (x != parent[x]) {
+        if (x != parent[x]) {
             parent[x] = findRoot(parent[x]);
         }
 
