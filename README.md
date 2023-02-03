@@ -38,7 +38,9 @@ func method(strs []string, m int, n int) int {
 
 **技巧记录**
 1. 通过 min, max 函数优雅避免索引越界的技巧，[代码示例](array/prefix_sum/matrix_block_sum/matrix_block_sum.go)
-2. 回溯和dfs的区别
+2. 二维数组映射到一维数组的常见技巧，二维数组的大小$m \times n$，m行n列，创建一个一维数组，大小为$[ m \times n ]$，
+   对于二维坐标$(x,y)$，映射成一维，就是 $x \times n + y$. [代码示例](graph/union_find/application/SurroundedRegions.java)
+3. 回溯和dfs的区别
    ```java
         // 回溯模板
         void backtrack(TreeNode root, List<Integer> path) {
