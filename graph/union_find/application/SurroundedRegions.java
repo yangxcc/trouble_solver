@@ -2,7 +2,7 @@
  * @Author: yangxcc
  * @version: 1.0
  * @Date: 2023-02-03 11:53:55
- * @LastEditTime: 2023-02-03 18:28:29
+ * @LastEditTime: 2023-02-03 18:30:13
  */
 package graph.union_find.application;
 
