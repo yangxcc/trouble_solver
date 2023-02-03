@@ -65,7 +65,7 @@ public class Frame {
 
         // return x;
 
-        while (x != parent[x]) {
+        if (x != parent[x]) {
             parent[x] = findRoot(parent[x]);
         }
 
