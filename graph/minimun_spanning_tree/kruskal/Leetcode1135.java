@@ -2,9 +2,11 @@
  * @Author: yangxcc
  * @version: 1.0
  * @Date: 2023-02-04 16:37:19
- * @LastEditTime: 2023-02-04 16:55:37
+ * @LastEditTime: 2023-02-04 17:11:44
  */
 package graph.minimun_spanning_tree.kruskal;
+
+import java.util.Arrays;
 
 /**
  * leetcode 1135 middle 最低成本联通所有城市
@@ -24,6 +26,10 @@ public class Leetcode1135 {
         UF uf = new UF(n + 1);
         int mst = 0;
 
+        Arrays.sort(connection, (o1, o2) -> {
+            return o1[1] - o2[1];
+        });
+        
         for (int[] edge : connection) {
             int from = edge[0];
             int to = edge[1];
