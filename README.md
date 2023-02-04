@@ -42,7 +42,10 @@ func method(strs []string, m int, n int) int {
    对于二维坐标$(x,y)$，映射成一维，就是 $x \times n + y$. [代码示例](graph/union_find/application/SurroundedRegions.java)
 3. 二维数组坐标点可以使用索引，来将二维坐标点变成一位的索引，[代码示例](graph/minimun_spanning_tree/kruskal/Leetcode1584.java)  
 4. 数组排序 `Arrays.sort(2Darray, (a, b) -> {return a[0] - b[0]; });`；列表排序`List<int[]>    Collections.sort(list, (a, b) -> {return a[0] - b[0];})` ；或者是都可以重写`Comparator类中的compare方法来实现`
-5. 回溯和dfs的区别
+5. 最小生成树涉及到的两个方法：kruskal算法和prim算法
+   1. Kruskal算法的过程：先对图中的所有边从小到大排序，然后依次将边加入到mst中，如果加边过程中碰到了环，那就跳过此边（明显使用并查集）
+   2. Prim算法的过程：任意选择一个节点，以迭代的方式找出最小生成树中各结点权重最小的边，并加到最小生成树中，同样加边过程中如果遇到环，也跳过。（使用优先级队列快速得到节点邻居中的最短边，还需要一个boolean数组记录图中节点是否全部加入到mst中）
+6. 回溯和dfs的区别
    ```java
         // 回溯模板
         void backtrack(TreeNode root, List<Integer> path) {
