@@ -45,7 +45,8 @@ func method(strs []string, m int, n int) int {
 5. 最小生成树涉及到的两个方法：kruskal算法和prim算法
    1. Kruskal算法的过程：先对图中的所有边从小到大排序，然后依次将边加入到mst中，如果加边过程中碰到了环，那就跳过此边（明显使用并查集）
    2. Prim算法的过程：任意选择一个节点，以迭代的方式找出最小生成树中各结点权重最小的边，并加到最小生成树中，同样加边过程中如果遇到环，也跳过。（使用优先级队列快速得到节点邻居中的最短边，还需要一个boolean数组记录图中节点是否全部加入到mst中）
-6. 回溯和dfs的区别
+6. 一般在找最短路径的时候，使用BFS，否则还是使用DFS，因为BFS的空间复杂度高
+7. 回溯和dfs的区别
    ```java
         // 回溯模板
         void backtrack(TreeNode root, List<Integer> path) {
