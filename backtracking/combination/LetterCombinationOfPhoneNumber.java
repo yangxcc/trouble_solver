@@ -2,11 +2,10 @@
  * @Author: yangxcc
  * @version: 1.0
  * @Date: 2022-11-06 19:55:56
- * @LastEditTime: 2023-02-06 10:53:18
+ * @LastEditTime: 2023-02-06 11:05:26
  */
 package backtracking.combination;
 
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,9 +32,7 @@ public class LetterCombinationOfPhoneNumber {
                 "wxyz"
         };
 
-        for (int i = 0; i < digits.length(); i++) {
-            backtrack(digits, num2Str, i, new StringBuilder());
-        }
+        backtrack(digits, num2Str, 0, new StringBuilder());
 
         return ans;
     }
@@ -51,9 +48,9 @@ public class LetterCombinationOfPhoneNumber {
         for (int i = 0; i < chars.length(); i++) {
             path.append(chars.charAt(i));
 
-            backtrack(digits, num2Str, i + 1, path);
+            backtrack(digits, num2Str, idx + 1, path);
 
-            // 这两种方法都不行
+            // 在Java中这样不行，具体原因未知，大概是因为引用变了，前后两个path不一样了？
             // path = new StringBuilder(path.substring(0, path.length() - 1));
             path.deleteCharAt(idx);
         }
