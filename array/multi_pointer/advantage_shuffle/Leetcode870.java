@@ -7,10 +7,7 @@
 package array.multi_pointer.advantage_shuffle;
 
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.PriorityQueue;
-
-import subsequence_subarray.maximum_subarray.maxSubarray;
 
 /**
  * 给定两个大小相等的数组 nums1 和 nums2，nums1 相对于 nums2 的优势可以用满足 nums1[i] > nums2[i] 的索引 i 的数目来描述。
