@@ -2,7 +2,7 @@
  * @Author: yangxcc
  * @version: 1.0
  * @Date: 2022-10-09 16:26:07
- * @LastEditTime: 2023-02-11 20:31:55
+ * @LastEditTime: 2023-02-11 21:02:43
  */
 package skill.nsum.two_sum;
 
@@ -74,20 +74,21 @@ public class TwoSum {
         int n = nums.length;
         List<List<Integer>> ans = new ArrayList<>();
 
-        for (int i = 0, j = n - 1; i < j; i++, j--) {
-            while (i < n - 1 && nums[i] == nums[i + 1]) {
-                i++;
-            }
-
-            while (j > 0 && nums[j] == nums[j - 1]) {
-                j--;
-            }
-
+        for (int i = 0, j = n - 1; i < j; ) {
             if (nums[i] + nums[j] == target) {
                 List<Integer> tmp = new ArrayList<>();
                 tmp.add(nums[i]);
                 tmp.add(nums[j]);
                 ans.add(new ArrayList<>(tmp));
+                while (i < j && nums[i] == nums[i + 1]) {
+                    i++;
+                }
+    
+                while (i < j && nums[j] == nums[j - 1]) {
+                    j--;
+                }
+                i++;
+                j--;
             } else if (nums[i] + nums[j] < target) {
                 i++;
             } else {
