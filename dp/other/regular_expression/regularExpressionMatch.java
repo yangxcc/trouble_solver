@@ -35,6 +35,7 @@ public class RegularExpressionMatch{
 
         if (s.charAt(i) == p.charAt(j) || p.charAt(j) == '.') {
             // 这里需要注意 . 后面是一个 * 的情况 s=aaa, p=.*
+            // 这里很容易拉下
             if (j + 1 < p.length() && p.charAt(j + 1) == '*') {
                 // 分别表示重复n次和重复0次
                 return dp(s, i + 1, p, j) || dp(s, i, p, j + 2);

@@ -38,7 +38,7 @@ public class MaxSubarray {
         }
 
         for (int i = 1; i < n; i++) {
-            dp[i] = dp[i - 1] + nums[i];
+            dp[i] = Math.max(dp[i - 1] + nums[i], dp[i]);
             ans = Math.max(ans, dp[i]);
         }
 

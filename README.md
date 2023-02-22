@@ -85,3 +85,33 @@ func method(strs []string, m int, n int) int {
         }
    ```
    可以看到，从代码角度，回溯的选择和撤销操作在for循环内，而dfs在for循环外，回溯算法关注的是树枝，而dfs关注的是节点
+
+9.  滑动窗口模板
+    ```java
+    public void slidWindow(String s, String t) {
+        HashMap<Character, Integer> record = new HashMap<>();
+        for (char ch : t.toCharArray()) {
+            record.put(ch, record.getOrDefault(ch, 0) + 1);
+        }
+
+        HashMap<Character, Integer> window = new HashMap<>();
+        int left = 0, right = 0;
+        int valid = 0;
+
+        while (left <= right) {
+            char ch = s.charAt(right);
+            right++;
+
+            // 将ch加入窗口（有可能需要判断一下是否加入窗口，比如leetcode 76 hard 最小覆盖字串和leetcode438 middle 找到字符串中所有字母异位词）
+
+            // 满足了窗口所有的条件
+            while (window need shrink) {
+                char l = s.charAt(left);
+                left++;
+                // 其他的条件判断
+            }
+        }
+
+        return;
+    }
+    ```

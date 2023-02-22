@@ -2,7 +2,7 @@
  * @Author: yangxcc
  * @version: 1.0
  * @Date: 2022-12-06 17:59:49
- * @LastEditTime: 2023-02-07 14:09:04
+ * @LastEditTime: 2023-02-22 14:10:43
  */
 package bag_problem.complete_package.coin_change2;
 
@@ -19,6 +19,8 @@ public class CoinChange2 {
     public int change(int amount, int[] coins) {
         // dp[i]表示的是凑成i的组合数
         int[] dp = new int[amount + 1];
+        // base case
+        dp[0] = 1;
 
         for (int coin : coins) {
             for (int i = 1; i <= amount; i++) {

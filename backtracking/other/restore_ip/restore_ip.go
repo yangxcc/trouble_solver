@@ -27,7 +27,7 @@ func restoreIpAddresses(s string) []string {
 				// 在i后面插入点
 				s = s[:i+1] + "." + s[i+1:]
 
-				backtrack(s, i+1, dotCount)
+				backtrack(s, i+2, dotCount)
 
 				dotCount--
 				// 把i后面的点删除

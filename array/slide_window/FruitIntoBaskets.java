@@ -2,7 +2,7 @@
  * @Author: yangxcc
  * @version: 1.0
  * @Date: 2022-10-01 12:45:23
- * @LastEditTime: 2023-01-02 17:58:31
+ * @LastEditTime: 2023-02-13 21:33:36
  */
 package array.slide_window;
 
@@ -16,6 +16,8 @@ import java.util.HashMap;
  *     你可以选择任意一棵树开始采摘，你必须从 每棵 树（包括开始采摘的树）上 恰好摘一个水果 。采摘的水果应当符合篮子中的水果类型。每采摘一次，你将会向右移动到下一棵树，并继续采摘。
  *     一旦你走到某棵树前，但水果不符合篮子的水果类型，那么就必须停止采摘。
  * 给你一个整数数组 fruits ，返回你可以收集的水果的 最大 数目。
+ * 
+ * 只包含两种元素的最长子数组
  */
 public class FruitIntoBaskets{
     public int totalFruit(int[] fruits) {

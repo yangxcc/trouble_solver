@@ -1,3 +1,9 @@
+/*
+ * @Author: yangxcc
+ * @version: 1.0
+ * @Date: 2022-11-12 17:41:11
+ * @LastEditTime: 2023-02-18 09:06:03
+ */
 package palindrome
 
 /**

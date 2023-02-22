@@ -18,7 +18,7 @@ func PathSum(root *tree.TreeNode, targetSum int) [][]int {
 		if root.Left == nil && root.Right == nil && targetSum == 0 {
 			// 不能直接将currPath放到result里面, 因为currPath是共享的, 每次遍历子树时都会被修改（没太明白）
 			// ans = append(ans, copySlice(curPath))
-			ans = append(ans, curPath)
+			ans = append(ans, copySlice(curPath))
 			return
 		}
 		process(root.Left, targetSum, curPath)

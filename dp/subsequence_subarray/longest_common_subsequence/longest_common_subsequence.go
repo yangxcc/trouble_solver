@@ -2,7 +2,7 @@
  * @Author: yangxcc
  * @version: 1.0
  * @Date: 2022-12-02 12:30:05
- * @LastEditTime: 2022-12-10 16:39:19
+ * @LastEditTime: 2023-02-22 14:39:32
  */
 package longestcommonsubsequence
 
@@ -61,6 +61,7 @@ leetcode 392 判断子序列
 	判断s是否为t的子序列
 */
 // 最长公共子序列的变种，这里的LCS=len(s) return true
+// 不能使用滑动窗口，使用滑动窗口无法保证顺序
 func isSubsequence(s string, t string) bool {
 	m, n := len(s), len(t)
 	dp := make([][]int, m+1)

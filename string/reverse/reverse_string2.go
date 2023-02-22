@@ -16,7 +16,7 @@ func reverStr(s string, k int) string {
 			continue
 		}
 		// 剩余字符无论是大于k还是大于2k都是反转前k个的
-		reverse(b, i, i+k)
+		reverse(b, i, i+k-1)
 	}
 	return string(b)
 }

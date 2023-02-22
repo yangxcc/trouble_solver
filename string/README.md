@@ -1,3 +1,9 @@
+<!--
+ * @Author: yangxcc
+ * @version: 1.0
+ * @Date: 2022-10-11 21:22:11
+ * @LastEditTime: 2023-02-15 13:21:24
+-->
 ### 基础
 golang中的string是有一个指向[]byte数组的指针和length属性构成的，与Java类似，他们两个都是不可修改的
 ```
