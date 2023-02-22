@@ -2,7 +2,7 @@
  * @Author: yangxcc
  * @version: 1.0
  * @Date: 2022-12-06 20:10:54
- * @LastEditTime: 2023-02-22 15:04:37
+ * @LastEditTime: 2023-02-22 15:07:06
  */
 package bag_problem.subset_package;
 
@@ -27,7 +27,7 @@ public class PartitionSubset{
         boolean[] dp = new boolean[sum + 1];
         dp[0] = true;
 
-        // bad case：[1, 2, 5]，不能重复选择，和零钱兑换不一样，这里的一维数组实际上是状态压缩了
+        // bad case：[1, 2, 5]，不能重复选择，注意和零钱兑换区别，这里的一维数组实际上是状态压缩了
         // for (int num : nums) {
         //     for (int i = 1; i <= sum; i++) {
         //         if (i < num) {
