@@ -1,6 +1,76 @@
 # trouble_solver
 分别使用Java和Golang解决算法题
 
+## ACM模式中的输入输出处理
+一直在leetcode上刷题，只需要填充代码逻辑就好，不需要自己处理输入输出，但是很多公司的笔试都是ACM模式，所以在这里整理一下ACM模式下的格式问题？（主要是处理输入输出）
+- 首先，ACM模式下类名必须得是Main
+- 输入使用java.util.Scanner来处理，固定写法
+- ACM模式下所有依赖包的import都得自己来处理，一般都是util下的包，这里我现在的做法是直接`import java.util.*;`
+
+```java
+// 固定写法
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        /**
+         * 如果题目中的要求是数组，他肯定会告诉我们数组的长度
+         */
+        int arrayLength = in.nextInt();
+        int[] arr = new int[arrayLength];
+        for (int i = 0; i < arrayLength; i++) {
+            arr[i] = in.nextInt();
+        }
+
+        /**
+         * 如果题目中的要求是链表，他肯定也会告诉我们链表的长度，但是会告诉我们后面不要再使用了
+         * 比如 https://www.nowcoder.com/practice/54404a78aec1435a81150f15f899417d?tpId=37&tags=&title=%E9%93%BE%E8%A1%A8&difficulty=0&judgeStatus=&rp=1&sourceUrl=%2Fexam%2Foj%2Fta%3Fpage%3D1%26tpId%3D37%26type%3D37&gioEnter=menu
+         * 
+         * 而且这道题目中，还是用了连续输入，不是连续使用，不用使用hasNext()
+         * 注意：不是链表必须连续输入，这是因为上面示例题中是这么输入的
+         */
+        while (in.hasNext()) {
+            int n = in.nextInt();
+            ListNode dummy = new ListNode();
+            ListNode cur = dummy;
+            for (int i = 0; i < n; i++) {
+                cur.next = new ListNode(in.nextInt(), null);
+                cur = cur.next;
+            }
+
+            // 逻辑处理...
+        }
+
+        /**
+         * 如果题目中要求的是字符串
+         */
+        String str = in.nextLine();
+
+
+        /**
+         * 输出
+         */
+        System.out.println(); // 按照格式输出
+    }
+}
+
+class ListNode {
+    int val;
+    ListNode next;
+
+    public ListNode() {
+
+    }
+
+    public ListNode(int v, ListNode n) {
+        this.val = v;
+        this.next = n;
+    }
+}
+
+```
+
 [2022年9月底到2023年2月中旬算法题历时5个月算是过了一遍了，从今往后每天都得再看一看，不能忘了]
 
 
