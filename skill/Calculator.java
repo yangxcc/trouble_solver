@@ -42,6 +42,7 @@ public class Calculator {
                 num = calculateHelper(stack);
             }
             
+            // 符号比数字慢一拍！！很重要的逻辑
             if ((!Character.isDigit(ch) && ch != ' ') || stack.size() == 0) {
                 int pre;
                 switch (sign) {

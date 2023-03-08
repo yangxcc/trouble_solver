@@ -1,3 +1,9 @@
+/*
+ * @Author: yangxcc
+ * @version: 1.0
+ * @Date: 2023-02-12 12:01:21
+ * @LastEditTime: 2023-03-08 20:17:10
+ */
 package skill.interval;
 
 import java.util.Arrays;
@@ -23,7 +29,7 @@ public class DeleteCoveredIntervals {
             }
         });
 
-        // [[1,2],[1,4],[3,4]]
+        // [[1,2],[1,4],[3,4]]  ==> [[1,4], [1,2], [3,4]]
         int covered = 0;
         int n = intervals.length;
         int left = intervals[0][0];
@@ -37,7 +43,7 @@ public class DeleteCoveredIntervals {
 
             // 如果是交叉区间[[1,4], [3,5]]
             if (right >= intervals[i][0] && right <= intervals[i][1]) {
-                // 虚拟区间变成[1, 5]
+                // 虚拟区间变成[1, 5]，只更新右边界就好了，因为下一个的左边界一定是大于等于当前的
                 right = intervals[i][1];
             }
 

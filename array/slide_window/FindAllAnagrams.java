@@ -2,7 +2,7 @@
  * @Author: yangxcc
  * @version: 1.0
  * @Date: 2023-01-02 11:15:40
- * @LastEditTime: 2023-02-13 21:30:24
+ * @LastEditTime: 2023-03-01 15:40:21
  */
 package array.slide_window;
 
@@ -12,7 +12,7 @@ import java.util.List;
 
 /**
  * leetcode 438 middle 找到字符串中所有字母异位词
- 
+ * 
  * 不清楚为啥AC不了，测试用例通过61/63 Go可以AC
  * FIX：包装类的比较，Integer中[-128,127]之间数据的比较是使用缓存，能直接使用==，但是在这个范围外的数据，会使用new/valueof关键字来实例化
  * ==是比较地址的，所以不能使用==，最好是使用compareTo方法
@@ -28,7 +28,7 @@ public class FindAllAnagrams {
         List<Integer> ans = new ArrayList<>();
         HashMap<Character, Integer> need = new HashMap<>(), window = new HashMap<>();
         for (int i = 0; i < p.length(); i++) {
-            need.put(p.charAt(i), need.getOrDefault(p.charAt(i), 0)+1);
+            need.put(p.charAt(i), need.getOrDefault(p.charAt(i), 0) + 1);
         }
 
         int left = 0, right = 0, valid = 0;
@@ -36,7 +36,7 @@ public class FindAllAnagrams {
             char c = s.charAt(right);
             // 将元素放入窗口
             if (need.containsKey(c)) {
-                window.put(c, window.getOrDefault(c, 0)+1);
+                window.put(c, window.getOrDefault(c, 0) + 1);
                 if (need.get(c).equals(window.get(c))) {
                     valid++;
                 }
@@ -55,7 +55,7 @@ public class FindAllAnagrams {
                     if (need.get(d).equals(window.get(d))) {
                         valid--;
                     }
-                    window.put(d, window.get(d)-1);
+                    window.put(d, window.get(d) - 1);
                 }
             }
         }

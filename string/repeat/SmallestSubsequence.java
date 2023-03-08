@@ -2,7 +2,7 @@
  * @Author: yangxcc
  * @version: 1.0
  * @Date: 2023-01-16 10:41:04
- * @LastEditTime: 2023-01-16 13:48:09
+ * @LastEditTime: 2023-03-02 21:25:16
  */
 package string.repeat;
 
@@ -57,18 +57,18 @@ public class SmallestSubsequence {
         HashMap<Character, Integer> record = new HashMap<>();
 
         for (char ch : s.toCharArray()) {
-            record.put(ch, record.getOrDefault(ch, 0)+1);
+            record.put(ch, record.getOrDefault(ch, 0) + 1);
         }
 
         for (char ch : s.toCharArray()) {
             if (stack.contains(ch)) {
-                record.put(ch, record.get(ch)-1);
+                record.put(ch, record.get(ch) - 1);
                 continue;
             }
 
             // 如果仅仅这么写的话，其实是错的，bad case：输入cba，应该输出cba，但输出的却是a
             // while (!stack.isEmpty() && stack.peekFirst() > ch) {
-            //     stack.pop();
+            // stack.pop();
             // }
             // 所以，在pop之前还需要进一步判断，stack中peekFirst的元素个数
             while (!stack.isEmpty() && stack.peekFirst() > ch) {
@@ -76,7 +76,7 @@ public class SmallestSubsequence {
                     break;
                 }
                 char c = stack.poll();
-                record.put(c, record.get(c)-1);
+                record.put(c, record.get(c) - 1);
             }
 
             stack.push(ch);

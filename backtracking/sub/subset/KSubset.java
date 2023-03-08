@@ -1,3 +1,9 @@
+/*
+ * @Author: yangxcc
+ * @version: 1.0
+ * @Date: 2023-02-06 13:49:23
+ * @LastEditTime: 2023-03-04 17:19:58
+ */
 package backtracking.sub.subset;
 
 import java.util.Arrays;
@@ -20,44 +26,42 @@ public class KSubset {
         }
 
         int target = sum / k;
-        // buckets[i]表示第i个子集的和
-        int[] buckets = new int[k];
+        // 可以想象成有k个桶
+        // 用来记录数组中的元素是否被访问过了
+        boolean[] visited = new boolean[n];
 
-        // 通过排序，加入回溯过程，没有这个过程在leetcode中超时
-        Arrays.sort(nums);
-        for (int i = 0, j = nums.length - 1; i < j; i++, j--) {
-            int temp = nums[i];
-            nums[i] = nums[j];
-            nums[j] = temp;
-        }
-
-        return backtrack(nums, 0, target, buckets);
+        return backtrack(nums, k, target, 0, visited);
     }
 
-    // 与其他题目不同的是，本题不是以nums为基础，而是以buckets数组为基础，回溯函数作为指针，在buckets数组上游走
-    // 其实，说白了，就是nums[idx]这个数要放到哪个bucket中
-    public boolean backtrack(int[] nums, int idx, int target, int[] buckets) {
-        if (idx == nums.length) {
-            for (int i = 0; i < buckets.length; i++) {
-                if (buckets[i] != target) {
-                    return false;
-                }
-            }
+
+    public boolean backtrack(int[] nums, int bucketIdx, int target, int bucketCapcity, boolean[] visited) {
+        if (bucketIdx == 0) {
+            // 剩下桶的个数为0
             return true;
         }
 
-        for (int i = 0; i < buckets.length; i++) {
-            if (buckets[i] + nums[idx] > target) {
+        if (bucketCapcity == target) {
+            return backtrack(nums, bucketIdx - 1, target, 0, visited);
+        }
+
+        for (int i = 0; i < nums.length; i++) {
+            if (visited[nums[i]]) {
                 continue;
             }
+            // 题目中说了所有元素都大于0
+            if (bucketCapcity + nums[i] > target) {
+                return false;
+            }
 
-            buckets[i] += nums[idx];
+            bucketCapcity += nums[i];
+            visited[i] = true;
 
-            if (backtrack(nums, idx + 1, target, buckets)) {
+            if (backtrack(nums, bucketIdx, target, bucketCapcity, visited)) {
                 return true;
             }
 
-            buckets[i] -= nums[idx];
+            bucketCapcity -= nums[i];
+            visited[i] = false;
         }
 
         return false;

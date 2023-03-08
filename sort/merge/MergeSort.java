@@ -40,8 +40,9 @@ public class MergeSort {
             tmp[idx++] = nums[j++];
         }
 
+        // bugfix
         for (int k = left; k <= right; k++) {
-            nums[k++] = tmp[idx++];
+            nums[k] = tmp[k];
         }
 
         return nums;

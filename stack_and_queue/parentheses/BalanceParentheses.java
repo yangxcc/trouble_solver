@@ -2,7 +2,7 @@
  * @Author: yangxcc
  * @version: 1.0
  * @Date: 2023-01-14 21:46:50
- * @LastEditTime: 2023-01-14 22:08:52
+ * @LastEditTime: 2023-03-02 20:49:16
  */
 package stack_and_queue.parentheses;
 
@@ -39,8 +39,8 @@ public class BalanceParentheses {
                 rightCount--;
                 if (rightCount == -1) {
                     // 多出来一个右括号，那么需要一个左括号和一个右括号
-                    res++;
-                    rightCount = 1;
+                    res++;  // 需要一个左括号，加上
+                    rightCount = 1; // 需要一个右括号，将需要括号的个数变为1
                 }
             }
         }

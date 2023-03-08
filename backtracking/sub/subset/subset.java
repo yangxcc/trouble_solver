@@ -1,3 +1,9 @@
+/*
+ * @Author: yangxcc
+ * @version: 1.0
+ * @Date: 2023-02-06 11:12:36
+ * @LastEditTime: 2023-03-04 16:41:47
+ */
 package backtracking.sub.subset;
 
 import java.util.ArrayList;
@@ -14,7 +20,7 @@ import java.util.List;
 public class Subset {
     List<List<Integer>> ans = new ArrayList<>();
     public List<List<Integer>> subsets(int[] nums) {
-
+        backtrack(nums, 0, new ArrayList<>());
         return ans;
     }
 

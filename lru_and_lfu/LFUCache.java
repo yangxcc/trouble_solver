@@ -2,7 +2,7 @@
  * @Author: yangxcc
  * @version: 1.0
  * @Date: 2023-01-16 13:54:08
- * @LastEditTime: 2023-01-17 13:39:35
+ * @LastEditTime: 2023-03-02 21:46:49
  */
 package lru_and_lfu;
 
@@ -15,8 +15,8 @@ import java.util.LinkedHashSet;
 public class LFUCache {
     private int capacity;
     private int minFreq;
-    private HashMap<Integer, Integer> kv;  // key-value表
-    private HashMap<Integer, Integer> kf;  // key-frequent表
+    private HashMap<Integer, Integer> kv; // key-value表
+    private HashMap<Integer, Integer> kf; // key-frequent表
     // 当frequent相同时，删除的是最久没有被访问到的
     private HashMap<Integer, LinkedHashSet<Integer>> fl; // frequent-list表
 
@@ -34,10 +34,10 @@ public class LFUCache {
         }
         int freq = kf.get(key);
         // 访问频率+1
-        kf.put(key, freq+1);
+        kf.put(key, freq + 1);
 
         increaseFreq(key, freq);
-        
+
         return kv.get(key);
     }
 
@@ -51,7 +51,7 @@ public class LFUCache {
             kv.put(key, value);
 
             int freq = kf.get(key);
-            kf.put(key, freq+1);
+            kf.put(key, freq + 1);
 
             increaseFreq(key, freq);
         } else {
@@ -61,7 +61,7 @@ public class LFUCache {
                 // 删除最小频率上的最久未访问的元素
                 removeEle();
             }
-            
+
             // 放到kv表中，更新minFreq
             kv.put(key, value);
             minFreq = 1;
@@ -86,8 +86,8 @@ public class LFUCache {
             }
         }
 
-        fl.putIfAbsent(freq+1, new LinkedHashSet<>());
-        fl.get(freq+1).add(key);
+        fl.putIfAbsent(freq + 1, new LinkedHashSet<>());
+        fl.get(freq + 1).add(key);
     }
 
     private void removeEle() {

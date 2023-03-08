@@ -2,7 +2,7 @@
  * @Author: yangxcc
  * @version: 1.0
  * @Date: 2023-02-02 09:35:39
- * @LastEditTime: 2023-02-02 10:34:45
+ * @LastEditTime: 2023-03-03 19:32:40
  */
 package graph.traverse;
 
@@ -21,7 +21,6 @@ public class AllPath {
     List<List<Integer>> ans;
     public List<List<Integer>> allPathsSourceTarget(int[][] graph) {
         ans = new ArrayList<>();
-        int n = graph.length;
         dfs(graph, 0, new ArrayList<>());
         return ans;
     }

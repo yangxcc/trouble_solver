@@ -2,7 +2,7 @@
  * @Author: yangxcc
  * @version: 1.0
  * @Date: 2022-12-30 10:21:53
- * @LastEditTime: 2022-12-30 10:33:51
+ * @LastEditTime: 2023-03-01 14:20:13
  */
 package mergelinkedlist
 
@@ -31,7 +31,7 @@ func mergeTwoLists(list1 *ListNode, list2 *ListNode) *ListNode {
 func mergeTwoListsLoop(list1 *ListNode, list2 *ListNode) *ListNode {
 	dummy := &ListNode{}
 	cur := dummy
-	for list1 != nil || list2 != nil {
+	for list1 != nil && list2 != nil {
 		if list1.Val < list2.Val {
 			cur.Next = list1
 			list1 = list1.Next

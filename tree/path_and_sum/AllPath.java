@@ -2,7 +2,7 @@
  * @Author: yangxcc
  * @version: 1.0
  * @Date: 2022-10-27 17:35:57
- * @LastEditTime: 2023-01-20 16:19:25
+ * @LastEditTime: 2023-03-03 15:58:14
  */
 package tree.path_and_sum;
 
@@ -13,6 +13,9 @@ import tree.TreeNode;
 
 /**
  * leetcode 257 simple 二叉树的所有路径
+ * 
+ * 给你一个二叉树的根节点 root ，按 任意顺序 ，返回所有从根节点到叶子节点的路径。
+ * 叶子节点 是指没有子节点的节点。
  */
 public class AllPath {
     List<List<Integer>> ans = new ArrayList<>();

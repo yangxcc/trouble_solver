@@ -2,13 +2,19 @@
  * @Author: yangxcc
  * @version: 1.0
  * @Date: 2022-12-13 20:40:41
- * @LastEditTime: 2023-01-31 17:12:13
+ * @LastEditTime: 2023-03-03 17:07:42
  */
 package sort.merge.application;
 
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * leetcode 315 hard 计算右侧小于当前元素的个数
+ * 
+ * 给你一个整数数组 nums ，按要求返回一个新数组 counts 。
+ * 数组 counts 有该性质： counts[i] 的值是  nums[i] 右侧小于 nums[i] 的元素的数量。
+ */
 public class CountSmaller {
     List<Integer> ans = new ArrayList<>();
     int[] tmp;
@@ -51,7 +57,7 @@ public class CountSmaller {
                 pairs[k] = tmpPair[j++];
             } else if (j == right + 1) {
                 pairs[k] = tmpPair[i++];
-                tmp[pairs[k].idx] += j - mid - 1;
+                tmp[pairs[k].idx] += j - mid - 1;  // 这两个地方必须是+=，bad case [5,2, 6,1]
             } else if (tmpPair[i].val <= tmpPair[j].val) {
                 pairs[k] = tmpPair[i++];
                 tmp[pairs[k].idx] += j - mid - 1;

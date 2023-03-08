@@ -2,7 +2,7 @@
  * @Author: yangxcc
  * @version: 1.0
  * @Date: 2022-10-05 19:32:06
- * @LastEditTime: 2023-01-09 11:22:47
+ * @LastEditTime: 2023-03-01 14:50:58
  */
 package reverselinkedlist
 
@@ -49,8 +49,13 @@ func reverseList2(head *ListNode, left int, right int) *ListNode {
 	reverseNext := &ListNode{}
 	var reverseNFromBegin func(head *ListNode, n int) *ListNode
 	reverseNFromBegin = func(head *ListNode, n int) *ListNode {
+		// 这个条件一定要在最前面
 		if n <= 1 {
 			reverseNext = head.Next
+			return head
+		}
+
+		if head == nil || head.Next == nil {
 			return head
 		}
 

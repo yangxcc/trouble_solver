@@ -2,11 +2,12 @@
  * @Author: yangxcc
  * @version: 1.0
  * @Date: 2022-11-27 19:14:36
- * @LastEditTime: 2023-02-08 10:04:56
+ * @LastEditTime: 2023-03-06 15:15:50
  */
 package path;
 
 import java.util.Arrays;
+import java.util.Scanner;
 
 /**
  * leetcode 62 middle 不同路径
@@ -71,5 +72,50 @@ public class Path1{
 
         memo[i][j] = Math.min(dp(grid, i, j - 1), dp(grid, i - 1, j)) + grid[i][j];
         return memo[i][j];
+    }
+}
+
+/**
+ * leetcode 64 middle 最小路径和
+ * 
+ * 相同的题目，只不过从路径数变成了路径和
+ * 
+ * 给定一个包含非负整数的 m x n 网格 grid ，请找出一条从左上角到右下角的路径，使得路径上的数字总和为最小。
+ * 说明：每次只能向下或者向右移动一步。
+ * 
+ * 这里写dp函数，dp数组同理
+ */
+class Main {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int m = in.nextInt();
+        int n = in.nextInt();
+        int[][] grid = new int[m][n];
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                grid[i][j] = in.nextInt();
+            }
+        }
+
+        System.out.println(solve(grid, m, n));
+    }
+
+    public static int solve(int[][] grid, int m, int n) {
+        int[][] dp = new int[m][n];
+        dp[0][0] = grid[0][0];
+        for (int i = 1; i < n; i++) {
+            dp[0][i] = dp[0][i - 1] + grid[0][i];
+        }
+
+        for (int j = 1; j < m; j++) {
+            dp[j][0] = dp[j - 1][0] + grid[j][0];
+        }
+
+        for (int i = 1; i < m; i++) {
+            for (int j = 1; j < n; j++) {
+                dp[i][j] = grid[i][j] + Math.min(dp[i - 1][j], dp[i][j - 1]);
+            }
+        }
+        return dp[m - 1][n - 1];
     }
 }

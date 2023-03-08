@@ -2,7 +2,7 @@
  * @Author: yangxcc
  * @version: 1.0
  * @Date: 2023-02-10 16:44:00
- * @LastEditTime: 2023-02-11 19:54:06
+ * @LastEditTime: 2023-03-06 21:13:02
  */
 package skill;
 
@@ -22,7 +22,6 @@ public class FindRepeatAndMissElement {
      */
     public int[] findErrorNums(int[] nums) {
         int n = nums.length;
-        // 这里长度要+1，因为nums中缺失了一个数
         int[] helper = new int[n + 1];
         int[] ans = new int[2];
 

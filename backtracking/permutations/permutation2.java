@@ -36,6 +36,7 @@ public class Permutation2 {
                 continue;
             }
 
+            // 这里是在同一层去重，一定要有!visited[i-1]，因为如果没有这个条件的话，也会把不同层的给去掉
             if (i > 0 && nums[i] == nums[i - 1] && !visited[i-1]) {
                 continue;
             }

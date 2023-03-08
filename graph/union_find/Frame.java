@@ -16,6 +16,7 @@ package graph.union_find;
  * 
  */
 public class Frame {
+    // count的含义是连通分量的个数，连通分量指的是有几个部分没有互相连接
     private int count;
     private int[] parent;
 
@@ -65,6 +66,7 @@ public class Frame {
 
         // return x;
 
+        // 一定要记住这里是if，第二遍看的时候还是把这里写成了while
         if (x != parent[x]) {
             parent[x] = findRoot(parent[x]);
         }

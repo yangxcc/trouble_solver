@@ -2,7 +2,7 @@
  * @Author: yangxcc
  * @version: 1.0
  * @Date: 2023-01-07 20:13:05
- * @LastEditTime: 2023-01-07 21:50:53
+ * @LastEditTime: 2023-03-06 10:01:49
  */
 package array.multi_pointer.advantage_shuffle;
 
@@ -53,7 +53,7 @@ public class Leetcode870{
         // 降序排列
         PriorityQueue<int[]> q = new PriorityQueue<>(
             (int[] pair1, int[] pair2) -> {
-                return pair2[1] - pair1[2];
+                return pair2[1] - pair1[1];
             }
         );
 

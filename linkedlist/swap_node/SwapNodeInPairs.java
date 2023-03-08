@@ -2,7 +2,7 @@
  * @Author: yangxcc
  * @version: 1.0
  * @Date: 2022-10-05 19:58:43
- * @LastEditTime: 2022-12-30 20:28:15
+ * @LastEditTime: 2023-03-01 14:59:16
  */
 package linkedlist.swap_node;
 
@@ -17,7 +17,7 @@ public class SwapNodeInPairs {
             return head;
         }
 
-        ListNode nxt = head.next;
+        ListNode nxt = head.next;  // 目的就是为了返回
         ListNode reverse = swapPairs(nxt.next);
         head.next = reverse;
         nxt.next = head;

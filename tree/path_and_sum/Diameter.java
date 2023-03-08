@@ -2,7 +2,7 @@
  * @Author: yangxcc
  * @version: 1.0
  * @Date: 2023-01-20 10:54:58
- * @LastEditTime: 2023-01-20 11:04:19
+ * @LastEditTime: 2023-03-03 15:57:32
  */
 package tree.path_and_sum;
 
@@ -10,6 +10,8 @@ import tree.TreeNode;
 
 /**
  * leetcode 543 simple 二叉树的直径
+ * 给定一棵二叉树，你需要计算它的直径长度。一棵二叉树的直径长度是任意两个结点路径长度中的最大值。
+ * 这条路径可能穿过也可能不穿过根结点。
  */
 public class Diameter {
 
@@ -20,6 +22,7 @@ public class Diameter {
             return 0;
         }
 
+        // 目的是以root为根的子树的高度，在求高度的同时能够计算出直径来
         height(root);
         return res;
 

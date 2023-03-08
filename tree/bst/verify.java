@@ -25,7 +25,7 @@ public class Verify {
             return false;
         }
 
-        if (max != null && root.val >- max.val) {
+        if (max != null && root.val >= max.val) {
             return false;
         }
 

@@ -26,6 +26,7 @@ public class SubIslands {
 
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
+                // 把grid2中肯定不是子岛屿的淹掉
                 if (grid2[i][j] == 1 && grid1[i][j] == 0) {
                     dfs(grid2, i, j);
                 }

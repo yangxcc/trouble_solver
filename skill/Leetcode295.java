@@ -2,7 +2,7 @@
  * @Author: yangxcc
  * @version: 1.0
  * @Date: 2023-01-18 13:18:37
- * @LastEditTime: 2023-01-18 15:51:34
+ * @LastEditTime: 2023-03-02 21:56:35
  */
 package skill;
 
@@ -34,7 +34,7 @@ public class Leetcode295 {
         this.small = new PriorityQueue<>(new Comparator<Integer>() {
             @Override
             public int compare(Integer a, Integer b) {
-                return a - b;
+                return b - a;
             }
         });
 
