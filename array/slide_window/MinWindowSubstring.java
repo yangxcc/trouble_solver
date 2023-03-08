@@ -2,13 +2,15 @@
  * @Author: yangxcc
  * @version: 1.0
  * @Date: 2022-10-04 08:53:46
- * @LastEditTime: 2023-01-02 17:07:20
+ * @LastEditTime: 2023-03-08 22:36:19
  */
 package array.slide_window;
 
 import java.util.HashMap;
 
 /**
+ * leetcode 76 hard 最小覆盖字串
+ * 
  * 给你一个字符串 s 、一个字符串 t 。返回 s 中涵盖 t 所有字符的最小子串。如果 s 中不存在涵盖 t 所有字符的子串，则返回空字符串 "" 。
  * 注意：
  *  对于 t 中重复字符，我们寻找的子字符串中该字符数量必须不少于 t 中该字符数量。
