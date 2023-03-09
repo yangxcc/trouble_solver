@@ -2,12 +2,12 @@
  * @Author: yangxcc
  * @version: 1.0
  * @Date: 2023-02-06 13:49:23
- * @LastEditTime: 2023-03-04 17:19:58
+ * @LastEditTime: 2023-03-09 10:38:02
  */
 package backtracking.sub.subset;
 
 import java.util.Arrays;
-import java.util.Comparator;;
+import java.util.Scanner;
 
 /**
  * leetcode 698 middle 划分为k个相等的子集
@@ -66,4 +66,73 @@ public class KSubset {
 
         return false;
     }
+}
+
+/**
+ * leetcode 698 middle 划分为k个相等的子集
+ * 
+ * 给定一个整数数组  nums 和一个正整数 k，找出是否有可能把这个数组分成 k 个非空子集，其总和都相等。
+ * 
+ * 这道题得先确定是以桶的视角还是数字的视角，下面的思路在数字的视角，对于一个数字arr[idx]是否放入buckets[i]中
+ * 之所以将数组倒序排列，是因为先放大的，比先放小的 的递归次序少
+ */
+class Main {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int n = in.nextInt();
+        int k = in.nextInt();
+        int[] arr = new int[n];
+        int sum = 0;
+
+        for (int i = 0; i < n; i++) {
+            arr[i] = in.nextInt();
+            sum += arr[i];
+        }
+
+        if (sum % k != 0) {
+            System.out.println(false);
+            return;
+        }
+
+        int[] buckets = new int[k]; // k个桶
+        Arrays.sort(arr);
+        for (int i = 0, j = arr.length - 1; i < j; i++, j--) {
+            int temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+        }
+        System.out.println(backtrack(arr, sum / k, 0, buckets));
+
+    }
+
+    // idx表示的是第idx个数，不是桶，从数的角度来看
+    private static boolean backtrack(int[] arr, int target, int idx, int[] buckets) {
+        if (idx == arr.length) {
+            for (int i = 0; i < buckets.length; i++) {
+                if (buckets[i] != target) {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        for (int i = 0; i < buckets.length; i++) {
+            if (buckets[i] + arr[idx] > target) {
+                continue;
+            }
+
+            buckets[i] += arr[idx];
+
+            if (backtrack(arr, target, idx + 1, buckets)) {
+                return true;
+            }
+
+            buckets[idx] -= arr[i];
+        }
+
+        return false;
+    }
+
+
 }
