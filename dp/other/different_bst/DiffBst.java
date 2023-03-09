@@ -1,4 +1,6 @@
-package different_bst;
+package other.different_bst;
+
+import java.util.Scanner;
 
 /**
  * leetcode 96 middle 不同的二叉搜索树
@@ -23,6 +25,33 @@ public class DiffBst{
         int ans = 0;
         for (int i = 1; i <= n; i++) {
             // 以i为根
+            ans += dp(i - 1) * dp(n - i);
+        }
+
+        return ans;
+    }
+}
+
+class Main {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int n = in.nextInt();
+
+        System.out.println(dp(n));
+    }   
+
+    // n个数能够构成的bst的个数
+    private static int dp(int n) {
+        if (n == 0) {
+            return 1;
+        }
+
+        if (n <= 2) {
+            return n;
+        }
+
+        int ans = 0;
+        for (int i = 3; i <= n; i++) {
             ans += dp(i - 1) * dp(n - i);
         }
 
