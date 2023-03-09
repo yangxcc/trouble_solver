@@ -1,3 +1,9 @@
+/*
+ * @Author: yangxcc
+ * @version: 1.0
+ * @Date: 2023-02-20 16:00:51
+ * @LastEditTime: 2023-03-09 14:30:16
+ */
 package path;
 
 /**
@@ -7,6 +13,7 @@ package path;
 public class Path2 {
     public int uniquePathsWithObstacles(int[][] obstacleGrid) {
         int m = obstacleGrid.length, n = obstacleGrid[0].length;
+        // 如果终点上有障碍物
         if (obstacleGrid[m - 1][n - 1] == 1) {
             return 0;
         }
