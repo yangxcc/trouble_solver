@@ -1,3 +1,9 @@
+<!--
+ * @Author: yangxcc
+ * @version: 1.0
+ * @Date: 2022-09-25 11:41:57
+ * @LastEditTime: 2023-03-09 11:37:13
+-->
 # trouble_solver
 🖊 刷题路线：总体思路是先用go刷一遍，再使用java刷一遍
 
@@ -93,9 +99,19 @@ class ListNode {
 - 双指针，就我个人而言，我感觉使用双指针的题目是最灵活的，最常见的有快慢指针、左右边界指针等
 - [滑动窗口](array/slide_window/README.md)，我习惯滑动窗口的模板中，区间是`[left, right)`的，滑动窗口的使用过程中通常还需要HashMap来记录，需要注意的是滑动窗口使用的条件有两个：一是数组中的元素没有负数，二是最终的结果是连续的，过程也得是连续的。
 
-> 一个数组问题中可以用到的小技巧：可以使用min, max函数优雅的避免索引越界，比如`int x = Math.max(0, a)`,[代码示例](array/prefix_sum/matrix_block_sum/matrix_block_sum.go)
-> 二维数组映射到一维数组中的技巧，假设二维数组的大小是$m \times n$，映射到一维数组，一维数组的大小是`int[] arr = new int[m * n]`，对于二维数组中的一个坐标$(x,y)$，映射到一维之后是$x \times （n - 1） + y$，将二维数组映射到一维数组的原因通常是我们的一些模板，比如dijkstra中的distance数组、并查集中的parent数组等都是一维的，将二维压缩成一维能直接套进来，[代码示例](graph/minimun_spanning_tree/kruskal/Leetcode1584.java)
-> 
+> 小技巧1：可以使用min, max函数优雅的避免索引越界，比如`int x = Math.max(0, a)`,[代码示例](array/prefix_sum/matrix_block_sum/matrix_block_sum.go)
+> 小技巧2：二维数组映射到一维数组，假设二维数组的大小是$m \times n$，映射到一维数组，一维数组的大小是`int[] arr = new int[m * n]`，对于二维数组中的一个坐标$(x,y)$，映射到一维之后是$x \times （n - 1） + y$，将二维数组映射到一维数组的原因通常是我们的一些模板，比如dijkstra中的distance数组、并查集中的parent数组等都是一维的，将二维压缩成一维能直接套进来，[代码示例](graph/minimun_spanning_tree/kruskal/Leetcode1584.java)
+
+
+### 回溯
+写在最前面：回溯的本质是**穷举**，常见的问题通常都是排列、组合问题或其变形，我们可以想象出他们的递归树来解决问题
+- [排列](./backtracking/permutations/)，因为排列问题的递归树，无论在哪层（深度是多少），都需要遍历一遍数组，因此，在这个过程中需要用到`visited`数组来判断路径中是否已经存在了这个节点，此外，需要注意的是**去重**问题，对于存在重复元素的数组，首先要做的就是对数组排序，然后针对同一层来进行去重，代码为`if (i > 0 && nums[i] == nums[i - 1] && !visited[i - 1]) {continue;}`
+- [组合](./backtracking/combination/)，在组合中，我们通常会碰到两种情况，一是能够重复选择元素，二是不能重复选择元素，组合中不需要`visited`数组，因为组合中的回溯函数规定好了每次递归时的起始位置，如果能重复选择那就是`backtrack(nums, i, path)`，不能重复选择那就是`backtrack(nums, i + 1, path)`，对于存在重复元素的数组，去重代码是`if (i > idx && nums[i] == nums[i - 1]) {continue;}`，这里其实还有一个小技巧，那就是对于数组排序，有利于剪枝操作
+- [子集](./backtracking/sub/subset/)，子集问题其实和组合问题是一样的，唯一一点不同的是子集在进入递归函数之后不需要条件判断直接加入结果集就好；其中[将一个数组划分成和相等的k个子集](./backtracking/sub/subset/KSubset.java)这道题需要好好理解，从桶的角度和数字的视角来看
+- [子序列](./backtracking/sub/subsequence/)，其中的题目[递增的子序列](./backtracking/sub/subsequence/Subsequence.java)给我们提供了另一种在同层去重的方式，因为是要求子序列，所以数组中元素的相对顺序是不能发生变化的，因此可以在递归函数中使用一个局部的set，局部的set不需要撤销选择，因为这个局部的set的范围只是这一层，到了下一层之后set就又会从头开始放元素
+- 有的时候会给backtrack函数一个返回值，目前所做的题目中多数都是boolean类型，目前还没有想明白回溯函数返回值的定义时机
+
+
 
 
 
