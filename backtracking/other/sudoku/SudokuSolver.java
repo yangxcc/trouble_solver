@@ -1,4 +1,4 @@
-package backtracking.sudoku;
+package backtracking.other.sudoku;
 
 /**
  * leetcode 37 hard 解数独
