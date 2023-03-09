@@ -2,9 +2,9 @@
  * @Author: yangxcc
  * @version: 1.0
  * @Date: 2022-11-30 22:03:51
- * @LastEditTime: 2023-02-22 13:47:53
+ * @LastEditTime: 2023-03-09 14:40:34
  */
-package split_integer;
+package other.split_integer;
 
 /**
  * leetcode 343 middle 整数拆分
