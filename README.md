@@ -2,7 +2,7 @@
  * @Author: yangxcc
  * @version: 1.0
  * @Date: 2022-09-25 11:41:57
- * @LastEditTime: 2023-03-09 16:59:47
+ * @LastEditTime: 2023-03-10 13:52:00
 -->
 # trouble_solver
 🖊 刷题路线：总体思路是先用go刷一遍，再使用java刷一遍
@@ -133,6 +133,16 @@ class ListNode {
 - [正则表达式的匹配](./dp/other/regular_expression/)：多看看其中的多种情况
 - [最长的有效括号](./dp/other/parentheses/)：`dp[i]`的定义是以i结尾的最长的有效括号的长度，所以，当计算dp[i]的时候，不能仅仅简单的`dp[i]=dp[i-1]+1`，而是需要`pre = i - dp[i-1] - 1`，如果`pre>0`，`dp[i] += dp[pre-1]`
 
+### 图
+- [图遍历](./graph/traverse/AllPath.java)：遍历一般是限定在有向无环图上，因为无环，所以`visited`和`onpath`数组都不需要。其实有向无环图就是一个多叉树，所以对于无环图的遍历同样可以使用dfs和bfs两种方式
+- [岛问题dfs](./graph/islands/)：一般在图中使用dfs的情况是这样的：从一个点出发，上下左右四个方向都能移动，所以这种情况下一般我们也还需要一个visited数组，来记录已经访问过的位置，但是由于岛问题的特殊性，我们可以通过修改值的方式来标记位置是否被访问过
+- [bfs](./graph/bfs/)：一般在图中求两个节点之间的最短路径通常可以使用bfs（或者dijkstra，它能够得到一个点到图中所有点的最短距离），bfs的写法需要借助优先级队列，比如[打开转盘锁](./graph/bfs/Leetcode752.java)，这道题使用bfs很好理解，就是一层层的往下搜索，直到碰到target；再比如[滑动谜题](./graph/bfs/Leetcode773.java)，主要的难点在于需要把二维数组转换成一维的字符串，二维位置和一维位置的映射。
+- [环检测算法](./graph/cycle_detect/CourseSchedule.java)：对于环检测算法，首先从本质上来看还是属于图的遍历问题，因为我们需要鉴定的图可能是有环的，所以需要`visited`和`onpath`两个数组，前一个数组的作用是节点是否被访问过，后一个数组的作用是节点是否在路径上了；或者使用bfs来检测是否存在环，维护一个优先级队列，只有入度为0的节点才会进入到优先级队列中，其中需要重点理解的是是否有环的判断：`count == numCourse`表示所有节点都遍历过，如果有环的话count会比较小，也就是说bfs不会遍历完所有的节点就会退出了
+- [拓扑排序](./graph/topology/CourseSchedule2.java)：拓扑排序的定义是无环图中的所有节点能够形成一条直线，其中所有边都指向同一个方向，因此对于任何一个无环图都会有一个拓扑排序，而拓扑排序的求法是：**图后序遍历结果的逆**，或者就直接使用bfs使用一个path数组把结果给带出来（拓扑排序只需要在环检测算法的基础上稍微修改一下就好）
+- [二分图](./graph/bipartite_graph/IsBipartiteGraph.java)：二分图的判定过程其实就是一个染色的过程，所谓染色，即为在遍历的过程中，将每条边的两个点标记为不同的颜色，如果所有的节点都能够被顺利的标记上，那说明这个图是能够被分成二分图的
+- [最小生成树](./graph/minimun_spanning_tree/)：最小生成树指的是将图中所有节点连接起来的一个最短路径，求最小生成树的两种方法：[Kruskal](./graph/minimun_spanning_tree/kruskal)和[Prim](./graph/minimun_spanning_tree/prim)算法，前者的做法是将所有的边升序排列，从最小的边开始选择，直到包含了所有的点，在选择边的过程中需要保证点不会重复，所以Kruskal的实现可以借助并查集。后者的做法是以点的视角来看，每次都选择点的最短路径，因此实现过程中需要借助优先级队列，队列中存在的内容是目前遍历节点的边从下到大排列好的
+- [dijkstra](./graph/dijkstra/Dijkstra.java)：dikstra算法的目的是计算出一个节点到其余全部节点的最短路径，其具体实现也是需要借助优先级队列维护一个`distance`数组，其中最难理解的是[K站中转内最便宜的航班](./graph/dijkstra/Leetcode787.java)这道题，这道题目[使用dp做](./dp/other/Leetcode787.java)更好一些
+  
 
 
 
