@@ -2,7 +2,7 @@
  * @Author: yangxcc
  * @version: 1.0
  * @Date: 2023-02-02 13:52:06
- * @LastEditTime: 2023-02-02 14:32:02
+ * @LastEditTime: 2023-03-10 11:29:05
  */
 package graph.topology;
 
@@ -121,11 +121,81 @@ public class CourseSchedule2 {
             count++;
         }
 
+        // count == numCourse表示所有节点都遍历过，如果有环的话count会比较小，也就是说bfs不会遍历完所有的节点就会退出了
         boolean hasCycle = count != numCourses;
         if (hasCycle) {
             return new int[]{};
         } 
 
         return path;
+    }
+}
+
+
+class Main {
+    private boolean[] visited;
+    private boolean[] onpath;
+    private boolean hasCycle;
+    private List<Integer> postOrder;
+
+    public int[] findOrder(int numCourses, int[][] prerequisites) {
+        visited = new boolean[numCourses];
+        onpath = new boolean[numCourses];
+        postOrder = new ArrayList<>();
+
+        List<Integer>[] graph = buildGraph(numCourses, prerequisites);
+
+        for (int i = 0; i < numCourses; i++) {
+            dfs(graph, i);
+        }
+
+        if (hasCycle) {
+            return new int[]{};
+        }
+
+        Collections.reverse(postOrder);
+        
+        int[] ans = new int[numCourses];
+        for (int i = 0; i < numCourses; i++) {
+            ans[i] = postOrder.get(i);
+        }
+        return ans;
+    }
+
+    private void dfs(List<Integer>[] graph, int start) {
+        if (onpath[start]) {
+            hasCycle = true;
+            return;
+        }
+
+        if (visited[start] || hasCycle) {
+            return;
+        }
+
+        visited[start] = true;
+        onpath[start] = true;
+        for (int neighbor : graph[start]) {
+            dfs(graph, neighbor);
+        }
+        postOrder.add(start);
+        onpath[start] = false;
+    }
+
+    private List<Integer>[] buildGraph(int n, int[][] prerequisites) {
+        List<Integer>[] graph = new ArrayList[n];
+        for (int i = 0; i < n; i++) {
+            graph[i] = new ArrayList<>();
+        }
+
+        for (int[] edge : prerequisites) {
+            int from = edge[1];
+            int to = edge[0];
+
+            List<Integer> l = graph[from];
+            l.add(to);
+            graph[from] = l;
+        }
+
+        return graph;
     }
 }
