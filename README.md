@@ -2,7 +2,7 @@
  * @Author: yangxcc
  * @version: 1.0
  * @Date: 2022-09-25 11:41:57
- * @LastEditTime: 2023-03-10 13:52:00
+ * @LastEditTime: 2023-03-11 14:07:18
 -->
 # trouble_solver
 🖊 刷题路线：总体思路是先用go刷一遍，再使用java刷一遍
@@ -91,7 +91,7 @@ class ListNode {
 ```
 
 ## 技巧记录
-### 数组中常见的问题和技巧
+### 数组
 - [二分查找](./array/binary_search/BinarySearch.java)，前提是数组已经排好序了，常规的二分查找有一个前提条件，那就是数组中没有重复元素，直接二分找就好了，对于有重复元素的数组来说使用二分寻找某个元素出现的左右边界，我习惯的做法是使用闭区间，这里左右边界都要记得处理两种异常情况，其实这里只需要记住返回值的意义，以左边界为例，返回的`left`表示的是左边有多少比输入target小的数，如果输入的target比任何数字都大，那么`left==nums.length()`，这是一种异常情况，如果target在数组中不存在，这是第二种异常情况；同理，右边界中输出的`right`表示的是右边有多少比target大的数
   > 二分的应用：最难理解的是[leetcode 410 hard 分割数组的最大值](array/binary_search/application/Leetcode410.java)
 - [前缀和](./array/prefix_sum/range_sum/RangeSum.java)，常用于统计某个区间的和，对于二维数组中的前缀和最好看着图将四部分的代码写好
@@ -141,9 +141,20 @@ class ListNode {
 - [拓扑排序](./graph/topology/CourseSchedule2.java)：拓扑排序的定义是无环图中的所有节点能够形成一条直线，其中所有边都指向同一个方向，因此对于任何一个无环图都会有一个拓扑排序，而拓扑排序的求法是：**图后序遍历结果的逆**，或者就直接使用bfs使用一个path数组把结果给带出来（拓扑排序只需要在环检测算法的基础上稍微修改一下就好）
 - [二分图](./graph/bipartite_graph/IsBipartiteGraph.java)：二分图的判定过程其实就是一个染色的过程，所谓染色，即为在遍历的过程中，将每条边的两个点标记为不同的颜色，如果所有的节点都能够被顺利的标记上，那说明这个图是能够被分成二分图的
 - [最小生成树](./graph/minimun_spanning_tree/)：最小生成树指的是将图中所有节点连接起来的一个最短路径，求最小生成树的两种方法：[Kruskal](./graph/minimun_spanning_tree/kruskal)和[Prim](./graph/minimun_spanning_tree/prim)算法，前者的做法是将所有的边升序排列，从最小的边开始选择，直到包含了所有的点，在选择边的过程中需要保证点不会重复，所以Kruskal的实现可以借助并查集。后者的做法是以点的视角来看，每次都选择点的最短路径，因此实现过程中需要借助优先级队列，队列中存在的内容是目前遍历节点的边从下到大排列好的
-- [dijkstra](./graph/dijkstra/Dijkstra.java)：dikstra算法的目的是计算出一个节点到其余全部节点的最短路径，其具体实现也是需要借助优先级队列维护一个`distance`数组，其中最难理解的是[K站中转内最便宜的航班](./graph/dijkstra/Leetcode787.java)这道题，这道题目[使用dp做](./dp/other/Leetcode787.java)更好一些
+- [dijkstra](./graph/dijkstra/Dijkstra.java)：dikstra算法的目的是计算出一个节点到其余全部节点的最短路径，其具体实现也是需要借助优先级队列维护一个`distance`数组，其中最难理解的是[K站中转内最便宜的航班](./graph/dijkstra/Leetcode787.java)这道题，这道题目[做](./dp/other/Leetcode787.java)更好一些
   
 
+
+### 链表
+在链表的题目中，一定要多加注意空指针的问题，尤其是循环中链表指针移动，要时刻注意`cur.next`之否为空了，如果已经为null了，一定不能再`cur.next.next`了
+- [设计链表](./linkedlist/design_linkedlist/DesignLinkedlist.java)：可以使用单链表，也可以使用双链表，当使用双链表的时候，不要忘记该链表是一个环，所以当遍历的时候，不要忘记判断一下是否已经到了头节点了，题解涉及到了双向链表中的增、删、查三种操作
+- [删除链表中的元素](./linkedlist/delete_element/RemoveLinkedlistElement.java)：给定一个值val，删除链表中所有值为val的节点，这种题型很明显是双指针，加上一个dummy节点就不需要考虑过于复杂的边界条件了，直接`pre==dummy, cur==head`往下走就行了
+- [链表交叉](./linkedlist/intersect_linkedlist/GetIntersectNode.java)：两个链表可能存在一个相交的位置，这道题目的解法其实属于“双向奔赴”，本质上是如果两个链表相交，那么让他们相遇时走过的路是一样的
+- [环形链表](./linkedlist/intersect_linkedlist/cycle_linkedlist/IsCycleLinkedlist.java)：对于一个链表，我们首先可以使用快慢指针来判断链表中是否有环，快指针每次走两步，慢指针每次走一步，如果有环，快慢指针总是会在环内相遇的。那么如果球的环形链表的入环节点呢？假设三段距离分别为x,y,z，那么当两个指针相遇时，慢指针走了x+y，**快指针走了x+y+n(y+z)**，因为快指针的速度是慢指针的2倍，所以会有这个式子2(x+y)=x+y+n(y+z)，可得x=(n-1)(y+z)+z，y+z是环的长度，走多少环无所谓，所以x=z，即当两个指针相遇时，将快指针移动到头部，然后快慢指针每次都移动一个位置，直到两者再次相遇，此时相遇点便是环的入口
+- [删除倒数第k个节点](./linkedlist/remove_node_from_end/RemoveNodeFromEndOfList.java)：同样使用快慢指针，快指针先走k步，慢指针在开始出发，当`fast.next==null`的时候，慢指针的下一个节点刚好是倒数第k个节点，因此这样安排也不需要在使用一个pre指针了，但是这样也存在一种情况不行，这种情况就是链表中只有一个节点的时候，会出现空指针问题，因此我们需要使用一个dummy节点来让链表至少有两个节点，所以相应的slow和fast都从dummy出发，**fast也是先走k步就好了**，最后返回`dummy.next`
+- [反转链表](./linkedlist/reverse_linkedlist/ReserveList.java)：首先，对于反转链表既可以使用递归，又可以使用迭代，我是用递归多一些，首先对于整个链表的反转，使用递归理解起来问题不大，然后是对固定区间的链表反转，假设左边界固定为0，右边界为right，反转前right个节点，需要注意的是`head.next == reverseN.next`这样写是不对的，因为reverseN是已经反转后的指针了，它的next根本不是原始链表中的next了，所以需要一个helper指针来保存原始链表中的reverseN的next。接下来我们就可以使用reverseN来实现reverseLeftBetweenRight了
+- [对链表进行partiton](./linkedlist/split_linkedlist/SplitLinkedlist.java)：给定一个值x，将比x小的元素放到坐标，将比x大的放在右边，只不过这次不是在数组中，而是在链表中。对于链表中的partition，做法如下：分别使用两个dummy头来标识大于x的链表和小于x的链表，遍历一遍数组就能够将以dummy为头的两个链表拆开，其中需要注意的是需要有一个节点来记录链表中的下一个节点，因为我们每次连接之后都必须把cur后面的指针断开
+- [两两交换链表中的节点](./linkedlist/swap_node/SwapNodeInPairs.java)：递归同样好理解一些，如果使用迭代的话，可以按照奇数位和偶数位上的值将链表拆开，拆链的最后一定不能忘记奇数链的最后一个地方要置为空，这是为了将奇数链上的最后一个节点后面的指针断开，拆分好了之后，需要把奇数链和偶数链依次合并
 
 
 **技巧 & 知识点记录**
