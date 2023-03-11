@@ -1,3 +1,9 @@
+/*
+ * @Author: yangxcc
+ * @version: 1.0
+ * @Date: 2023-02-01 14:05:36
+ * @LastEditTime: 2023-03-11 15:12:38
+ */
 package tree.bst;
 
 import java.util.ArrayList;
@@ -13,9 +19,20 @@ import tree.TreeNode;
 public class DifferenceBST {
     int[][] memo;
     public int numTrees(int n) {
-        // 后面有+1操作
-        memo = new int[n+2][n+2];
-        return process(1, n);
+        // // 后面有+1操作
+        // memo = new int[n+2][n+2];
+        // return process(1, n);
+        // dp[i]表示的是i个节点能够构成bst的个数
+        int[] dp = new int[n + 1];
+        dp[0] = 1;
+        dp[1] = 1;
+
+        for (int i = 2; i <= n; i++) {
+            for (int j = 1; j <= i; j++) {
+                dp[i] += dp[j - 1] * dp[i - j];
+            }
+        }
+        return dp[n];
     }
 
     /**
