@@ -2,7 +2,7 @@
  * @Author: yangxcc
  * @version: 1.0
  * @Date: 2023-01-20 10:54:58
- * @LastEditTime: 2023-03-03 15:57:32
+ * @LastEditTime: 2023-03-11 16:22:26
  */
 package tree.path_and_sum;
 
@@ -49,6 +49,8 @@ public class Diameter {
         int leftHeight = height(root.left);
         int rightHeight = height(root.right);
 
+        // 这里为什么不+1
+        // 回答：要注意身体呀，直径的定义是两个节点之间的距离，距离不用+1，不是长度
         res = Math.max(res, leftHeight + rightHeight);
 
         return Math.max(leftHeight, rightHeight) + 1;
