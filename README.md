@@ -2,7 +2,7 @@
  * @Author: yangxcc
  * @version: 1.0
  * @Date: 2022-09-25 11:41:57
- * @LastEditTime: 2023-03-11 14:07:18
+ * @LastEditTime: 2023-03-11 16:21:31
 -->
 # trouble_solver
 🖊 刷题路线：总体思路是先用go刷一遍，再使用java刷一遍
@@ -155,6 +155,33 @@ class ListNode {
 - [反转链表](./linkedlist/reverse_linkedlist/ReserveList.java)：首先，对于反转链表既可以使用递归，又可以使用迭代，我是用递归多一些，首先对于整个链表的反转，使用递归理解起来问题不大，然后是对固定区间的链表反转，假设左边界固定为0，右边界为right，反转前right个节点，需要注意的是`head.next == reverseN.next`这样写是不对的，因为reverseN是已经反转后的指针了，它的next根本不是原始链表中的next了，所以需要一个helper指针来保存原始链表中的reverseN的next。接下来我们就可以使用reverseN来实现reverseLeftBetweenRight了
 - [对链表进行partiton](./linkedlist/split_linkedlist/SplitLinkedlist.java)：给定一个值x，将比x小的元素放到坐标，将比x大的放在右边，只不过这次不是在数组中，而是在链表中。对于链表中的partition，做法如下：分别使用两个dummy头来标识大于x的链表和小于x的链表，遍历一遍数组就能够将以dummy为头的两个链表拆开，其中需要注意的是需要有一个节点来记录链表中的下一个节点，因为我们每次连接之后都必须把cur后面的指针断开
 - [两两交换链表中的节点](./linkedlist/swap_node/SwapNodeInPairs.java)：递归同样好理解一些，如果使用迭代的话，可以按照奇数位和偶数位上的值将链表拆开，拆链的最后一定不能忘记奇数链的最后一个地方要置为空，这是为了将奇数链上的最后一个节点后面的指针断开，拆分好了之后，需要把奇数链和偶数链依次合并
+
+### 树
+- [遍历](./tree/traversal/)：树的遍历方式有前序遍历、中序遍历、后序遍历和层序遍历，层序遍历的写法需要借助队列，前中后序遍历的递归写法比较熟悉了，在做树的题目时首先要确定使用哪种遍历方式，有的题目中使用后序遍历有奇效。三种的迭代方式也要会写
+- [找祖先问题](./tree/ancestor/)：直接使用函数的定义递归就好了，在左右子树中分别找p，q的祖先，如果两个都不为空，那祖先就是root；在BST中找祖先能够根据BST的性质做一下剪枝，如果两个节点都大于0，直接在右树中找，以此类推
+- [bst](./tree/bst/)：二叉搜索树的题目做题思路主要有两个：一个是通过与根节点的值比较，得知是从左子树上搜索还是右子树上搜索，第二个思路是bst的中序遍历是升序排列的；其中仍需要重点理解的是[bst转换成双向链表](./tree/bst/ConvertToLinkedList.java)，千万不要忘记中序遍历结束之后将首尾连接起来；比较有难度的是[不同的二叉搜索树II，将dp方法应用到树上的场景](./tree/bst/DifferenceBST.java)，[二叉树中的bst的最大键值和，使用后序遍历，返回的数据中能够判断以cur为根的树是否为bst以及他的和](./tree/bst/MaxSum.java)；要记住BST的验证需要携带上最小值和最大值，这也是为什么`二叉树中的bst的最大键值和`这道题目返回的是四个值，而不是两个值;此外还需要记住一种解题方式，在搜索二叉树中使用pre来记录前一个节点，因为bst中经常使用中序遍历，所以在相应位置加上对应的代码能够拿到当前节点的前一个节点，这种方式用到了很多题目中，比如[BST中的众数](./tree/bst/Mode.java)，[BST中的最小绝对差](./tree/bst/MinAbsoluteDifference.java)代码如下：
+  ```java
+  inOrder(root.left);
+  if (pre == null) {
+    head = root;
+  } else {
+    // 处理pre和cur
+  }
+  pre = cur;
+  inOrder(root.right);
+
+  // 还可以这么写
+  inOrder(root.left);
+  if (pre != null && 其他条件) {
+    // 处理逻辑
+  }
+  pre = root;
+  inOrder(root.right);
+  ```
+- [路径和问题](./tree/path_and_sum/)：[二叉树中的最大路径和](./tree/path_and_sum/MaxPathSum.java)是比较难的，这道题和[二叉树的直径](./tree/path_and_sum/Diameter.java)很相似，相同的做法。
+- [重构二叉树](./tree/rebuild/Build.java)：使用先序+中序，后序+中序比较熟悉了，重点看[先序+后序](./tree/rebuild/Build.java)的做法
+- [重复的子树](./tree/subtree/Leetcode652.java)：这道题目的解题思路是：当来到某个节点时，我们要做的实际上有两件事：第一件事是直到这颗子树的形状，第二件事是判断这颗子树是否重复，如果重复，则把这个根节点加入到结果集中，但还需要注意一点因为子树重复的次数可能是2次以上，所以这里使用HashSet会导致往结果集里面重复添加，因此使用HashMap
+- 其他一些常规题型：[对称二叉树，需要分别使用左子树和右子树两个指针来判断](./tree/symmetry/symmetric_tree.go)，[翻转二叉树](./tree/reverse/InvertTree.java)。[将二叉树展开成链表](./tree/tolist/Leetcode114.java)。[判断是否为高度平衡的树](./tree/balance/Balance.java)，这道题目还是得加深记忆，记住这种做题模式，在求高度的过程总就能够得到是否为平衡树，因为只有是平衡树才输出树的高度。
 
 
 **技巧 & 知识点记录**
