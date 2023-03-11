@@ -79,6 +79,8 @@ class Solution {
      * ans[1] --- 以root为根的树的最小值
      * ans[2] --- 以root为根的树的最大值
      * ans[3] --- 以root为根的树的和
+     * 
+     * 返回四个值的原因是：因为左子树是bst，右子树是bst，加上root之后不一定还是bst
      */
     private int[] process(TreeNode root) {
         if (root == null) {
