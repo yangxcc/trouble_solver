@@ -2,7 +2,7 @@
  * @Author: yangxcc
  * @version: 1.0
  * @Date: 2022-09-25 11:41:57
- * @LastEditTime: 2023-03-11 16:21:31
+ * @LastEditTime: 2023-03-12 14:24:46
 -->
 # trouble_solver
 🖊 刷题路线：总体思路是先用go刷一遍，再使用java刷一遍
@@ -98,6 +98,30 @@ class ListNode {
 - [差分数组](./array/diff_array/modify_array/ModifyArray.java)，常用于某个区间频繁发生改动
 - 双指针，就我个人而言，我感觉使用双指针的题目是最灵活的，最常见的有快慢指针、左右边界指针等
 - [滑动窗口](array/slide_window/README.md)，我习惯滑动窗口的模板中，区间是`[left, right)`的，滑动窗口的使用过程中通常还需要HashMap来记录，需要注意的是滑动窗口使用的条件有两个：一是数组中的元素没有负数，二是最终的结果是连续的，过程也得是连续的。
+- 顺子问题：有不少的题目中都会涉及到顺子问题，其实这种问题的思路也是比较简单，直接比较给出的几个数中的最大值和最小值，看看两者之间的差值是否超过了数的个数，比如
+  ```java
+  共有15张牌，2~10分别表示他们本身，A是1，JQK分别是11，12，13，判断5张扑克牌是不是顺子，大小王可以当作任意数字
+    public boolean check(int[] nums) {  // nums中有5个数字,0表示大小王，可以代表任意数字
+        // Arrays.sort(nums);
+        // 用来记录出现的牌
+        int[] helper = new int[14];
+        for (int n : nums) {
+            helper[n]++;
+        }
+        
+        int max = -1;
+        int min = 14;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] == 0) {
+                continue;
+            }
+            if (helper[nums[i]] > 1) return false;
+            if (max < nums[i]) max = nums[i];
+            if (min > nums[i]) min = nums[i];
+        }
+        return max - min < 5;
+    }
+  ```
 
 > 小技巧1：可以使用min, max函数优雅的避免索引越界，比如`int x = Math.max(0, a)`,[代码示例](array/prefix_sum/matrix_block_sum/matrix_block_sum.go)
 > 小技巧2：二维数组映射到一维数组，假设二维数组的大小是$m \times n$，映射到一维数组，一维数组的大小是`int[] arr = new int[m * n]`，对于二维数组中的一个坐标$(x,y)$，映射到一维之后是$x \times （n - 1） + y$，将二维数组映射到一维数组的原因通常是我们的一些模板，比如dijkstra中的distance数组、并查集中的parent数组等都是一维的，将二维压缩成一维能直接套进来，[代码示例](graph/minimun_spanning_tree/kruskal/Leetcode1584.java)
