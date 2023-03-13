@@ -2,7 +2,7 @@
  * @Author: yangxcc
  * @version: 1.0
  * @Date: 2022-09-25 11:41:57
- * @LastEditTime: 2023-03-12 14:24:46
+ * @LastEditTime: 2023-03-13 22:03:38
 -->
 # trouble_solver
 🖊 刷题路线：总体思路是先用go刷一遍，再使用java刷一遍
@@ -206,6 +206,30 @@ class ListNode {
 - [重构二叉树](./tree/rebuild/Build.java)：使用先序+中序，后序+中序比较熟悉了，重点看[先序+后序](./tree/rebuild/Build.java)的做法
 - [重复的子树](./tree/subtree/Leetcode652.java)：这道题目的解题思路是：当来到某个节点时，我们要做的实际上有两件事：第一件事是直到这颗子树的形状，第二件事是判断这颗子树是否重复，如果重复，则把这个根节点加入到结果集中，但还需要注意一点因为子树重复的次数可能是2次以上，所以这里使用HashSet会导致往结果集里面重复添加，因此使用HashMap
 - 其他一些常规题型：[对称二叉树，需要分别使用左子树和右子树两个指针来判断](./tree/symmetry/symmetric_tree.go)，[翻转二叉树](./tree/reverse/InvertTree.java)。[将二叉树展开成链表](./tree/tolist/Leetcode114.java)。[判断是否为高度平衡的树](./tree/balance/Balance.java)，这道题目还是得加深记忆，记住这种做题模式，在求高度的过程总就能够得到是否为平衡树，因为只有是平衡树才输出树的高度。
+
+
+### [排序算法](./sort/README.md)
+[冒泡排序](./sort/bubble/BubbleSort.java)：所谓冒泡，其实就是大的数往后走，每次只能确定一个数的位置，所以在实现中可以是用双层循环，外层循环只是用来控制每次遍历需要遍历的数组个数，内层循环的逻辑就是依次两两比较
+[选择排序](./sort/select/SelectSort.java)：选择排序的思想是选择[0, n]范围内最大的数，将这个最大的数放到n这个位置，然后再从[0, n-1]范围内选最大的数，将这个最大的数放到n-1的位置，依此类推...
+[插入排序](./sort/insert/InsertSort.java)：插入排序的核心思想是当将一个数插入到数组中时，假设这个数组是有序的。我们需要做的是找到这个数字的插入位置，然后插进去。~~这一个我自己写的时候写成了三层循环~~
+```java
+public void sort(int[] arr) {
+    int n = arr.length;
+    for (int i = 1; i < n; i++) {
+        int curVal = arr[i];
+        int pos = i - 1;
+        // [0, pos]这个位置上
+        while (pos >= 0 && arr[pos] > curVal) {
+            arr[pos + 1] = arr[pos];
+            pos--;
+        }
+        arr[pos + 1] = curVal;
+    }
+}
+```
+[**快速排序**](./sort/quick/quick_sort.go)：快排是非常重要的一个排序，他的核心就是通过一个`partition`方法找到一个位置，这个位置的左边元素都比他小，右边元素都比他大，然后再通过递归的方式排好左边和右边；快排中需要注意的一个点是在最开始得将数组随机打乱，因为快排可能会退化成冒泡，比如654321，快排的应用：[TopK问题，partition的过程](./sort/quick/application/topK.go)
+[**归并排序**](./sort/merge/merge_sort.go)：归并排序也很重要，重点在merge函数上，merge函数的作用就是将两个有序数组合并，其应用也比较多，常用于快速计数
+[堆排序](./sort/heap/HeapSort.java)：堆排序的思想是：如果是大根堆，那么我就要保证无论是添加元素还是删除元素，我的堆顶必须是目前堆中最大的元素，从上面的流程中也能够看出，堆在添加或删除元素时是需要动态调整的
 
 
 **技巧 & 知识点记录**
