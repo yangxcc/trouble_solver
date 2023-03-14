@@ -30,6 +30,7 @@ class ArrayHeap {
         this.arr = new int[maxSize];
     }       
     
+    // 索引节点从1开始
     private int getParentIdx(int child) {
         return child / 2;
     }
