@@ -13,6 +13,11 @@ public class RotateWords {
         reverse(chs, n, chs.length - 1);
         reverse(chs, 0, chs.length - 1);
 
+        // // 先反转整体，再反转局部
+        // reverse(chs, 0, chs.length -  1);
+        // reverse(chs, 0, chs.length - n - 1);
+        // reverse(chs, chs.length - n, chs.length - 1);
+
         return new String(chs);
     }
 
