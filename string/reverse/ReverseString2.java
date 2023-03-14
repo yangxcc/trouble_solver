@@ -1,3 +1,9 @@
+/*
+ * @Author: yangxcc
+ * @version: 1.0
+ * @Date: 2022-10-13 15:37:27
+ * @LastEditTime: 2023-03-14 19:07:19
+ */
 package string.reverse;
 
 /**
@@ -13,8 +19,9 @@ public class ReverseString2 {
         for (int i = 0; i < ch.length; i += 2 * k) {
             if (i + k >= ch.length) {
                 reverse(ch, i, ch.length - 1);
+            } else {
+                reverse(ch, i, i + k - 1);
             }
-            reverse(ch, i, i + k - 1);
         }
 
         return new String(ch);
