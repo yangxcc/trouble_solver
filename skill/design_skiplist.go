@@ -1,5 +1,6 @@
 package skill
 
+// 明天用go实现，避免明天就忘了🤦‍
 type Skiplist struct {
 }
 
