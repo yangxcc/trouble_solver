@@ -2,7 +2,7 @@
  * @Author: yangxcc
  * @version: 1.0
  * @Date: 2022-09-25 11:41:57
- * @LastEditTime: 2023-03-14 20:24:23
+ * @LastEditTime: 2023-03-17 12:57:13
 -->
 # trouble_solver
 🖊 刷题路线：总体思路是先用go刷一遍，再使用java刷一遍
@@ -209,9 +209,9 @@ class ListNode {
 
 
 ### [排序算法](./sort/README.md)
-[冒泡排序](./sort/bubble/BubbleSort.java)：所谓冒泡，其实就是大的数往后走，每次只能确定一个数的位置，所以在实现中可以是用双层循环，外层循环只是用来控制每次遍历需要遍历的数组个数，内层循环的逻辑就是依次两两比较
-[选择排序](./sort/select/SelectSort.java)：选择排序的思想是选择[0, n]范围内最大的数，将这个最大的数放到n这个位置，然后再从[0, n-1]范围内选最大的数，将这个最大的数放到n-1的位置，依此类推...
-[插入排序](./sort/insert/InsertSort.java)：插入排序的核心思想是当将一个数插入到数组中时，假设这个数组是有序的。我们需要做的是找到这个数字的插入位置，然后插进去。~~这一个我自己写的时候写成了三层循环~~
+- [冒泡排序](./sort/bubble/BubbleSort.java)：所谓冒泡，其实就是大的数往后走，每次只能确定一个数的位置，所以在实现中可以是用双层循环，外层循环只是用来控制每次遍历需要遍历的数组个数，内层循环的逻辑就是依次两两比较
+- [选择排序](./sort/select/SelectSort.java)：选择排序的思想是选择[0, n]范围内最大的数，将这个最大的数放到n这个位置，然后再从[0, n-1]范围内选最大的数，将这个最大的数放到n-1的位置，依此类推...
+- [插入排序](./sort/insert/InsertSort.java)：插入排序的核心思想是当将一个数插入到数组中时，假设这个数组是有序的。我们需要做的是找到这个数字的插入位置，然后插进去。~~这一个我自己写的时候写成了三层循环~~
 ```java
 public void sort(int[] arr) {
     int n = arr.length;
@@ -227,20 +227,20 @@ public void sort(int[] arr) {
     }
 }
 ```
-[**快速排序**](./sort/quick/quick_sort.go)：快排是非常重要的一个排序，他的核心就是通过一个`partition`方法找到一个位置，这个位置的左边元素都比他小，右边元素都比他大，然后再通过递归的方式排好左边和右边；快排中需要注意的一个点是在最开始得将数组随机打乱，因为快排可能会退化成冒泡，比如654321，快排的应用：[TopK问题，partition的过程](./sort/quick/application/topK.go)
-[**归并排序**](./sort/merge/merge_sort.go)：归并排序也很重要，重点在merge函数上，merge函数的作用就是将两个有序数组合并，其应用也比较多，常用于快速计数
+- [**快速排序**](./sort/quick/quick_sort.go)：快排是非常重要的一个排序，他的核心就是通过一个`partition`方法找到一个位置，这个位置的左边元素都比他小，右边元素都比他大，然后再通过递归的方式排好左边和右边；快排中需要注意的一个点是在最开始得将数组随机打乱，因为快排可能会退化成冒泡，比如654321，快排的应用：[TopK问题，partition的过程](./sort/quick/application/topK.go)
+- [**归并排序**](./sort/merge/merge_sort.go)：归并排序也很重要，重点在merge函数上，merge函数的作用就是将两个有序数组合并，其应用也比较多，常用于快速计数
 [堆排序](./sort/heap/HeapSort.java)：堆排序的思想是：如果是大根堆，那么我就要保证无论是添加元素还是删除元素，我的堆顶必须是目前堆中最大的元素，从上面的流程中也能够看出，堆在添加或删除元素时是需要动态调整的
 
 
 ### LRU和LFU
-[LRU](./lru_and_lfu/LRUCache.java)：最近最少使用算法，一种常见的页面替换算法，在面试中很常见，所有最好使用[LinkedHashMap](./lru_and_lfu/LRUCache.java)和[自己维护一个HashMap和双向链表](./lru_and_lfu/lru_cache.go)都能够熟练的写出来
-[LFU](./lru_and_lfu/LFUCache.java)：最近最不频繁使用，其实就是通过维护三个哈希表来解决这个问题
+- [LRU](./lru_and_lfu/LRUCache.java)：最近最少使用算法，一种常见的页面替换算法，在面试中很常见，所有最好使用[LinkedHashMap](./lru_and_lfu/LRUCache.java)和[自己维护一个HashMap和双向链表](./lru_and_lfu/lru_cache.go)都能够熟练的写出来
+- [LFU](./lru_and_lfu/LFUCache.java)：最近最不频繁使用，其实就是通过维护三个哈希表来解决这个问题
 
 ### 栈和队列
 栈是先进后出，队列是先进先出
-[使用栈实现队列](./stack_and_queue/convert/Stack2Queue.java)：使用两个栈stack1和stack2，添加元素只往stack1中，弹出元素的时候需要判断一下stack2是否为空，如果不为空，那么就弹出stack2中的内容，如果为空，则把stack1中的内容全部放入到stack2中
-[使用队列实现栈](./stack_and_queue/convert/Queue2Stack.java)：使用一个队列就能够模拟栈，当想要弹出的时候，只需要将先弹出的n-1个数字再入栈，然后把第n个数弹出栈
-[单调栈](./stack_and_queue/monotonous/stack/Template.java)：单调栈用于解决的问题就是next greater element问题，因为栈的性质是先进后出，所有实现单调栈的时候是要倒序遍历数组的，所以当需要出栈的时候才是next greater element，对于单调栈的实现应该记牢，如下：
+- [使用栈实现队列](./stack_and_queue/convert/Stack2Queue.java)：使用两个栈stack1和stack2，添加元素只往stack1中，弹出元素的时候需要判断一下stack2是否为空，如果不为空，那么就弹出stack2中的内容，如果为空，则把stack1中的内容全部放入到stack2中
+- [使用队列实现栈](./stack_and_queue/convert/Queue2Stack.java)：使用一个队列就能够模拟栈，当想要弹出的时候，只需要将先弹出的n-1个数字再入栈，然后把第n个数弹出栈
+- [单调栈](./stack_and_queue/monotonous/stack/Template.java)：单调栈用于解决的问题就是next greater element问题，因为栈的性质是先进后出，所有实现单调栈的时候是要倒序遍历数组的，所以当需要出栈的时候才是next greater element，对于单调栈的实现应该记牢，如下：
 ```java
 int[] arr = new int[n];
 for (int i = n - 1; i >= 0; i--) {
@@ -254,7 +254,7 @@ for (int i = n - 1; i >= 0; i--) {
 }
 // 虽然上面的代码中有一个for循环，有一个while循环，但实际上他们的时间复杂度还是O(n)，因为从整体上看，对于数组中的任何一个元素，最多是经历一遍出栈，经历一遍入栈
 ```
-[单调队列](./stack_and_queue/monotonous/queue/Template.java)：单调队列的实现我相对比较熟悉，单调队列的作用是既能够维护队列元素先进先出的顺序，又能够正确维护队列中所有元素的最值。思路总体上就是胖子压瘦子，代码如下：
+- [单调队列](./stack_and_queue/monotonous/queue/Template.java)：单调队列的实现我相对比较熟悉，单调队列的作用是既能够维护队列元素先进先出的顺序，又能够正确维护队列中所有元素的最值。思路总体上就是胖子压瘦子，代码如下：
 ```java
 class MonotonousQueue {
     private Deque<Integer> q;
@@ -283,14 +283,17 @@ class MonotonousQueue {
 }
 ```
 单调队列的使用场景，[滑动窗口的最大值](./stack_and_queue/monotonous/queue/SlidingWindowMaximum.java)
-[括号问题有时候会借助栈来解决](./stack_and_queue/parentheses/)：比如[有效的括号](./stack_and_queue/parentheses/ValidParentheses.java)，但是通常对于只有单一类型的括号时，通常用不到栈，比如[平衡括号字符串的最少插入次数](./stack_and_queue/parentheses/BalanceParentheses.java)，使用一个变量来记录需要右括号的个数，另一个变量来记录遍历过程中一定需要的括号的数量，又比如[使括号有效的最少添加](./stack_and_queue/parentheses/MinimumAdd.java)，使用两个指针来记录左括号和右括号所需要的个数，这里需要注意的一点是不能仅仅是暴力的统计左括号和右括号的个数，在统计过程中需要考虑到遍历的顺序问题。
-
+- [括号问题有时候会借助栈来解决](./stack_and_queue/parentheses/)：比如[有效的括号](./stack_and_queue/parentheses/ValidParentheses.java)，但是通常对于只有单一类型的括号时，通常用不到栈，比如[平衡括号字符串的最少插入次数](./stack_and_queue/parentheses/BalanceParentheses.java)，使用一个变量来记录需要右括号的个数，另一个变量来记录遍历过程中一定需要的括号的数量，又比如[使括号有效的最少添加](./stack_and_queue/parentheses/MinimumAdd.java)，使用两个指针来记录左括号和右括号所需要的个数，这里需要注意的一点是不能仅仅是暴力的统计左括号和右括号的个数，在统计过程中需要考虑到遍历的顺序问题。
 
 ### 字符串
-[反转字符串](./string/reverse/)：如果仅仅是[最简单的反转一整个字符串](./string/reverse/ReverseString.java)，那就没啥好说的了，直接双指针一头一尾搞定。有一类题目是反转2k长度中的前k个位置，其中最有难度的就是[反转一个字符串中的单词](./string/reverse/ReverseWords.java)，分成三步解题，第一步先去掉字符串前后多余的空格，第二步去掉每个单词后面多余的空格，第三步反转整个字符串，然后再根据空格反转每个单词。此外，[反转/旋转字符串](./string/rotate/RotateWords.java)还有一种做法，那就是先反转局部，在反转整体（或者是先反转整体，在反转局部），这道题还有一种trick，那就是两个字符串拼接起来，通过n来截取
-[重复字符串](./string/repeat/)：[给定一个字符串，检查他是否由重复子串组成](./string/repeat/RepeatedSubstringPattern.java)，直接双循环来做，[去除重复的字母后得到具有最小字典序的字符串](./string/repeat/SmallestSubsequence.java)，这道题目可以借助单调队列的思想，只是出队只在一端，而且不能单纯的比较队首元素和当前字符，还需要看一下队首元素是否只有一个，如果是的话，则不能弹出。因为这道题目要求保留字符之间的相对顺序
-[KMP算法](./string/kmp/KMP.java)：kmp的目的就是为了判断一个字符串是否出现在另一个字符串中，重点是next数组怎么求，这里得背过了
-[比较好的题目：为运算表达式设置优先级](./string/Leetcode241.java)
+- [反转字符串](./string/reverse/)：如果仅仅是[最简单的反转一整个字符串](./string/reverse/ReverseString.java)，那就没啥好说的了，直接双指针一头一尾搞定。有一类题目是反转2k长度中的前k个位置，其中最有难度的就是[反转一个字符串中的单词](./string/reverse/ReverseWords.java)，分成三步解题，第一步先去掉字符串前后多余的空格，第二步去掉每个单词后面多余的空格，第三步反转整个字符串，然后再根据空格反转每个单词。此外，[反转/旋转字符串](./string/rotate/RotateWords.java)还有一种做法，那就是先反转局部，在反转整体（或者是先反转整体，在反转局部），这道题还有一种trick，那就是两个字符串拼接起来，通过n来截取
+- [重复字符串](./string/repeat/)：[给定一个字符串，检查他是否由重复子串组成](./string/repeat/RepeatedSubstringPattern.java)，直接双循环来做，[去除重复的字母后得到具有最小字典序的字符串](./string/repeat/SmallestSubsequence.java)，这道题目可以借助单调队列的思想，只是出队只在一端，而且不能单纯的比较队首元素和当前字符，还需要看一下队首元素是否只有一个，如果是的话，则不能弹出。因为这道题目要求保留字符之间的相对顺序
+- [KMP算法](./string/kmp/KMP.java)：kmp的目的就是为了判断一个字符串是否出现在另一个字符串中，重点是next数组怎么求，这里得背过了
+- [比较好的题目：为运算表达式设置优先级](./string/Leetcode241.java)
+
+### 贪心
+贪心算法一般比较难想，但是它的代码一般很短
+
 
 **技巧 & 知识点记录**
 1. 数组排序 `Arrays.sort(2Darray, (a, b) -> {return a[0] - b[0]; });`；列表排序`List<int[]>    Collections.sort(list, (a, b) -> {return a[0] - b[0];})` ；或者是都可以重写`Comparator类中的compare方法来实现`
