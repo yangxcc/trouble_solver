@@ -2,7 +2,7 @@
  * @Author: yangxcc
  * @version: 1.0
  * @Date: 2022-09-25 11:41:57
- * @LastEditTime: 2023-03-19 17:17:46
+ * @LastEditTime: 2023-03-25 17:07:07
 -->
 # trouble_solver
 🖊 刷题路线：总体思路是先用go刷一遍，再使用java刷一遍
@@ -292,8 +292,81 @@ class MonotonousQueue {
 - [KMP算法](./string/kmp/KMP.java)：kmp的目的就是为了判断一个字符串是否出现在另一个字符串中，重点是next数组怎么求，这里得背过了
 - [比较好的题目：为运算表达式设置优先级](./string/Leetcode241.java)
 
-### 贪心
-贪心算法一般比较难想，但是它的代码一般很短
+### 随机问题
+- [根据RandA和RandB生成RandC](./random/ImplementRand10UsingRand7.java)：比如说使用Rand7实现Rand10，具体应该怎么做呢？Rand7能够等概率的生成1-7这7个数，如果(Rand7 - 1) * 7，那么就能够等概率生成0，7，14，21，28，35，42这7个数，给这7个数加上一个Rand7，那么就能够等概率生成1-49这49个数，所以可以通过这样的方式来实现Rand10
+  ```java
+    int generate() {
+        int x = (Rand7 - 1) * 7 + Rand7;
+        while (x > 40) {
+            x = (Rand7 - 1) * 7 + Rand7; // 大于40的时候重新生成一下
+        }
+        return x % 10 + 1;
+    }
+  ```
+  所以，根据上面这个例子我们就能够总结出一个公式，根据RandA怎么实现RandB（A < B），公式为
+  $(RandA - 1) \times RandA + RandA$，为了避免过多的浪费，所以我们需要找到一个数$n$，n是最接近 $(RandA - 1) \times RandA + RandA$且是RandB最大值的整数倍
+
+- 扩展1：那么如果根据RandA和RandB生成RandAB呢，其中RandA能够等概率生成[1,A]范围内的数，RandB能够等概率生成[1,B]范围内的数，且`A != B`，我们需要达到的目标是等概率生成[1-A*B]范围内的数，这是公式为$(RandA - 1) \times B + RandB$或者$(RandB - 1) \times A + RandA$
+- 扩展2：给定一个随机函数RandAB，它能够等概率生成[A,B]范围内的数，如何根据这个函数生成RandCD，即等概率生成[C,D]范围内的数。按照上面的思路继续，`RandA - A`能够等概率生成[0, B-A]范围内的数，如果再令`RandA-A/(B-A)`，那么生成的便是[0,1]范围内的数，再乘上`D-C`，那么生成的便是[0, D-C]范围内的数，再加上C，即等概率得到[C,D]范围内的数。综上，公式为$RandCD = \frac{RandAB - A}{B - A} \times (D - C) + C$
+
+- [洗牌算法](random/Shuffle.java)：主要用途就是用于打乱数组，比如在快排开始之前，先打乱一下数组，其核心思路是对于一个位置`i`，都需要在区间[i, n-1]的范围内生成一个位置，用来交换，需要注意的是，这种思路只能够用在数组中
+  ```java
+  void shuffle(int[] arr) {
+    Random rand = new Random();
+    for (int i = 0; i < arr.length; i++) {
+        int idx = rand.nextInt(n-i) + i;
+        if (i != idx) {
+            swap(arr, i, idx);
+        }
+    }
+  }
+  ``` 
+- [随机采样算法](./random/ReserviorSample.java)：上面说到洗牌算法只能够用在数组上，而随机采样算法则能够用到链表中，即从链表中随机选出一个节点。具体逻辑如下：
+  ```java
+  int getRandom() {
+    ListNode cur = head;
+    int i = 0;
+    ListNode res = null;
+    Random rand = new Random();
+
+    while (cur != null) {
+        i++;
+        // 生成一个[0, i)范围内的数
+        int flag = rand.nextInt(i);
+        if (0 == flag) {
+            res = cur;
+        }
+        cur = cur.next;
+    }
+
+    return res.val;
+  }
+  ```
+- [按照权重随机选择](./random/RandomPickWithWeight.java)：将一个数组中的值作为权重，按照权重来作为概率随机选择数字，解决这种问题的思路是求一下该数组的前缀和，通过产生一个随机数，根据随机数所在的区间来选择数据，具体如下：
+  ```java
+  Random rand = new Random();
+  int[] preSum = new int[n + 1]; // 求前缀和的过程省略
+  int select() {
+    int r = rand.nextInt(preSum[n - 1]) + 1;
+    // 找到r所在的区间
+    int left = 0, right = n;
+    while (left <= right) {
+        int mid = left + (right - left) / 2;
+        if (preSum[mid] == r) {
+            right = mid - 1;
+        } else if (preSum[mid] < r) {
+            left = mid + 1;
+        } else if (preSum[mid] > r) {
+            right = mid - 1;
+        }
+    }
+
+    return left - 1;  // 因为preSum是比数组多了一个，所以这里需要-1
+  }
+  ```
+
+
+
 
 
 **技巧 & 知识点记录**
