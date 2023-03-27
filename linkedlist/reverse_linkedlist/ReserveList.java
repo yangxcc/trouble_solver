@@ -2,7 +2,7 @@
  * @Author: yangxcc
  * @version: 1.0
  * @Date: 2022-10-05 19:33:29
- * @LastEditTime: 2023-01-09 11:12:22
+ * @LastEditTime: 2023-03-27 21:03:53
  */
 package linkedlist.reverse_linkedlist;
 
@@ -72,5 +72,24 @@ public class ReserveList {
         head.next = reverseNext;
 
         return reverseN;
+    }
+
+
+    // 反转双向链表
+    public ListNode reverseDoubleLinkedList(ListNode head) {
+        ListNode pre = null; // 前面的
+        ListNode nxt = null;  // 后面的
+
+        ListNode cur = head;
+        while (cur != null) {
+            nxt = cur.next;
+            cur.next = pre;
+            cur.pre = nxt;
+
+            pre = cur;
+            cur = nxt;
+        }
+
+        return pre;
     }
 }
