@@ -2,7 +2,7 @@
  * @Author: yangxcc
  * @version: 1.0
  * @Date: 2022-10-05 19:33:29
- * @LastEditTime: 2023-04-01 19:19:51
+ * @LastEditTime: 2023-04-03 13:24:23
  */
 package linkedlist.reverse_linkedlist;
 
@@ -131,5 +131,26 @@ public class ReserveList {
             // count < k
             return head;
         }
+    }
+
+    /**
+     * leetcode 24 middle 两两交换链表中的节点
+     * 
+     * 给你一个链表，两两交换其中相邻的节点，并返回交换后链表的头节点。
+     * 你必须在不修改节点内部的值的情况下完成本题（即，只能进行节点交换）。
+     * 
+     * 1234  2143
+     */
+    public ListNode swapPairs(ListNode head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+
+        ListNode ans = head.next;
+        ListNode reverse = swapPairs(ans.next);
+        ans.next = head;
+        head.next = reverse;
+
+        return ans;
     }
 }
