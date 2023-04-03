@@ -2,7 +2,7 @@
  * @Author: yangxcc
  * @version: 1.0
  * @Date: 2023-03-29 16:31:57
- * @LastEditTime: 2023-03-31 20:26:50
+ * @LastEditTime: 2023-04-03 13:26:25
  */
 package linkedlist;
 // 1234 单向链表 原地螺旋式重组 1423 12345 15243
@@ -90,15 +90,5 @@ public class ReorganizedLinkedList {
         }
 
         return ans;
-    }
-}
-
-class ListNode {
-    ListNode next;
-    int val;
-
-    public ListNode(int _val) {
-        this.val = _val;
-        this.next = null;
     }
 }
