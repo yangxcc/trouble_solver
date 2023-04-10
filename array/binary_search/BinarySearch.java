@@ -30,7 +30,7 @@ public class BinarySearch{
         }
 
         // nums=[2,4,6,8,10], target = 9
-        // return right; // 该位置是9应该插入的位置
+        // return left; // 该位置是9应该插入的位置, 剑指offerII 68 simple 查找插入位置
         return -1;
     }
 
