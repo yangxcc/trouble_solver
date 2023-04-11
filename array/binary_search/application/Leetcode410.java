@@ -2,9 +2,13 @@
  * @Author: yangxcc
  * @version: 1.0
  * @Date: 2023-01-06 16:20:11
- * @LastEditTime: 2023-01-06 21:25:34
+ * @LastEditTime: 2023-04-11 22:35:39
  */
 package array.binary_search.application;
+
+import java.lang.annotation.Target;
+
+import tree.traversal.level_traversal.RightsideView;
 
 /**
  * leetcode 410 hard 分割数组的最大值
@@ -53,5 +57,54 @@ public class Leetcode410 {
             k++;
         }
         return k;
+    }
+}
+
+
+class day0411 {
+    public int splitArray(int[] nums, int k) {
+        int minVal = Integer.MIN_VALUE;
+        int maxVal = 0;
+
+        // 一定要根据题目意义去定义left和right边界
+        for (int num : nums) {
+            minVal = Math.max(minVal, num);
+            maxVal += num;
+        }
+
+        while (minVal <= maxVal) {
+            int mid = minVal + (maxVal - minVal) / 2;
+            // 找左边界
+            if (findK(nums, mid) == k) {
+                maxVal = mid - 1;
+            } else if (findK(nums, mid) < k) {
+                maxVal = mid - 1;
+            } else if (findK(nums, mid) > k) {
+                minVal = mid + 1;
+            }
+        }
+
+        return minVal;
+    }
+
+    /**
+     * 以target划分数组，能够划分成几组
+     */
+    public int findK(int[] nums, int target) {
+        int ans = 0;
+
+        for (int i = 0; i < nums.length; ) {
+            int tmp = target;
+            while (i < nums.length) {
+                tmp -= nums[i];
+                if (tmp < 0) {
+                    break;
+                }
+                i++;
+            }
+
+            ans++;
+        }
+        return ans;
     }
 }
