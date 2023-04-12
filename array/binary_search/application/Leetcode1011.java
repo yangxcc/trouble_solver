@@ -2,7 +2,7 @@
  * @Author: yangxcc
  * @version: 1.0
  * @Date: 2023-01-06 14:27:05
- * @LastEditTime: 2023-01-06 16:14:10
+ * @LastEditTime: 2023-04-12 21:54:55
  */
 package array.binary_search.application;
 
@@ -43,7 +43,7 @@ public class Leetcode1011 {
 
     public int CountingDays(int[] weights, int capacity) {
         int days = 0;
-        for (int i = 0; i < weights.length; ) {
+        for (int i = 0; i < weights.length;) {
             // 每天都尽可能地装货
             int tmpCapacity = capacity;
             while (i < weights.length) {
@@ -57,5 +57,55 @@ public class Leetcode1011 {
         }
 
         return days;
+    }
+}
+
+/**
+ * 传送带上的包裹必须在 days 天内从一个港口运送到另一个港口。
+ * 传送带上的第 i 个包裹的重量为 weights[i]。每一天，我们都会按给出重量（weights）的顺序往传送带上装载包裹。
+ * 我们装载的重量不会超过船的最大运载重量。
+ * 
+ * 返回能在 days 天内将传送带上的所有包裹送达的船的最低运载能力。
+ */
+class day0411 {
+    public int shipWithinDays(int[] weights, int days) {
+        int minCapacity = 0, maxCapacity = 0;
+        // 最小运输能力也得保证肯定能运载货物
+        for (int i = 0; i < weights.length; i++) {
+            minCapacity = Math.max(minCapacity, weights[i]);
+            maxCapacity += weights[i];
+        }
+
+        while (minCapacity <= maxCapacity) {
+            int mid = minCapacity + (maxCapacity - minCapacity) / 2;
+            if (findDay(weights, mid) == days) {
+                maxCapacity = mid - 1;
+            } else if (findDay(weights, mid) < days) {
+                maxCapacity = mid - 1;
+            } else {
+                minCapacity = mid + 1;
+            }
+        }
+
+        return minCapacity;
+    }   
+
+    private int findDay(int[] weights, int capacity) {
+        int ans = 0;
+
+        for (int i = 0; i < weights.length; ) {
+            int tmp = capacity;
+            while (i < weights.length) {
+                tmp -= weights[i];
+                if (tmp < 0) {
+                    break;
+                } 
+                i++;
+            }
+
+            ans++;
+        }
+
+        return ans;
     }
 }
