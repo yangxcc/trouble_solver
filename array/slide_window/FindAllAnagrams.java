@@ -2,7 +2,7 @@
  * @Author: yangxcc
  * @version: 1.0
  * @Date: 2023-01-02 11:15:40
- * @LastEditTime: 2023-03-01 15:40:21
+ * @LastEditTime: 2023-04-15 18:42:41
  */
 package array.slide_window;
 
@@ -59,6 +59,58 @@ public class FindAllAnagrams {
                 }
             }
         }
+        return ans;
+    }
+}
+
+
+/**
+ * 给定两个字符串 s 和 p，找到 s 中所有 p 的 异位词 的子串，返回这些子串的起始索引。不考虑答案输出的顺序。
+ * 异位词 指由相同字母重排列形成的字符串（包括相同的字符串）。
+ */
+class day0415 {
+    public List<Integer> findAnagrams(String s, String p) {
+        if (s.length() < p.length()) {
+            return new ArrayList<>();
+        }
+
+        List<Integer> ans = new ArrayList<>();
+
+        HashMap<Character, Integer> memo = new HashMap<>();
+        for (char ch : p.toCharArray()) {
+            memo.put(ch, memo.getOrDefault(ch, 0) + 1);
+        }
+        
+        int valid = 0;  // 有多个个字符已经匹配上了
+        HashMap<Character, Integer> window = new HashMap<>();
+        int left = 0, right = 0;
+        while (right < s.length()) {
+            char ch = s.charAt(right);
+            right++;
+
+            if (memo.containsKey(ch)) {
+                window.put(ch, window.getOrDefault(ch, 0) + 1);
+                if (window.get(ch).equals(memo.get(ch))) {
+                    valid++;
+                } 
+            }
+
+            while (right - left >= p.length()) {
+                if (valid == memo.size()) {
+                    ans.add(left);
+                }
+
+                char d = s.charAt(left);
+                left++;
+                if (memo.containsKey(d)) {
+                    if (window.get(d).equals(memo.get(d))) {
+                        valid--;
+                    }
+                    window.put(d, window.get(d) - 1);
+                }
+            }
+        }
+
         return ans;
     }
 }
