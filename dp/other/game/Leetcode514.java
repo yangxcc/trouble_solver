@@ -2,7 +2,7 @@
  * @Author: yangxcc
  * @version: 1.0
  * @Date: 2023-02-08 15:10:38
- * @LastEditTime: 2023-02-08 15:22:49
+ * @LastEditTime: 2023-04-19 21:37:20
  */
 package other.game;
 
@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  * leetcode 514 hard 自由之路
@@ -72,5 +73,41 @@ public class Leetcode514 {
         memo[i][j] = res;
 
         return res;
+    }
+}
+
+class day0419 {
+    static HashMap<Character, List<Integer>> char2Idx;
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        String ring = in.nextLine();
+        String key = in.nextLine();
+
+        for (int i = 0; i < ring.length(); i++) {
+            if (!char2Idx.containsKey(ring.charAt(i))) {
+                char2Idx.put(ring.charAt(i), new ArrayList<>());
+            }
+            char2Idx.get(ring.charAt(i)).add(i);
+        }
+
+        int op = dp(ring, 0, key, 0);
+        System.out.println(op);
+
+    }
+
+    // dp函数的意义是当前ring的指针是i，从这个状态拼出key[j...]需要的最少操作次数
+    private static int dp(String ring, int i, String key, int j) {
+        if (j == key.length()) {
+            return 0;
+        }
+        
+        int ans = Integer.MAX_VALUE;
+        for (int k : char2Idx.get(key.charAt(j))) {
+            int move = k - i;
+            int minMove = Math.min(move, ring.length() - move);
+            ans = Math.min(ans, 1 + minMove + dp(ring, k, key, j + 1));
+        }
+
+        return ans;
     }
 }
