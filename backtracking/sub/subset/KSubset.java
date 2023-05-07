@@ -2,7 +2,7 @@
  * @Author: yangxcc
  * @version: 1.0
  * @Date: 2023-02-06 13:49:23
- * @LastEditTime: 2023-03-09 10:38:02
+ * @LastEditTime: 2023-05-07 22:27:46
  */
 package backtracking.sub.subset;
 
@@ -133,6 +133,59 @@ class Main {
 
         return false;
     }
+}
 
+/**
+ * 再来一遍😂
+ */
+class day0507 {
+    public boolean canPartitionKSubsets(int[] nums, int k) {
+        int sum = 0, n = nums.length;
+        for (int num : nums) {
+            sum += num;
+        }
 
+        if (sum % k != 0) {
+            return false;
+        }
+
+        int target = sum / k;
+
+        // 想象现在有k个桶，我们需要用数组中的元素把这k个桶填满
+        boolean[] visited = new boolean[n];
+
+        return backtrack(nums, k, target, 0, visited);
+    }
+
+    private boolean backtrack(int[] nums, int restBuckets, int target, int curBucketCapcity, boolean[] visited) {
+        if (restBuckets == 0) {
+            return true;
+        }
+
+        if (curBucketCapcity == target) {
+            return backtrack(nums, restBuckets - 1, target, 0, visited);
+        }
+
+        for (int i = 0; i < nums.length; i++) {
+            if (visited[i]) {
+                continue;
+            }
+
+            if (curBucketCapcity + nums[i] > target) {
+                return false;
+            }
+
+            curBucketCapcity += nums[i];
+            visited[i] = true;
+
+            if (backtrack(nums, restBuckets, target, curBucketCapcity, visited)) {
+                return true;
+            }
+
+            curBucketCapcity -= nums[i];
+            visited[i] = false;
+        }
+
+        return false;
+    }
 }
