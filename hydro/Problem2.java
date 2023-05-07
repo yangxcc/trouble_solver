@@ -2,7 +2,7 @@
  * @Author: yangxcc
  * @version: 1.0
  * @Date: 2023-05-07 14:30:09
- * @LastEditTime: 2023-05-07 20:49:21
+ * @LastEditTime: 2023-05-07 20:50:48
  */
 package hydro;
 
@@ -48,7 +48,7 @@ public class Problem2 {
     }
 
     /**
-     * 思路是对的，使用优先级队列，不知道为什么就是通过不了用例
+     * 思路是对的，使用优先级队列，不知道为什么就是通过不了用例，暂时看不出哪里有问题
      */
     private static void process() {
         Scanner in = new Scanner(System.in);
