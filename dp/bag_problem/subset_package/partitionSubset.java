@@ -2,7 +2,7 @@
  * @Author: yangxcc
  * @version: 1.0
  * @Date: 2022-12-06 20:10:54
- * @LastEditTime: 2023-02-22 15:07:06
+ * @LastEditTime: 2023-05-07 22:16:22
  */
 package bag_problem.subset_package;
 
@@ -48,5 +48,38 @@ public class PartitionSubset{
             }
         }
         return dp[sum];
+    }
+}
+
+class day0507 {
+    public boolean canPartition(int[] nums) {
+        int sum = 0;
+        for (int n : nums) {
+            sum += n;
+        }
+        if (sum %  2 != 0) {
+            return false;
+        }
+
+        int n = nums.length;
+        // dp[i][j]表示的是前i个数能否组合成sum
+        sum /= 2;
+        boolean[][] dp = new boolean[n + 1][sum + 1];
+        for (int i = 0; i < n; i++) {
+            dp[i][0] = true;
+        }
+
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= sum; j++) {
+                if (j - nums[i - 1] < 0) {
+                    // 只能是不选择这个数
+                    dp[i][j] = dp[i - 1][j];
+                } else {
+                    dp[i][j] = dp[i - 1][j] || dp[i - 1][j - nums[i - 1]];
+                }
+            }
+        }
+
+        return dp[n][sum];
     }
 }
