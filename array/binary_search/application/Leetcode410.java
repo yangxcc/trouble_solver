@@ -2,13 +2,9 @@
  * @Author: yangxcc
  * @version: 1.0
  * @Date: 2023-01-06 16:20:11
- * @LastEditTime: 2023-04-11 22:35:39
+ * @LastEditTime: 2023-05-22 20:04:12
  */
 package array.binary_search.application;
-
-import java.lang.annotation.Target;
-
-import tree.traversal.level_traversal.RightsideView;
 
 /**
  * leetcode 410 hard 分割数组的最大值
