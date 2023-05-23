@@ -22,6 +22,7 @@ import java.util.Scanner;
  * 所以对于任意一个节点，我们需要看一下它子树中蓝色节点的数量，
  * 如果蓝色节点是偶数，那么该节点需要给染成蓝色，如果蓝色节点是奇数，那么该节点需要染成红色
  * 
+ * leetcode上还有两道染色问题，分别是34、52
  */
 public class Problem34 {
     static List<Integer>[] trees;
