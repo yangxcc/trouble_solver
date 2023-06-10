@@ -2,7 +2,7 @@
  * @Author: yangxcc
  * @version: 1.0
  * @Date: 2022-12-12 19:30:36
- * @LastEditTime: 2022-12-12 19:56:50
+ * @LastEditTime: 2023-06-10 22:25:21
  */
 package array.prefix_sum.range_sum;
 
@@ -14,7 +14,7 @@ public class RangeSum{
         // 在这里prefixSum[i]表示的是[left, right-1]区间内的和
         this.prefixSum = new int[n+1];
 
-        prefixSum[0] = nums[0];
+        prefixSum[0] = 0;
         for (int i = 1; i <= n; i++) {
             prefixSum[i] = prefixSum[i-1] + nums[i-1];
         }
