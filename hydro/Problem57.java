@@ -30,7 +30,7 @@ import java.util.Scanner;
  * 输出描述：输出一个整数表示最小的花费。
  * 
  */
-public class Probelm57 {
+public class Problem57 {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         int n = in.nextInt();
