@@ -1,3 +1,9 @@
+/*
+ * @Author: yangxcc
+ * @version: 1.0
+ * @Date: 2023-03-14 19:30:21
+ * @LastEditTime: 2023-07-09 16:34:48
+ */
 package string.reverse;
 
 /**
@@ -66,8 +72,10 @@ public class ReverseWords {
 
         while (left <= right) {
             // 重点在这个判断上，目的是让每个单词后面都跟上一个空格
-            if (ch[left] != ' ' || ans.charAt(ans.length() - 1) != ' ') {
+            if (ch[left] != ' ') {
                 ans.append(ch[left]);
+            } else if (ans.length() > 0 && ans.charAt(ans.length() - 1) != ' ') {
+                ans.append(' ');
             }
             left++;
         }
