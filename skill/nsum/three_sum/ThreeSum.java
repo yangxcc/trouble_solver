@@ -2,7 +2,7 @@
  * @Author: yangxcc
  * @version: 1.0
  * @Date: 2022-10-09 16:41:47
- * @LastEditTime: 2023-03-07 13:56:00
+ * @LastEditTime: 2023-07-09 15:52:54
  */
 package skill.nsum.three_sum;
 
@@ -14,7 +14,8 @@ import java.util.Scanner;
 /**
  * leetcode 15 middle 三数之和
  * 
- * 给你一个整数数组 nums ，判断是否存在三元组 [nums[i], nums[j], nums[k]] 满足 i != j、i != k 且 j != k ，
+ * 给你一个整数数组 nums ，判断是否存在三元组 [nums[i], nums[j], nums[k]] 满足 i != j、i != k 且 j !=
+ * k ，
  * 同时还满足 nums[i] + nums[j] + nums[k] == 0 。请你返回所有和为 0 且不重复的三元组。
  * 注意：答案中不可以包含重复的三元组。
  */
@@ -27,7 +28,7 @@ public class ThreeSum {
         Arrays.sort(nums);
 
         for (int k = nums.length - 1; k >= 2; k--) {
-            if (k + 1 < nums.length && nums[k] == nums[k + 1]) {  // 这里得是if
+            if (k + 1 < nums.length && nums[k] == nums[k + 1]) { // 这里得是if
                 continue;
             }
             for (int i = 0, j = k - 1; i < j;) {
@@ -56,67 +57,40 @@ public class ThreeSum {
     }
 }
 
-
 /**
- * leetcode 15 middle 三数之和
- * 
- * 给你一个整数数组 nums ，判断是否存在三元组 [nums[i], nums[j], nums[k]] 
- * 满足 i != j、i != k 且 j != k ，
- * 同时还满足 nums[i] + nums[j] + nums[k] == 0 。请你返回所有和为 0 且不重复的三元组。
- * 注意：答案中不可以包含重复的三元组。
+ * leetcode 16 middle 最接近的三数之和
+ * 给你一个长度为 n 的整数数组 nums 和 一个目标值 target。请你从 nums 中选出三个整数，使它们的和与 target 最接近。
+ * 返回这三个数的和。
+ * 假定每组输入只存在恰好一个解。
  */
-class Main {
-    public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
-        int n = in.nextInt();
-        int[] arr = new int[n];
-        for (int i = 0; i < n; i++) {
-            arr[i] = in.nextInt();
+class Leetcode16 {
+    public int threeSumClosest(int[] nums, int target) {
+        int diff = Integer.MAX_VALUE;  // target和三数之和的差值
+        for (int i = 0; i < nums.length - 2; i++) {
+            int sum = nums[i] + twoSumClosest(nums, target - nums[i], i + 1);
+            if (Math.abs(target - sum) < Math.abs(diff)) {
+                diff = target - sum;
+            }
         }
 
-        for (List<Integer> tuple : process(arr)) {
-            System.out.println(tuple.toString());
-        }
-
+        return target - diff;
     }
 
-    public static List<List<Integer>> process(int[] arr) {
-        Arrays.sort(arr);
-
-        int n = arr.length;
-        List<List<Integer>> ans = new ArrayList<>();
-
-        for (int i = n - 1; i >= 2; i--) {
-            if (i + 1 < n && arr[i] == arr[i + 1]) {
-                continue;
+    private int twoSumClosest(int[] nums, int target, int k) {
+        int left = k, right = nums.length - 1;
+        int diff = Integer.MAX_VALUE;  // target和两数之和的差值
+        while (left < right) {
+            int sum = nums[left] + nums[right];
+            if (Math.abs(target - sum) < Math.abs(diff)) {
+                diff = target - sum;
             }
-            int left = 0, right = i - 1;
-            while (left < right) {
-                if (arr[left] + arr[right] == -arr[i]) {
-                    List<Integer> tmp = new ArrayList<>();
-                    tmp.add(arr[i]);
-                    tmp.add(arr[left]);
-                    tmp.add(arr[right]);
-                    ans.add(new ArrayList<>(tmp));
-
-                    while (left < right && arr[left] == arr[left + 1]) {
-                        left++;
-                    }
-
-                    while (left < right && arr[right] == arr[right] - 1) {
-                        right--;
-                    }
-
-                    left++;
-                    right--;
-                } else if (arr[left] + arr[right] < -arr[i]) {
-                    left++;
-                } else {
-                    right--;
-                }
+            if (sum < target) {
+                left++;
+            } else {
+                right--;
             }
         }
 
-        return new ArrayList<>();
+        return target - diff;
     }
 }
