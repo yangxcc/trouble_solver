@@ -2,7 +2,7 @@
  * @Author: yangxcc
  * @version: 1.0
  * @Date: 2022-10-09 16:41:47
- * @LastEditTime: 2023-07-09 15:52:54
+ * @LastEditTime: 2023-07-09 20:38:32
  */
 package skill.nsum.three_sum;
 
@@ -92,5 +92,35 @@ class Leetcode16 {
         }
 
         return target - diff;
+    }
+}
+
+/**
+ * leetcode 259 较小的三数之和 middle
+ * 给定⼀个⻓度为 n 的整数数组和⼀个⽬标值 target，寻找能够使条件 nums[i] + nums[j] + nums[k] < target 成⽴的三元组 i, j, k 个数（0 <= i < j < k < n）。
+ */
+class Leetcode259 {
+    public int threeSumSmaller(int[] nums, int target) {
+        int ans = 0;
+        Arrays.sort(nums);
+        for (int i = 0; i < nums.length; i++) {
+            ans += twoSumSmaller(nums, target - nums[i], i + 1);
+        }
+        return ans;
+    }
+
+    private int twoSumSmaller(int[] nums, int target, int start) {
+        int left = start, right = nums.length - 1;
+        int count = 0;
+        while (left < right) {
+            if (nums[left] + nums[right] >= target) {
+                right--;
+            } else {
+                // 从[left+1, right]都能够满足两数之和小于target
+                count += right - left;
+                left++;
+            }
+        }
+        return count;
     }
 }
