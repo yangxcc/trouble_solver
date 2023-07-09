@@ -1,3 +1,9 @@
+/*
+ * @Author: yangxcc
+ * @version: 1.0
+ * @Date: 2023-02-12 10:44:32
+ * @LastEditTime: 2023-07-09 17:31:40
+ */
 package skill.nsum;
 
 import java.util.ArrayList;
@@ -10,7 +16,7 @@ import java.util.List;
  */
 public class Frame {
     /**
-     * 
+     * 使用这种方式使用Java会造成越界，但是不知道应该怎么修改，使用Go不会
      * @param nums   已经排好序的数组 Arrays.sort(nums)
      * @param n      n数之和，n==2,两数之和，n==3，三数之和...
      * @param target
