@@ -9,8 +9,6 @@ package skill;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 
-import javafx.scene.layout.Priority;
-
 /**
  * leetcode 295 hard 数据流的中位数
  * 

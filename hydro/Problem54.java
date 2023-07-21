@@ -63,14 +63,14 @@ public class Problem54 {
             System.out.printf("[%d, %d] \n", edge[0], edge[1]);
         }
 
-        UF uf = new UF(n * m);
+        UF_rename ufRename = new UF_rename(n * m);
         int ans = 0;
         int dummy = 0;
         for (int i = 0; i < edges.size(); i++) {
             int point = edges.get(i)[0];
             int dis = edges.get(i)[1];
-            uf.union(dummy, point);
-            if (uf.connected(p, q)) {
+            ufRename.union(dummy, point);
+            if (ufRename.connected(p, q)) {
                 ans = dis;
                 break;
             }

@@ -48,31 +48,3 @@ public class FruitIntoBaskets{
         return ans;
     }
 }
-
-class day0415 {
-    public int totalFruit(int[] fruits) {
-        HashMap<Integer, Integer> window = new HashMap<>();
-        int ans = 0;
-        int left = 0, right = 0;
-        while (right < fruits.length) {
-            int num = fruits[right];
-            right++;
-
-            window.put(num, window.getOrDefault(num, 0) + 1);
-
-            while (window.size() > 2) {
-                int n = fruits[left];
-                left++;
-                
-                window.put(n, window.get(n) - 1);
-                if (window.get(n) == 0) {
-                    window.remove(n);
-                }
-            }
-
-            ans = Math.max(ans, right - left);
-        }
-
-        return ans;
-    }
-}

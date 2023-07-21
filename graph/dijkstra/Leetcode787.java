@@ -117,14 +117,3 @@ class Station {
         this.stepFromStart = s;
     }
 }
-
-
-class State {
-    int id;
-    int distanceFromStart;
-
-    public State(int i, int d) {
-        this.id = i;
-        this.distanceFromStart = d;
-    }
-}

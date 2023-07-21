@@ -31,31 +31,31 @@ public class Problem56 {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         int n = in.nextInt(), t = in.nextInt();
-        UF uf = new UF(n);
+        UF_rename ufRename = new UF_rename(n);
         in.nextLine();
         while (t > 0) {
             String[] ele = in.nextLine().split(" ");
             int idx = Integer.parseInt(ele[1]);
             int left = idx, right = idx;
             if (ele[0].equals("Q")) {
-                while (left >= 1 && uf.connected(left, idx)) {
+                while (left >= 1 && ufRename.connected(left, idx)) {
                     left--;
                 }
-                while (right <= n && uf.connected(right, idx)) {
+                while (right <= n && ufRename.connected(right, idx)) {
                     right++;
                 }
                 System.out.printf("%d %d\n", left + 1, right - 1);
 
             } else if (ele[0].equals("L")) {
-                while (left > 1 && uf.connected(left, idx)) {
+                while (left > 1 && ufRename.connected(left, idx)) {
                     left--;
                 }
-                uf.union(idx, left);
+                ufRename.union(idx, left);
             } else if (ele[0].equals("R")) {
-                while (right < n && uf.connected(right, idx)) {
+                while (right < n && ufRename.connected(right, idx)) {
                     right++;
                 }
-                uf.union(idx, right);
+                ufRename.union(idx, right);
             }
             t--;
         }
@@ -64,11 +64,11 @@ public class Problem56 {
     }
 }
 
-class UF {
+class UF_rename {
     private int count;
     private int[] parent;
 
-    public UF(int _count) {
+    public UF_rename(int _count) {
         this.parent = new int[_count + 1];
         this.count = _count;
     }
