@@ -15,7 +15,7 @@ public class QuickSort {
         // 随机选出一个数和第一个数交换一下，避免极端情况
         // utils.swap(nums, 0, (int)(Math.random()*nums.length));
         shuffle(nums);
-        sort(nums, 0, nums.length-1);
+        sort(nums, 0, nums.length - 1);
         return nums;
     }
 
@@ -25,15 +25,15 @@ public class QuickSort {
         }
 
         int pivot = partition(nums, left, right);
-        sort(nums, left, pivot-1);
-        sort(nums, pivot+1, right);
+        sort(nums, left, pivot - 1);
+        sort(nums, pivot + 1, right);
     }
 
     public int partition(int[] nums, int left, int right) {
         // 或者是每次partition的时候都随机swap一下
         // swap(nums, left, left + (int)(Math.random()*((right-left) >> 1)));
         int pivot = nums[left];
-        int leftIdx = left+1, rightIdx = right;
+        int leftIdx = left + 1, rightIdx = right;
 
         while (leftIdx <= rightIdx) {
             while (leftIdx < right && nums[leftIdx] < pivot) {
@@ -52,7 +52,7 @@ public class QuickSort {
         }
 
         utils.swap(nums, left, rightIdx);
-        
+
         return rightIdx;
     }
 
@@ -62,7 +62,7 @@ public class QuickSort {
         int n = nums.length;
         for (int i = 0; i < n; i++) {
             // rand.nextInt(n)生成的是[0, n)的整数
-            int r = rand.nextInt(n-i) + i;
+            int r = rand.nextInt(n - i) + i;
             utils.swap(nums, i, r);
         }
     }

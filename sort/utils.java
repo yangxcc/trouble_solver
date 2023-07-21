@@ -9,7 +9,7 @@ package sort;
 public class utils {
     public static void swap(int[] nums, int i, int j) {
         int tmp = nums[i];
-        nums[j] = nums[j];
+        nums[i] = nums[j];
         nums[j] = tmp;
     }
 }
