@@ -13,3 +13,7 @@ go.sum
 .vscode/
 .classpath/
 .project
+
+*.iml
+
+out/
