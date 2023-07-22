@@ -20,7 +20,7 @@ import java.util.List;
  * 返回 所有可能的有效组合的列表 。该列表不能包含相同的组合两次，组合可以以任何顺序返回。 
  */
 public class Combination3 {
-    List<List<Integer>> ans = new ArrayList<>();
+    List<List<Integer>> ans = new LinkedList<>();
 
     public List<List<Integer>> combinationSum3(int k, int n) {
         backtrack(n, 1, new LinkedList<>(), k);
