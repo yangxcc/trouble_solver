@@ -7,44 +7,41 @@
 package sort.merge;
 
 public class MergeSort {
+    int[] tmp;
     public int[] sort(int[] nums) {
-        int[] tmp = new int[nums.length];
-        return sortHeler(nums, tmp, 0, nums.length-1);
+        tmp = new int[nums.length];
+        mergeSort(nums, 0, nums.length-1);
+        return nums;
     }
 
-    public int[] sortHeler(int[] nums, int[] tmp, int left, int right) {
+    private void mergeSort(int[] nums, int left, int right) {
         if (left < right) {
             int mid = left + (right - left) / 2;
-            sortHeler(nums, tmp, left, mid);
-            sortHeler(nums, tmp, mid+1, right);
+            mergeSort(nums, left, mid);
+            mergeSort(nums, mid + 1, right);
 
-            return merge(nums, tmp, left, mid, right);
-        } 
-        return new int[0];
+            merge(nums, left, mid, right);
+        }
     }
 
-    public int[] merge(int[] nums, int[] tmp, int left, int mid, int right) {
-        int idx = left, i = left, j = mid+1;
-        while (i <= mid && j <= right) {
-            if (nums[i] < nums[j]) {
-                tmp[idx++] = nums[i++];
+    private void merge(int[] nums, int left, int mid, int right) {
+        // 在[left, right]区间内复制nums到tmp
+        // if (right + 1 - left >= 0) System.arraycopy(nums, left, tmp, left, right + 1 - left);
+        for (int i = left; i <= right; i++) {
+            tmp[i] = nums[i];
+        }
+
+        int i = left, j = mid + 1;
+        for (int p = left; p <= right; p++) {
+            if (i == mid + 1) {
+                nums[p] = tmp[j++];
+            } else if (j == right + 1) {
+                nums[p] = tmp[i++];
+            } else if (tmp[i] <= tmp[j]) {
+                nums[p] = tmp[i++];
             } else {
-                tmp[idx++] = nums[j++];
+                nums[p] = tmp[j++];
             }
         }
-
-        while (i <= mid) {
-            tmp[idx++] = nums[i++];
-        }
-        while (j <= right) {
-            tmp[idx++] = nums[j++];
-        }
-
-        // bugfix
-        for (int k = left; k <= right; k++) {
-            nums[k] = tmp[k];
-        }
-
-        return nums;
     }
 }
