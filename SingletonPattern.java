@@ -42,6 +42,9 @@ class LazySingleInstance {
      * 如果不使用这个关键字，在执行过程中，JVM可能会将步骤2，3进行调换，当3执行之后，锁就会释放掉，这是另一个线程就会抢占所，然后又创建出一个新的对象
      */
     private static volatile LazySingleInstance singleInstance2;
+
+    // 需要加上私有的构造函数，这样才能够保证本类之外的其他类不能通过new的方式来实例化对象
+    private LazySingleInstance(){}
     public static LazySingleInstance getInstanceSafely() {
         if (singleInstance2 == null) {
             synchronized(LazySingleInstance.class) {
