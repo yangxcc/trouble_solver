@@ -20,6 +20,7 @@ public class RatateList {
             // k是长度的整数倍
             return head;
         } else {
+            // 快慢指针找到第k个位置
             ListNode fast = head;
             ListNode slow = head;
             while (k > 0) {
