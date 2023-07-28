@@ -4,7 +4,7 @@
  * @Date: 2022-12-01 11:17:38
  * @LastEditTime: 2023-02-06 21:21:43
  */
-package subsequence_subarray.longest_increasing_subsequence;
+package dp.subsequence_subarray.longest_increasing_subsequence;
 
 import java.util.Arrays;
 
@@ -32,5 +32,37 @@ public class LongestIncreasingSubsequence {
         }
 
         return ans;
+    }
+
+
+    // 贪心做法，nlog(n)
+    public int lengthOfLISGreedy(int[] nums) {
+        int n = nums.length;
+        // d是一个单调数组，其中d[i]表示的是遍历到第i个元素时的序列形状（d[0..i]）
+        // 但是d[0..i]不一定是按照顺序排列的，但是他的长度肯定是当前能够达到的最大最大升序长度
+        int[] d = new int[n + 1];
+        d[1] = nums[0];
+        int len = 1;
+        for (int i = 1; i < n; i++) {
+            if (d[len] < nums[i]) {
+                d[++len] = nums[i];
+            } else {
+                int left = 1, right = len;
+                int pos = 0; // 数组d中第一个大于nums[i]的位置
+                while (left <= right) {
+                    int mid = left + (right - left) / 2;
+                    if (d[mid] >= nums[i]) {
+                        right = mid - 1;
+                    } else  {
+                        pos = mid;
+                        left = mid + 1;
+                    }
+                }
+
+                d[pos + 1] = nums[i];
+            }
+        }
+
+        return len;
     }
 }
