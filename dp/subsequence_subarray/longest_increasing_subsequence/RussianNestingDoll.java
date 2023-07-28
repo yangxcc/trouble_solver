@@ -4,7 +4,7 @@
  * @Date: 2022-12-01 13:53:23
  * @LastEditTime: 2023-02-06 22:14:47
  */
-package subsequence_subarray.longest_increasing_subsequence;
+package dp.subsequence_subarray.longest_increasing_subsequence;
 
 import java.util.Arrays;
 import java.util.Comparator;

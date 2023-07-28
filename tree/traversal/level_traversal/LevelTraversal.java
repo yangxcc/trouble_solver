@@ -6,10 +6,7 @@
  */
 package tree.traversal.level_traversal;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Deque;
-import java.util.List;
+import java.util.*;
 
 import tree.TreeNode;
 
