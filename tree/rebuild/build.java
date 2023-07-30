@@ -141,13 +141,13 @@ public class Build {
         // 这里不能这么写，因为可能不存在左子树？
 //        int leftTreeRootVal = postorder[postorderLeftIdx];
         int leftTreeRootIdx = hm4PrePost.get(leftTreeRootVal);
-        int leftTreeSize = leftTreeRootIdx - postorderLeftIdx;
+        int leftTreeSize = leftTreeRootIdx - postorderLeftIdx + 1; // 因为这里不是rootVal，而是leftRootVal，这里改了一下，下面就统一起来了
 
-        root.left = build4PrePost(preorder, postorder, preorderLeftIdx + 1, preorderLeftIdx + leftTreeSize + 1,
+        root.left = build4PrePost(preorder, postorder, preorderLeftIdx + 1, preorderLeftIdx + leftTreeSize,
                 postorderLeftIdx, postorderLeftIdx + leftTreeSize);
 
-        root.right = build4PrePost(preorder, postorder, preorderLeftIdx + leftTreeSize + 2, preorderRightIdx,
-                postorderLeftIdx + leftTreeSize + 1, postorderRightIdx - 1);
+        root.right = build4PrePost(preorder, postorder, preorderLeftIdx + leftTreeSize + 1, preorderRightIdx,
+                postorderLeftIdx + leftTreeSize, postorderRightIdx - 1);
 
         return root;
     }
