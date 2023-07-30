@@ -127,6 +127,7 @@ public class Build {
         return build4PrePost(preorder, postorder, 0, preorder.length - 1, 0, postorder.length - 1);
     }
 
+    // 这里的参数值还是有点不一样的
     public TreeNode build4PrePost(int[] preorder, int[] postorder, int preorderLeftIdx, int preorderRightIdx,
             int postorderLeftIdx, int postorderRightIdx) {
 
@@ -137,6 +138,8 @@ public class Build {
         int rootVal = preorder[preorderLeftIdx];
         TreeNode root = new TreeNode(rootVal);
         int leftTreeRootVal = preorder[preorderLeftIdx + 1];
+        // 这里不能这么写，因为可能不存在左子树？
+//        int leftTreeRootVal = postorder[postorderLeftIdx];
         int leftTreeRootIdx = hm4PrePost.get(leftTreeRootVal);
         int leftTreeSize = leftTreeRootIdx - postorderLeftIdx;
 
