@@ -63,7 +63,6 @@ public class Traversal {
             } else {
                 TreeNode node = stack.pop();
                 ans.add(node.val);
-                stack.push(node.right);
                 cur = node.right;
             }
         }
