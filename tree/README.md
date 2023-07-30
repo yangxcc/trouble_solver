@@ -66,6 +66,9 @@ for i := 0; i < len(levelNodes) - 1; i++ {
 
 除此之外，使用层序遍历还能够解决leetcode 104 simple [二叉树最大深度](https://leetcode.cn/problems/maximum-depth-of-binary-tree/)和 leetcode 111 simple [最小深度的问题](https://leetcode.cn/problems/minimum-depth-of-binary-tree/)，当然也能够使用递归实现，但值得注意的是：在递归实现最小深度时，需要注意左右节点不同时存在的场景，经典case：只有左/右子树
 
+使用层序遍历判断[leetcode 958 是否为完全二叉树](https://leetcode.cn/problems/check-completeness-of-a-binary-tree/)
+
+![](../image/tree/判断是否为完全二叉树.png)
 ### 经典题目之对称二叉树
 
 leetcode 101 [对称二叉树](https://leetcode.cn/problems/symmetric-tree/)，如下代码
