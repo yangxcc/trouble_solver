@@ -12,7 +12,7 @@ public class ExpressionToVal {
      *
      * @param tokens ["2","1","+","3","*"]
      * @return 后缀表达式的值
-     *
+     * <p>
      * NOTE：前缀表达式的求值思路和后缀表达式一样，只是后缀表达式是从左往右，而前缀表达式的计算是从右往左，里面都是num1-num2
      */
     public static int suffixCalculate(String[] tokens) {
@@ -126,9 +126,13 @@ public class ExpressionToVal {
 
 
     public static void main(String[] args) {
-        String s = "1+((2+3)*4)-5";
-        System.out.println(Arrays.toString(infixToSuffix(s).toArray(new String[0])));
-        System.out.println(suffixCalculate(infixToSuffix(s).toArray(new String[0])));
+//        String s = "1+((2+3)*4)-5";
+//        System.out.println(Arrays.toString(infixToSuffix(s).toArray(new String[0])));
+//        System.out.println(suffixCalculate(infixToSuffix(s).toArray(new String[0])));
+
+        String s1 = "(F&F|V|!V&!F&!(F|F&V))";
+        System.out.println(Arrays.toString(convert(s1).toArray(new Character[0])));
+        System.out.println(calculate2(convert(s1)));
     }
 
 
@@ -157,5 +161,89 @@ public class ExpressionToVal {
             s2.add(s1.pop());
         }
         return s2;    // 不需要再逆序输出了，因为是存放在list中了，桉顺序输出即可
+    }
+
+
+    // boolean类型的
+    private static List<Character> convert(String infix) {
+        Deque<Character> opStack = new LinkedList<>();
+        Deque<Character> tmpStack = new LinkedList<>();
+
+        for (char ch : infix.toCharArray()) {
+            // 去掉空格
+            if (ch == ' ') {
+                continue;
+            }
+            if (ch == 'V' || ch == 'F') {
+                tmpStack.addLast(ch);
+            } else if (ch == '(') {
+                opStack.addLast(ch);
+            } else if (ch == ')') {
+                while (!opStack.isEmpty() && opStack.getLast() != '(') {
+                    tmpStack.addLast(opStack.removeLast());
+                }
+                opStack.removeLast();
+            } else {
+                // 其他的一些运算符了
+                while (!opStack.isEmpty() && priority2(ch) <= priority2(opStack.getLast())) {
+                    tmpStack.addLast(opStack.removeLast());
+                }
+                opStack.addLast(ch);
+            }
+        }
+
+        while (!opStack.isEmpty()) {
+            tmpStack.addLast(opStack.removeLast());
+        }
+        List<Character> ans = new ArrayList<>();
+        while (!tmpStack.isEmpty()) {
+            ans.add(tmpStack.removeFirst());
+        }
+        return ans;
+    }
+
+    private static int priority2(char op) {
+        if ('!' == op) {
+            return 3;
+        }
+        if ('&' == op) {
+            return 2;
+        }
+        if ('|' == op) {
+            return 1;
+        }
+        return -1;
+    }
+
+    private static int calculate2(List<Character> suffix) {
+        Deque<Integer> stack = new LinkedList<>();
+        for (char ch : suffix) {
+            if (ch == 'V' || ch == 'F') {
+                stack.addLast(convertBool2Int(ch));
+            } else if (ch == '!') {
+                // 只弹出一个数
+                Integer num = stack.removeLast();
+                if (num.equals(1)) {
+                    stack.addLast(0);
+                } else {
+                    stack.addLast(1);
+                }
+            } else {
+                // 弹出两个数
+                Integer num1 = stack.removeLast();
+                Integer num2 = stack.removeLast();
+                if (ch == '|') {
+                    stack.addLast(num1 | num2);
+                } else if (ch == '&') {
+                    stack.addLast(num1 & num2);
+                }
+            }
+        }
+
+        return stack.pop();
+    }
+
+    private static int convertBool2Int(Character ch) {
+        return ch == 'V' ? 1 : 0;
     }
 }
