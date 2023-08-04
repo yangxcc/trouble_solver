@@ -4,7 +4,7 @@
  * @Date: 2022-12-09 19:28:29
  * @LastEditTime: 2023-02-22 19:08:48
  */
-package subsequence_subarray.longest_common_subarray;
+package dp.subsequence_subarray.longest_common_subarray;
 
 /**
  * leetcode 718 middle 最长重复子数组
