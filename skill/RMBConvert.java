@@ -87,7 +87,7 @@ public class RMBConvert {
 
     // 将整数部分转为大写的金额
     public static String getChineseInteger(int[] integers) {
-        StringBuffer chineseInteger = new StringBuffer("");
+        StringBuilder chineseInteger = new StringBuilder();
         int length = integers.length;
         // 对于输入的字符串为 "0." 存入数组后为 0
         if (length == 1 && integers[0] == 0) {
@@ -125,8 +125,47 @@ public class RMBConvert {
     }
 
     public static void main(String[] args) {
-        String number = "-7000.142";
+        String number = "-7004.142";
         String afterStr = toChinese(number);
         System.out.println(number + ": " + afterStr);
+
+        String number2 = "12345";
+        System.out.println(Integer2Chinese(number2));
+    }
+
+
+    private static String Integer2Chinese(String strNum) {
+        // 需要校验，首位是否为+-号...
+        // 这里就先跳过前置校验，先专注于实现核心逻辑
+        String[] nums = new String[]{"零", "一", "二", "三", "四", "五", "六", "七", "八", "九", "十"};
+        String[] symbol = new String[]{"", "十", "百", "千", "万", "十", "百", "千", "亿"};
+
+        int[] intNums = new int[strNum.length()];
+        for (int i = 0; i < strNum.length(); i++) {
+            intNums[i] = Integer.parseInt(strNum.substring(i, i + 1));
+        }
+
+        StringBuilder ans = new StringBuilder();
+        int n = intNums.length;
+        for (int i = 0; i < n; i++) {
+            String key = "";
+            if (intNums[i] == 0) {
+                  if (n - i == 9) {
+                      key = symbol[8];
+                  } else if (n - i == 5) {
+                      key = symbol[4];
+                  } else if (n - i == 1) {
+                      key = symbol[0];
+                  }
+
+                  if (i + 1 < n && intNums[i + 1] != 0) {
+                      key += nums[0];
+                  }
+            }
+
+            ans.append(intNums[i] == 0 ? key : nums[intNums[i]] + symbol[n - i - 1]);
+        }
+
+        return ans.toString();
     }
 }
