@@ -58,6 +58,7 @@ public class HouseRobber3 {
         int[] leftState = dpBetter(root.left);
         int[] rightState = dpBetter(root.right);
 
+        // 偷根节点
         int rob = root.val + leftState[1] + rightState[1];
         // bugfix
         // int notRob = leftState[0] + rightState[0];
