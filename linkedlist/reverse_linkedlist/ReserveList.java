@@ -113,9 +113,11 @@ public class ReserveList {
             count++;
         }
 
-        cur = head;
-        ListNode pre = null, next = null;
+
+        // 这里不能是cur==null，因为有一个bad case，链表为[1,2]，k==2，这样的话，正确值应该是[2,1]，但是按照我们的逻辑这里就变成了[1,2]，是不对的
         if (count == k) {
+            cur = head;
+            ListNode pre = null, next = null;
             while (count > 0) {
                 next = cur.next;
                 cur.next = pre;
