@@ -4,7 +4,7 @@
  * @Date: 2022-12-10 12:31:16
  * @LastEditTime: 2023-02-22 20:12:51
  */
-package subsequence_subarray.palindromic_subsequence;
+package dp.subsequence_subarray.palindromic_subsequence;
 
 /**
  * leetcode 647 middle 回文子串
