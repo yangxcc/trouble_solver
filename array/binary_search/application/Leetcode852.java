@@ -8,6 +8,15 @@ package array.binary_search.application;
 
 /**
  * leetcode 852 simple 在先升序后降序的数组中找到最大值（不含重复数字）
+ *
+ * 符合下列属性的数组 arr 称为 山脉数组 ：
+ * arr.length >= 3
+ * 存在 i（0 < i < arr.length - 1）使得：
+ * arr[0] < arr[1] < ... arr[i-1] < arr[i]
+ * arr[i] > arr[i+1] > ... > arr[arr.length - 1]
+ * 给你由整数组成的山脉数组 arr ，返回满足 arr[0] < arr[1] < ... arr[i - 1] < arr[i] > arr[i + 1] > ... > arr[arr.length - 1] 的下标 i 。
+ *
+ * 你必须设计并实现时间复杂度为 O(log(n)) 的解决方案。
  */
 public class Leetcode852 {
     public int peakIndexInMountainArray(int[] arr) {
@@ -15,8 +24,9 @@ public class Leetcode852 {
             return arr[0];
         }
 
+        // 因为这道题目中没有说明数组是由一个升序数组旋转得到的，所以不能够通过arr[mid]和arr[left]来进行比较
         int left = 0, right = arr.length - 1;
-        while (left < right) {
+        while (left < right) { // 也要注意这里不是<=
             int mid = left + (right - left) / 2;
             if (arr[mid] > arr[mid + 1]) {
                 // 在右边或者是已经是最大的了
