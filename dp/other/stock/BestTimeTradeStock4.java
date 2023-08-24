@@ -4,7 +4,7 @@
  * @Date: 2022-12-08 19:48:37
  * @LastEditTime: 2023-02-07 15:44:38
  */
-package other.stock;
+package dp.other.stock;
 
 /**
  * leetcode 309 middle 最佳买卖股票时机（含冷冻期）

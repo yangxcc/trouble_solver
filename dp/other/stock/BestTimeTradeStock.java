@@ -4,7 +4,7 @@
  * @Date: 2022-12-08 17:11:07
  * @LastEditTime: 2023-02-07 14:48:21
  */
-package other.stock;
+package dp.other.stock;
 
 /**
  * leetcode 121 simple 买卖股票的最佳时机

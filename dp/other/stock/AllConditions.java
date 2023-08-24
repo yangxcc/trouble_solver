@@ -4,7 +4,7 @@
  * @Date: 2023-02-07 16:33:33
  * @LastEditTime: 2023-02-07 16:45:55
  */
-package other.stock;
+package dp.other.stock;
 
 /**
  * 将股票问题中的所有条件融合在一起，写一个代码框架

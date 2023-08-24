@@ -4,7 +4,7 @@
  * @Date: 2022-12-08 17:46:52
  * @LastEditTime: 2023-02-07 15:37:38
  */
-package other.stock;
+package dp.other.stock;
 
 /**
  * leetcode 123 hard 买卖股票的最佳时机3

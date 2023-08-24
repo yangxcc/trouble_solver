@@ -4,7 +4,7 @@
  * @Date: 2022-12-08 20:05:59
  * @LastEditTime: 2023-02-07 15:51:16
  */
-package other.stock;
+package dp.other.stock;
 
 /**
  * leetcode 714 middle 买卖股票的最佳时机含手续费

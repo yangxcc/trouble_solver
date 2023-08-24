@@ -4,7 +4,7 @@
  * @Date: 2022-12-08 17:36:11
  * @LastEditTime: 2023-02-07 14:49:57
  */
-package other.stock;
+package dp.other.stock;
 
 /**
  * leetcode 122 middle 买卖股票的最佳时机2
