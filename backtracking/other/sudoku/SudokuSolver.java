@@ -65,6 +65,7 @@ public class SudokuSolver {
         return true;
     }
 
+    // 之所以设置成boolean，是相当于剪枝
     public boolean backtrack(char[][] board) {
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
