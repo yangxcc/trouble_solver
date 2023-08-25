@@ -30,3 +30,54 @@ def backtrack(路径, 选择列表):
 
 
 leetcode 332 hard [重新安排行程](https://leetcode.cn/problems/reconstruct-itinerary/description/)，这种类型的题在labuladong的某一个类型中讲解的很透彻！！
+
+像需要记录路径的题目，一般都使用到了回溯，如果是没有要求记录路径，那么很大可能是dp
+
+需要注意[leetcode 131 middle 分割回文串](https://leetcode.cn/problems/palindrome-partitioning/)和[leetcode LCR 087 middle 复原 IP 地址
+](https://leetcode.cn/problems/0on3uN/description/)对字符串的切割方式不同，需要根据结果来判断应该怎么划分
+
+分割回文串这道题的结果是如下格式
+```java
+输入：s = "aab"
+输出：[["a","a","b"],["aa","b"]]
+```
+可以看出，结果中是将字符串的每一部分都单独的拿出来组成了结果数组中的一个元素，所以分割字符串的方式应该是
+```java
+for (int i = idx; i < s.length(); i++) {
+    if (isValid(s.substring(idx, i + 1))) {
+        path.add(s.substring(idx, i + 1));
+        // 在path列表中加入字符串的部分
+        // 字符串本身没有发生变化，根据索引的变动来越过对应的位置
+        backtrack(s, i + 1, path); 
+        path.remove(path.size() - 1);
+    }
+}
+```
+
+而复原IP这道题的结果是如下格式
+```java
+输入：s = "25525511135"
+输出：["255.255.11.135","255.255.111.35"]
+```
+可以看出，结果中是将整体的字符串当作结果数组中的元素，所以分割字符串的方式应该是
+```java
+private void backtrack(String s, int idx, int dotCount) {
+    if (dotCount == 3) {
+        if (isValid(s.substring(idx))) {
+            ans.add(s);
+        }
+        return;
+    }
+
+    for (int i = idx; i < s.length(); i++) {
+        if (isValid(s.substring(idx, i + 1))) {
+            // 对字符串整体改变，而不能是s=s.substring(idx, i+1) + "." + s.substring(i + 1);
+            s = s.substring(0, i + 1) + "." + s.substring(i + 1);
+            dotCount++;
+            backtrack(s, i + 2, dotCount);
+            s = s.substring(0, i + 1) + s.substring(i + 2); // 注意这里是i+2，把.跳过去
+            dotCount--;
+        }
+    }
+}
+```
