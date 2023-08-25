@@ -138,9 +138,7 @@ public class RemoveEle {
             fast = fast.next;
         }
 
-        if (slow != null) {
-            slow.next = null;
-        }
+        slow.next = null;
         return head;
     }
 

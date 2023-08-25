@@ -129,7 +129,7 @@ public class SpiralMatrix {
 
         int up = 0, down = m - 1;
         int left = 0, right = n - 1;
-        int count = 0; // 避免链表比数组长
+        int count = 0; // 避免链表比数组长，不需要count
 
         while (true) {
             for (int i = left; i <= right && head != null && count < m * n; i++) {
