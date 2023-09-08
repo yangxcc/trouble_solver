@@ -1,4 +1,4 @@
-package bag_problem.complete_package.coin_change;
+package dp.bag_problem.complete_package.coin_change;
 
 import java.util.Arrays;
 

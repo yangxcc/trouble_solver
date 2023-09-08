@@ -4,7 +4,7 @@
  * @Date: 2022-12-06 17:59:49
  * @LastEditTime: 2023-02-22 14:10:43
  */
-package bag_problem.complete_package.coin_change2;
+package dp.bag_problem.complete_package.coin_change2;
 
 /**
  * leetcode 518 middle 零钱兑换2
@@ -34,5 +34,28 @@ public class CoinChange2 {
         }
 
         return dp[amount];
+    }
+
+    // 二维dp,可以作为从数组中能够构成target的组合数的模板，需要注意是能够无限选还是只能够选一次
+    public int coinChange2D(int amount, int[] coins) {
+        int n = coins.length;
+        int[][] dp = new int[n + 1][amount + 1];
+        // 当target==0时，所有的组合数都为1
+        for (int i = 1; i <= n; i++) {
+            dp[i][0] = 1;
+        }
+        // dp[0][0] = 0,没硬币自然就没办法组合
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= amount; j++) {
+                if (j - coins[i - 1] < 0) {
+                    dp[i][j] = dp[i - 1][j];
+                } else {
+                    // 无限个就是dp[i]，而不是dp[i - 1]
+                    dp[i][j] = dp[i - 1][j] + dp[i][j - coins[i - 1]];
+                }
+            }
+        }
+
+        return dp[n][amount];
     }
 }
