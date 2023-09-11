@@ -43,12 +43,29 @@ public class MergeTwo {
             } else if (list1.val <= list2.val) {
                 cur.next = list1;
                 list1 = list1.next;
-                cur = cur.next;
-            } else if (list1.val > list2.val) {
+            } else {
                 cur.next = list2;
                 list2 = list2.next;
-                cur = cur.next;
             }
+            cur = cur.next;
+        }
+        return dummy.next;
+    }
+
+    private ListNode mergeTwoListsWithLoop2(ListNode list1, ListNode list2) {
+        ListNode dummy = new ListNode(-1);
+        ListNode cur = dummy;
+        while (list1 != null || list2 != null) {
+            int val1 = list1 == null ? Integer.MAX_VALUE : list1.val;
+            int val2 = list2 == null ? Integer.MAX_VALUE : list2.val;
+            if (val1 < val2) {
+                cur.next = list1;
+                list1 = list1.next;
+            } else {
+                cur.next = list2;
+                list2 = list2.next;
+            }
+            cur = cur.next;
         }
         return dummy.next;
     }

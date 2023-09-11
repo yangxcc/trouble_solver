@@ -36,4 +36,40 @@ public class MergeK {
         }
         return dummy.next;
     }
+
+
+    // 使用递归方式mergeK
+    public ListNode mergeKLists2(ListNode[] lists) {
+        return mergeKLists2Helper(lists, 0, lists.length - 1);
+    }
+
+    private ListNode mergeKLists2Helper(ListNode[] listNodes, int left, int right) {
+        if (left > right) {
+            return null;
+        } else if (left == right) {
+            return listNodes[left];
+        }
+
+        int mid = left + (right - left) / 2;
+        ListNode oneHalf = mergeKLists2Helper(listNodes, left, mid);
+        ListNode anotherHalf = mergeKLists2Helper(listNodes, mid + 1, right);
+        return mergeTwo(oneHalf, anotherHalf);
+    }
+
+    private ListNode mergeTwo(ListNode list1, ListNode list2) {
+        if (list1 == null) {
+            return list2;
+        }
+        if (list2 == null) {
+            return list1;
+        }
+
+        if (list1.val < list2.val) {
+            list1.next = mergeTwo(list1.next, list2);
+            return list1;
+        } else {
+            list2.next = mergeTwo(list1, list2.next);
+            return list2;
+        }
+    }
 }
