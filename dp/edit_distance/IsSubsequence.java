@@ -1,4 +1,4 @@
-package edit_distance;
+package dp.edit_distance;
  
 /**
  * leetcode 392 simple 判断子序列

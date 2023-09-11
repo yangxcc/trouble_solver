@@ -1,4 +1,4 @@
-package other.egg;
+package dp.other.egg;
 
 /**
  * leetcode 887 hard 鸡蛋掉落
