@@ -6,7 +6,11 @@
  */
 package dp.subsequence_subarray.palindromic_subsequence;
 
-public class LongestPalindromicSubsequence {
+/**
+ * leetcode 5 middle 最长回文子串
+ * https://leetcode.cn/problems/longest-palindromic-substring/description/
+ */
+public class LongestPalindromicSubstring {
     public String longestPalindrome(String s) {
         String ans = "";
         for (int i = 0; i < s.length(); i++) {
