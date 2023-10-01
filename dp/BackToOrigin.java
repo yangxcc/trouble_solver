@@ -24,7 +24,7 @@ public class BackToOrigin {
         }
         if (n == 2) {
             if (k % 2  == 0) {
-                return k;
+                return 1;
             } else {
                 return 0;
             }
