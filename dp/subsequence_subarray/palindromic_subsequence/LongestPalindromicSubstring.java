@@ -44,16 +44,13 @@ public class LongestPalindromicSubstring {
         int start = 0;
         // 一定要注意这里是从下往上遍历
         for (int i = n - 1; i >= 0; i--) {
-            // 这里不是j=i+1，避免"a"这种case返回一个""
-            for (int j = i; j < n; j++) {
+            for (int j = i + 1; j < n; j++) {
                 if (s.charAt(i) == s.charAt(j)) {
                     if (j - i < 3) {
                         dp[i][j] = true;
                     } else {
                         dp[i][j] = dp[i + 1][j - 1];
                     }
-                } else {
-                    dp[i][j] = false;
                 }
 
                 if (dp[i][j] && j - i + 1 > maxLen) {
