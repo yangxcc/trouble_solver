@@ -4,7 +4,7 @@
  * @Date: 2023-03-01 09:49:45
  * @LastEditTime: 2023-04-19 21:56:22
  */
-package other.parentheses;
+package dp.other.parentheses;
 
 import java.util.Scanner;
 
@@ -38,36 +38,3 @@ public class LongestValidParentheses {
     }
 }
 
-class day0419 {
-    public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
-        String s = in.nextLine();
-
-        System.out.println(longestValidParentheses(s));
-    }
-
-    private static int longestValidParentheses(String s) {
-        int n = s.length();
-        // dp[i]表示的是以i结尾的字符串中最长的有效括号
-        int[] dp = new int[n];
-        // dp[0] = 0
-        int ans = 0;
-
-        for (int i = 1; i < n; i++) {
-            if (s.charAt(i) == ')') {
-                int pre = i - dp[i - 1] - 1;
-                if (pre >= 0 && s.charAt(pre) == '(') {
-                    dp[i] = dp[i - 1] + 2;
-                }
-                // ()()
-                if (pre > 0) {
-                    dp[i] += dp[pre - 1];
-                }
-            }
-
-            ans = Math.max(ans, dp[i]);
-        }
-
-        return ans;
-    }
-}
