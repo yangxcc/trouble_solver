@@ -4,7 +4,7 @@
  * @Date: 2022-12-09 16:06:13
  * @LastEditTime: 2023-02-07 21:23:41
  */
-package other.robber;
+package dp.other.robber;
 
 import tree.TreeNode;
 

@@ -4,7 +4,7 @@
  * @Date: 2022-12-09 10:56:38
  * @LastEditTime: 2023-02-07 21:07:49
  */
-package other.robber;
+package dp.other.robber;
 
 /**
  * leetcode 213 middle 打家劫舍2
