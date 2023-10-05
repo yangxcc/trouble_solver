@@ -4,7 +4,7 @@
  * @Date: 2022-12-10 11:56:38
  * @LastEditTime: 2023-02-22 19:53:32
  */
-package subsequence_subarray.different_subsequence;
+package dp.subsequence_subarray.different_subsequence;
 
 /**
  * leetcode 115/剑指offerII-097 hard 不同的子序列
