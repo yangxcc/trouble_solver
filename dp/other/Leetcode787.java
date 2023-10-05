@@ -1,4 +1,4 @@
-package other;
+package dp.other;
 
 import java.util.ArrayList;
 import java.util.Arrays;
