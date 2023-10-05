@@ -4,7 +4,7 @@
  * @Date: 2023-02-20 16:00:51
  * @LastEditTime: 2023-03-09 14:30:16
  */
-package path;
+package dp.path;
 
 /**
  * leetcode 63 middle 不同路径2

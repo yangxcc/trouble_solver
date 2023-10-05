@@ -1,4 +1,4 @@
-package path;
+package dp.path;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -60,6 +60,7 @@ public class Path3 {
         dfs(grid, i, j - 1, visited, step + 1);
         dfs(grid, i, j + 1, visited, step + 1);
 
+        // 这里是回溯，不是深搜了
         visited[i][j] = false;
     }
 }
