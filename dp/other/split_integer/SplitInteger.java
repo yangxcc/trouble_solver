@@ -4,7 +4,7 @@
  * @Date: 2022-11-30 22:03:51
  * @LastEditTime: 2023-03-09 14:40:34
  */
-package other.split_integer;
+package dp.other.split_integer;
 
 /**
  * leetcode 343 middle 整数拆分
