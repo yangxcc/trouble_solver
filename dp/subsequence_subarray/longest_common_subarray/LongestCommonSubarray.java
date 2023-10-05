@@ -43,6 +43,7 @@ public class LongestCommonSubarray{
     // }
 
 
+    // 是去找子数组，而不是找子序列
     public int findLengthRightWay(int[] nums1, int[] nums2) {
         int m = nums1.length;
         int n = nums2.length;

@@ -4,7 +4,7 @@
  * @Date: 2022-12-02 12:30:18
  * @LastEditTime: 2023-02-07 10:47:58
  */
-package subsequence_subarray.longest_common_subsequence;
+package dp.subsequence_subarray.longest_common_subsequence;
 
 /**
  * leetcode 1143 middle 最长公共子序列
