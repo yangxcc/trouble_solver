@@ -4,7 +4,7 @@
  * @Date: 2022-11-27 19:14:36
  * @LastEditTime: 2023-03-06 15:15:50
  */
-package path;
+package dp.path;
 
 import java.util.Arrays;
 import java.util.Scanner;
