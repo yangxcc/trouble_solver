@@ -4,7 +4,7 @@
  * @Date: 2022-12-02 17:27:06
  * @LastEditTime: 2023-02-07 11:17:48
  */
-package subsequence_subarray.minimum_ascii;
+package dp.subsequence_subarray.minimum_ascii;
 
 /**
  * leetcode 712 middle 两个字符串的最小ASCII删除和
