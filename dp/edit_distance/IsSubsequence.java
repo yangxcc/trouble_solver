@@ -20,7 +20,8 @@ public class IsSubsequence {
                     dp[i][j] = 1 + dp[i - 1][j - 1];
                 } else {
                     // 相当于t中删除了一个字符
-                    dp[i][j] = dp[i][j - 1];
+//                    dp[i][j] = dp[i][j - 1];
+                    dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
                 }
             }
         }
