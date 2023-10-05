@@ -1,4 +1,4 @@
-package subsequence_subarray.maximum_subarray;
+package dp.subsequence_subarray.maximum_subarray;
 
 import java.util.Arrays;
 

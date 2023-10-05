@@ -4,7 +4,7 @@
  * @Date: 2022-12-01 14:35:03
  * @LastEditTime: 2023-03-06 09:37:33
  */
-package subsequence_subarray.maximum_subarray;
+package dp.subsequence_subarray.maximum_subarray;
 
 /**
  * leetcode 53 middle 最大子数组和
@@ -53,24 +53,3 @@ public class MaxSubarray {
 }
 
 
-class daya0306 {
-    public int maxSubArray(int[] arr) {
-        int n = arr.length;
-        if (n <= 0) {
-            return Integer.MIN_VALUE;
-        }
-        int[] dp = new int[n];
-        for (int i = 0; i < n; i++) {
-            dp[i] = i;
-        }
-        
-        // 最开始ans的初始值还是没写对
-        int ans = arr[0];
-        for (int i = 1; i < n; i++) {
-            dp[i] = Math.max(dp[i - 1] + arr[i], dp[i]);
-            ans = Math.max(dp[i], ans);
-        }
-
-        return ans;
-    }
-}
